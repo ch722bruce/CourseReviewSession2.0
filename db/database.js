@@ -13,44 +13,50 @@ function MyMongoDB() {
 }
 
 myDB.insertSessionEntry = async function (sessionEntry) {
-  return await db.collection('sessions').insertOne(sessionEntry);
-}
+  return await db.collection("sessions").insertOne(sessionEntry);
+};
 
 myDB.getSessions = async function () {
-  return await db.collection('sessions').find({}).toArray();
-}
+  return await db.collection("sessions").find({}).toArray();
+};
 
 myDB.getSession = async function (id) {
-  return await db.collection('sessions').findOne({ _id: new ObjectId(id) });
-}
+  return await db.collection("sessions").findOne({ _id: new ObjectId(id) });
+};
 
 myDB.updateSession = async function (id, sessionEntry) {
-  return await db.collection('sessions').findOneAndUpdate(
-    { _id: new ObjectId(id) },
-    { $set: sessionEntry },
-    { returnDocument: 'after' }
-  );
-}
+  return await db
+    .collection("sessions")
+    .findOneAndUpdate(
+      { _id: new ObjectId(id) },
+      { $set: sessionEntry },
+      { returnDocument: "after" }
+    );
+};
 
 myDB.deleteSession = async function (id) {
-  return await db.collection('sessions').deleteOne({ _id: new ObjectId(id) });
-}
+  return await db.collection("sessions").deleteOne({ _id: new ObjectId(id) });
+};
 
 myDB.userJoinSession = async (sessionID, userID) => {
-  return await db.collection('sessions').findOneAndUpdate(
-    { _id: new ObjectId(sessionID) },
-    { $push: { members: userID } },
-    { returnDocument: 'after' }
-  );
-}
+  return await db
+    .collection("sessions")
+    .findOneAndUpdate(
+      { _id: new ObjectId(sessionID) },
+      { $push: { members: userID } },
+      { returnDocument: "after" }
+    );
+};
 
 myDB.userLeaveSession = async (sessionID, userID) => {
-  return await db.collection('sessions').findOneAndUpdate(
-    { _id: new ObjectId(sessionID) },
-    { $pull: { members: userID } },
-    { returnDocument: 'after' }
-  );
-}
+  return await db
+    .collection("sessions")
+    .findOneAndUpdate(
+      { _id: new ObjectId(sessionID) },
+      { $pull: { members: userID } },
+      { returnDocument: "after" }
+    );
+};
 
 const myDB = MyMongoDB();
 
