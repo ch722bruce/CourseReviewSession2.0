@@ -34,10 +34,9 @@ router.post("/edit", async (req, res) => {
   res.send({ user: response });
 });
 
-// router.get("/dashboard", (req, res) => {
-//   // console
-//   // Handle the /dashboard route on the server
-//   res.send("Server-side route: Dashboard");
-// });
+router.post("/delete", async (req, res) => {
+  const response = await myDB.deleteUser(req.body);
+  res.send({ user: response });
+});
 
 export default router;

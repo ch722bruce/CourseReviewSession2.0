@@ -23,7 +23,7 @@
 
 .edit h1 {
   font-size: 3vw;
-  padding: 4.5vw 1vw 1vw 1vw;
+  padding: 4.5vw 1vw 0vw 1vw;
 }
 
 .edit-username,
@@ -39,7 +39,7 @@
 }
 
 .save {
-  padding: 3vw 1vw 1vw 1vw;
+  padding: 2vw 1vw 1vw 1vw;
   size: 1vw;
 }
 
@@ -55,4 +55,15 @@
 
 #edit-btn:hover {
   background-color: white;
+}
+
+#delete-btn {
+  font-size: 1vw;
+  background: none;
+  border: none;
+  color: #8b0000;
+}
+
+#delete-btn:hover {
+  color: #b17777;
 }

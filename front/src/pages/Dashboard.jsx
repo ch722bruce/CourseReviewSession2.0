@@ -7,15 +7,11 @@ export function Dashboard() {
   const navigate = useNavigate();
 
   function onClick() {
-    console.log("profile button clicked");
     navigate(`/profile`);
   }
 
   function onClickLogout() {
-    console.log(localStorage.getItem("currUser"));
-
     localStorage.clear();
-    console.log(localStorage.getItem("currUser"));
     navigate(`/`);
   }
 

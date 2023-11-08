@@ -95,6 +95,25 @@ export function EditProfile() {
     }
   }
 
+  async function onClick() {
+    const result = window.confirm("Are you true to delete the account?");
+    if (result) {
+      try {
+        await fetch("/user/delete", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: localStorage.getItem("currUser"),
+        });
+
+        localStorage.clear();
+        console.log(localStorage.getItem("currUser"));
+        navigate(`/`);
+      } catch (e) {
+        console.log("Fetch error: " + e);
+      }
+    }
+  }
+
   return (
     <div className="edit-bg">
       <div className="edit">
@@ -141,6 +160,12 @@ export function EditProfile() {
           <div className="save">
             <button id="save-btn" type="submit">
               Save
+            </button>
+          </div>
+
+          <div className="delete">
+            <button id="delete-btn" type="button" onClick={onClick}>
+              Delete Account
             </button>
           </div>
         </form>
