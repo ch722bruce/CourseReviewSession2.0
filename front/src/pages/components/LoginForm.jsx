@@ -45,20 +45,7 @@ export function LoginForm() {
         });
 
         if (response.ok) {
-          // let path = "/dashboard";
-          // history.push(path);
           const data = await response.json();
-          // console.log("TYPE:")
-          // console.log(typeof response.body)
-          // console.log(typeof user)
-          // console.log(data.user)
-          // console.log("INFO")
-          // console.log(data.user.username)
-          // console.log(data.user.password)
-          // console.log(data.user.major)
-          // console.log(data.user.tag)
-
-
           localStorage.setItem("currUser", JSON.stringify(data.user));
           navigate(`/dashboard`);
         } else {
@@ -76,36 +63,36 @@ export function LoginForm() {
   }
 
   return (
-    <form id='login-form' onSubmit={onSubmit}>
-      <div className='username'>
+    <form id="login-form" onSubmit={onSubmit}>
+      <div className="login-input">
         <label>
           Username:{" "}
-          <input
-            type='text'
-            name='username'
+          <input 
+            type="text"
+            name="username"
             onInput={evt => setUsername(evt.target.value)}
           ></input>
         </label>
       </div>
 
-      <div className='password'>
+      <div className="login-input">
         <label>
           Password:{" "}
           <input
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             onInput={evt => setPassword(evt.target.value)}
           ></input>
         </label>
       </div>
 
-      <div className='login'>
-        <button type='submit'>Log in</button>
+      <div className="login-login">
+        <button className="submit-btn" type="submit">Log in</button>
       </div>
 
-      <div className='register'>
-        <button type='button' onClick={onClick}>
-          Register
+      <div className="login-register">
+        <button className="click-btn" type="button" onClick={onClick}>
+          Don't have an account?
         </button>
       </div>
     </form>
