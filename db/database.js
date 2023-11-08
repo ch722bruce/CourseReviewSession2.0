@@ -49,18 +49,6 @@ function MyMongoDB() {
     }
   };
 
-  myDB.deleteUser = async user => {
-
-    const { client, db } = await connect();
-    const collection = db.collection(USERS_COLLECTION);
-    try {
-      console.log("NAME: ")
-      console.log(user.username)
-      await collection.deleteOne({ username: user.username });
-    } finally {
-      client.close();
-    }
-
   myDB.addUser = async user => {
     const { client, db } = await connect();
     const collection = db.collection(USERS_COLLECTION);
@@ -107,7 +95,6 @@ function MyMongoDB() {
       client.close();
     }
   };
-
   myDB.getSession = async function () {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
@@ -117,7 +104,6 @@ function MyMongoDB() {
       client.close();
     }
   };
-
   myDB.updateSession = async function (id, sessionEntry) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
@@ -131,7 +117,6 @@ function MyMongoDB() {
       client.close();
     }
   };
-
   myDB.deleteSession = async function (id) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
@@ -141,7 +126,6 @@ function MyMongoDB() {
       client.close();
     }
   };
-
   myDB.userJoinSession = async function (sessionID, userID) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
@@ -155,7 +139,6 @@ function MyMongoDB() {
       client.close();
     }
   };
-
   myDB.userLeaveSession = async function (sessionID, userID) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION); 
@@ -169,7 +152,6 @@ function MyMongoDB() {
       client.close();
     } 
   };
-
   return myDB;
 }
 

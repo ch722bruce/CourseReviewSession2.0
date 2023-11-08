@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 export function SessionCreateForm() {
   const navigate = useNavigate();
   const [session, setSession] = useState({
@@ -18,32 +21,46 @@ export function SessionCreateForm() {
     }));
   }
 
-  async function createSession(newSession) {
+  async function createSession(newSession, username) {
+    const sessionWithAuthor = {
+      ...newSession,
+      creator: username,
+      members: [username]
+    };
+  
     try {
-      const response = await fetch('/sessions', {
+      const response = await fetch('/api/sessions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newSession),
+        body: JSON.stringify(sessionWithAuthor),
       });
-
+  
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+  
       const result = await response.json();
       console.log('Session created:', result);
-      navigate('/dashboard'); // Navigate back to the dashboard after creating the session
+      navigate('/dashboard'); 
     } catch (error) {
       console.error('Failed to create session:', error);
-      // Here you might want to handle the error, display an alert or a notification to the user
     }
   }
+  
 
   function handleSubmit(e) {
     e.preventDefault();
-    createSession(session);
+    const storedUser = localStorage.getItem("currUser");
+    const username = storedUser ? JSON.parse(storedUser).username : null;
+    if (username) {
+      createSession(session, username);
+    } else {
+      console.error('Username not found in localStorage. Please log in again.');
+      // Possibly redirect to the login page
+      navigate('/login');
+    }
   }
 
   return (

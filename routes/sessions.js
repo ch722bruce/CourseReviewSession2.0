@@ -9,10 +9,13 @@ const router = express.Router();
 // Create a new session
 router.post("/sessions", async (req, res) => {
   try {
-    const db = myDB();
-    const session = await db.collection("sessions").insertOne(req.body);
-    res.status(201).json(session);
+    const newSession = {
+      ...req.body,
+    };
+    const result = await myDB.insertSessionEntry(newSession);
+    res.status(201).json(result);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -20,8 +23,7 @@ router.post("/sessions", async (req, res) => {
 // Get all sessions
 router.get("/sessions", async (req, res) => {
   try {
-    const db = myDB();
-    const sessions = await db.collection("sessions").find({}).toArray();
+    const sessions = await myDB.getSession();
     res.json(sessions);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -31,10 +33,7 @@ router.get("/sessions", async (req, res) => {
 // Get a single session by ID
 router.get("/sessions/:id", async (req, res) => {
   try {
-    const db = myDB();
-    const session = await db
-      .collection("sessions")
-      .findOne({ _id: new ObjectId(req.params.id) });
+    const session = await myDB.getSession(new ObjectId(req.params.id));
     if (!session) {
       return res.status(404).json({ error: "Session not found" });
     }
@@ -47,14 +46,10 @@ router.get("/sessions/:id", async (req, res) => {
 // Update a session by ID
 router.put("/sessions/:id", async (req, res) => {
   try {
-    const db = myDB();
-    const updatedSession = await db
-      .collection("sessions")
-      .findOneAndUpdate(
-        { _id: new ObjectId(req.params.id) },
-        { $set: req.body },
-        { returnDocument: "after" }
-      );
+    const updatedSession = await myDB.updateSession(
+      new ObjectId(req.params.id),
+      req.body
+    );
     if (!updatedSession.value) {
       return res.status(404).json({ error: "Session not found" });
     }
@@ -67,10 +62,7 @@ router.put("/sessions/:id", async (req, res) => {
 // Delete a session by ID
 router.delete("/sessions/:id", async (req, res) => {
   try {
-    const db = myDB();
-    const deletedSession = await db
-      .collection("sessions")
-      .deleteOne({ _id: new ObjectId(req.params.id) });
+    const deletedSession = await myDB.deleteSession(new ObjectId(req.params.id));
     if (deletedSession.deletedCount === 0) {
       return res.status(404).json({ error: "Session not found" });
     }
@@ -84,14 +76,11 @@ router.delete("/sessions/:id", async (req, res) => {
 router.post("/sessions/:id/join", async (req, res) => {
   try {
     const userId = req.body.userId; // Assuming userId is sent in request body
-    const db = myDB();
-    const updatedSession = await db
-      .collection("sessions")
-      .updateOne(
-        { _id: new ObjectId(req.params.id) },
-        { $addToSet: { members: userId } }
-      );
-    if (updatedSession.matchedCount === 0) {
+    const updatedSession = await myDB.userJoinSession(
+      new ObjectId(req.params.id),
+      userId
+    );
+    if (!updatedSession.lastErrorObject.updatedExisting) {
       return res.status(404).json({ error: "Session not found" });
     }
     res.json({ message: "Joined the session successfully" });
@@ -103,29 +92,15 @@ router.post("/sessions/:id/join", async (req, res) => {
 // User quits a session
 router.post("/sessions/:id/quit", async (req, res) => {
   try {
-    const sessionId = req.params.id;
     const userId = req.body.userId; // Assuming userId is sent in request body
-
-    // Ensure that sessionId is a valid ObjectId
-    if (!ObjectId.isValid(sessionId)) {
-      return res.status(400).json({ error: "Invalid session ID format" });
+    const updatedSession = await myDB.userLeaveSession(
+      new ObjectId(req.params.id),
+      userId
+    );
+    if (!updatedSession.lastErrorObject.updatedExisting) {
+      return res.status(404).json({ error: "Session not found" });
     }
-
-    // Convert string ID to MongoDB ObjectId
-    const objectId = new ObjectId(sessionId);
-
-    // Call the quitSession method from your database module
-    const result = await myDB.quitSession(objectId, userId);
-
-    if (result === 0) {
-      // If no session was updated, send a 404 error
-      res
-        .status(404)
-        .json({ message: "Session not found or User not in session" });
-    } else {
-      // If the operation was successful, send a success response
-      res.json({ message: "User successfully quit the session" });
-    }
+    res.json({ message: "User has left the session successfully" });
   } catch (error) {
     console.error("Error quitting session:", error);
     res.status(500).json({ error: "Internal server error" });

@@ -8,6 +8,7 @@ const SessionsPage = () => {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
+        console.log('============')
         const response = await fetch('/api/sessions')
         if (!response.ok) {
           throw new Error('Response not OK')

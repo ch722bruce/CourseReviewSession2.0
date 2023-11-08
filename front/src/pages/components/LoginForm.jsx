@@ -94,7 +94,7 @@ export function LoginForm() {
 
       <div className="login-register">
         <button className="click-btn" type="button" onClick={onClick}>
-          Don't have an account?
+          Don&apos;t have an account?
         </button>
       </div>
     </form>
