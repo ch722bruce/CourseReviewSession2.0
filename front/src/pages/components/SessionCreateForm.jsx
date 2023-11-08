@@ -50,7 +50,7 @@ export function SessionCreateForm() {
   }
   
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if(session.startTime >= session.endTime) {
       alert("Start time must be before end time!");
@@ -60,9 +60,21 @@ export function SessionCreateForm() {
     const username = storedUser ? JSON.parse(storedUser).username : null;
     if (username) {
       createSession(session, username);
+
+      // const body = {
+      //   username: 
+      // }
+      // const response = await fetch("/user/addCreation", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(id),
+      // });
+
+
+
+
     } else {
       console.error('Username not found in localStorage. Please log in again.');
-      // Possibly redirect to the login page
       navigate('/login');
     }
   }
