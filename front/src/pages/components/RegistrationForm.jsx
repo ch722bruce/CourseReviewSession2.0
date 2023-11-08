@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Dropdown from "react-dropdown";
 
 function isValidUsername(str) {
   const pattern = /^[a-zA-Z0-9_-]{3,10}$/;
@@ -14,7 +13,7 @@ function isValidPassword(str) {
 
 export function RegistrationForm() {
   const navigate = useNavigate();
-  
+
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [retype, setRetype] = useState("");
@@ -62,14 +61,14 @@ export function RegistrationForm() {
           username: username,
           password: password,
           tag: tag,
-        }
+        };
       } else {
         user = {
           username: username,
           password: password,
           major: major,
           tag: tag,
-        }
+        };
       }
 
       try {
@@ -203,7 +202,9 @@ export function RegistrationForm() {
       </div>
 
       <div className="back">
-        <button type="button" onClick={onClickBack}>Back</button>
+        <button type="button" onClick={onClickBack}>
+          Back
+        </button>
       </div>
     </form>
   );

@@ -4,9 +4,6 @@ import { Title } from "./components/Title";
 import { useNavigate } from "react-router-dom";
 
 export function Dashboard() {
-  const currUser = JSON.parse(localStorage.getItem("currUser"));
-  // console.log("curr user: ");
-  // console.log(currUser);
   const navigate = useNavigate();
 
   function onClick() {

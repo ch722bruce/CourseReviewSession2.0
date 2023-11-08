@@ -55,7 +55,7 @@ export function EditProfile() {
       }
 
       try {
-        const response = await fetch("/user/edit", {
+        await fetch("/user/edit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
