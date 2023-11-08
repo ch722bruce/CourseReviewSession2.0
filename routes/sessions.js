@@ -8,6 +8,7 @@ const router = express.Router();
 
 // Create a new session
 router.post("/sessions", async (req, res) => {
+  console.log("POST /sessions route hit");
   try {
     const newSession = {
       ...req.body,
@@ -21,25 +22,14 @@ router.post("/sessions", async (req, res) => {
 });
 
 // Get all sessions
-router.get("/sessions", async (req, res) => {
+router.patch("/sessions/all", async (req, res) => {
+  console.log("GET /sessions route hit");
   try {
-    const sessions = await myDB.getSession();
+    const sessions = await myDB.getSessions();
     res.json(sessions);
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Get a single session by ID
-router.get("/sessions/:id", async (req, res) => {
-  try {
-    const session = await myDB.getSession(new ObjectId(req.params.id));
-    if (!session) {
-      return res.status(404).json({ error: "Session not found" });
-    }
-    res.json(session);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("Error getting sessions:", error);
+    res.status(500).json({ error: "Internal server error"});
   }
 });
 

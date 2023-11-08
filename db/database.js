@@ -77,8 +77,8 @@ function MyMongoDB() {
     const { client, db } = await connect();
     const collection = db.collection(USERS_COLLECTION);
     try {
-      console.log("NAME: ")
-      console.log(user.username)
+      console.log("NAME: ");
+      console.log(user.username);
       await collection.deleteOne({ username: user.username });
     } finally {
       client.close();
@@ -95,15 +95,19 @@ function MyMongoDB() {
       client.close();
     }
   };
-  myDB.getSession = async function () {
+
+  myDB.getSessions = async function () {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
     try {
-      return await collection.find({}).toArray();
+      const sessions = await collection.find({}).toArray();
+      console.log("sessions: ", sessions);
+      return sessions;
     } finally {
       client.close();
     }
   };
+  
   myDB.updateSession = async function (id, sessionEntry) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
