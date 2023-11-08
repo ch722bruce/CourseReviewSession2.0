@@ -1,7 +1,6 @@
 import "../styles/profile.css";
 import { Title } from "./components/Title";
 import { useNavigate } from "react-router-dom";
-// import { useEffect } from "react";
 
 export function Profile() {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ export function Profile() {
           <div className="info-row">Tag: {tag}</div>
         </div>
 
-        <div className="edit">
+        <div className="edit-btn-div">
           <button id="edit-btn" type="button" onClick={onClick}>
             Edit
           </button>
@@ -40,7 +39,7 @@ export function Profile() {
 
         <div className="back">
           <button id="back-btn" type="button" onClick={onClickBack}>
-            Back
+            Go Back
           </button>
         </div>
       </div>

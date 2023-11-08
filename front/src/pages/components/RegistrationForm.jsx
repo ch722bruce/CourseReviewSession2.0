@@ -57,21 +57,12 @@ export function RegistrationForm() {
         tag = ta;
       }
 
-      let user = {};
-      if (major.length == 0) {
-        user = {
-          username: username,
-          password: password,
-          tag: tag,
-        };
-      } else {
-        user = {
-          username: username,
-          password: password,
-          major: major,
-          tag: tag,
-        };
-      }
+      let user = {
+        username: username,
+        password: password,
+        major: major,
+        tag: tag,
+      };
 
       try {
         const response = await fetch("/user/register", {
@@ -176,25 +167,20 @@ export function RegistrationForm() {
       </div>
 
       <div className="regist-tag">
-        {/* <div className="regist-input"> */}
         <label>
           Student
           <input type="checkbox" checked={student} onClick={onSelectStudent} />
         </label>
-        {/* </div> */}
 
-        {/* <div className="regist-input"> */}
         <label>
           Professor
           <input type="checkbox" checked={prof} onClick={onSelectProf} />
         </label>
-        {/* </div> */}
 
-        {/* <div className="regist-input"> */}
         <label>
-          TA<input type="checkbox" checked={ta} onClick={onSelectTA} />
+          TA
+          <input type="checkbox" checked={ta} onClick={onSelectTA} />
         </label>
-        {/* </div> */}
       </div>
 
       <div className="regist-register">

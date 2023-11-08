@@ -3,6 +3,8 @@ import { Title } from "./components/Title";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "../styles/edit.css";
+
 export function EditProfile() {
   const navigate = useNavigate();
 
@@ -38,21 +40,12 @@ export function EditProfile() {
         tag = "TA";
       }
 
-      let user = {};
-      if (major.length == 0) {
-        user = {
-          username: JSON.parse(localStorage.getItem("currUser")).username,
-          password: JSON.parse(localStorage.getItem("currUser")).password,
-          tag: tag,
-        };
-      } else {
-        user = {
-          username: JSON.parse(localStorage.getItem("currUser")).username,
-          password: JSON.parse(localStorage.getItem("currUser")).password,
-          major: major,
-          tag: tag,
-        };
-      }
+      let user = {
+        username: JSON.parse(localStorage.getItem("currUser")).username,
+        password: JSON.parse(localStorage.getItem("currUser")).password,
+        major: major,
+        tag: tag,
+      };
 
       try {
         await fetch("/user/edit", {
@@ -103,54 +96,55 @@ export function EditProfile() {
   }
 
   return (
-    <div className="profile">
-      <Title title="Edit Profile" />
+    <div className="edit-bg">
+      <div className="edit">
+        <Title title="Edit Profile" />
 
-      <form id="registration-form" onSubmit={onSubmit}>
-        <div className="username">
-          Username: {JSON.parse(localStorage.getItem("currUser")).username}
-        </div>
+        <form id="registration-form" onSubmit={onSubmit}>
+          <div className="edit-username">
+            Username: {JSON.parse(localStorage.getItem("currUser")).username}
+          </div>
 
-        <div className="major">
-          <label>
-            Major:{" "}
-            <input
-              type="text"
-              name="major"
-              value={major}
-              onInput={evt => setMajor(evt.target.value)}
-            ></input>
-          </label>
-        </div>
-
-        <div className="tag">
-          <div className="student">
+          <div className="edit-major">
             <label>
-              Student:{" "}
+              Major:{" "}
+              <input
+                type="text"
+                name="major"
+                value={major}
+                onInput={evt => setMajor(evt.target.value)}
+              ></input>
+            </label>
+          </div>
+
+          <div className="edit-tag">
+            <label>
+              Student
               <input
                 type="checkbox"
                 checked={student}
                 onClick={onSelectStudent}
               />
             </label>
-          </div>
-          <div className="professor">
+
             <label>
-              Professor:{" "}
+              Professor
               <input type="checkbox" checked={prof} onClick={onSelectProf} />
             </label>
-          </div>
-          <div className="ta">
+
             <label>
-              TA: <input type="checkbox" checked={ta} onClick={onSelectTA} />
+              TA
+              <input type="checkbox" checked={ta} onClick={onSelectTA} />
             </label>
           </div>
-        </div>
 
-        <div className="save">
-          <button type="submit">Save</button>
-        </div>
-      </form>
+          <div className="save">
+            <button id="save-btn" type="submit">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

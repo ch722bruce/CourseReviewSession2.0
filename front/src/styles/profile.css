@@ -12,7 +12,7 @@
   border-radius: 0.5vw;
   text-align: center;
   position: relatisve;
-  color: rgba(67,57,127,255);
+  color: rgba(67, 57, 127, 255);
 
   background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
@@ -27,13 +27,13 @@
 }
 
 .info-row {
-  padding: 1vw 1vw 1vw 1vw;
+  padding: 1vw 0vw 0vw 0vw;
   size: 1vw;
   font-size: 1.3vw;
 }
 
-.edit {
-  padding: 2vw 1vw 1vw 1vw;
+.edit-btn-div {
+  padding: 3vw 1vw 1vw 1vw;
   size: 1vw;
 }
 
