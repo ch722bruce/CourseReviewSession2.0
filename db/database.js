@@ -2,62 +2,53 @@ import { MongoClient } from "mongodb";
 
 function MyMongoDB() {
   const myDB = {};
-  const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+  const URI = process.env.MONGODB_URI || "mongodb://localhost:27017";
+  const DB_NAME = "SessionDB";
+  const USERS_COLLECTION = "users";
+  const SESSIONS_COLLECTION = "sessions";
 
-  function connect() {
-    const client = new MongoClient(uri);
-    const db = client.db("SessionDB");
+  const connect = async () => {
+    const client = new MongoClient(URI);
+    console.log("Connecting to DB..." + URI);
+    const db = client.db(DB_NAME);
     return { client, db };
-  }
+  };
+
+  // myDB.userExists = async (username) => {
+  //   const { client, db } = await connect();
+  //   const collection = db.collection(USERS_COLLECTION);
+  //   try {
+  //     const result = await collection.findOne(username);
+  //     if (result == undefined) {
+  //       return false;
+  //     }
+  //     return true;
+  //   } finally {
+  //     client.close();
+  //   }
+  // };
+
+  myDB.findUser = async user => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      return await collection.findOne(user);
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.addUser = async user => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      await collection.insertOne(user);
+    } finally {
+      client.close();
+    }
+  };
+
   return myDB;
 }
 
-myDB.insertSessionEntry = async function (sessionEntry) {
-  return await db.collection("sessions").insertOne(sessionEntry);
-};
-
-myDB.getSessions = async function () {
-  return await db.collection("sessions").find({}).toArray();
-};
-
-myDB.getSession = async function (id) {
-  return await db.collection("sessions").findOne({ _id: new ObjectId(id) });
-};
-
-myDB.updateSession = async function (id, sessionEntry) {
-  return await db
-    .collection("sessions")
-    .findOneAndUpdate(
-      { _id: new ObjectId(id) },
-      { $set: sessionEntry },
-      { returnDocument: "after" }
-    );
-};
-
-myDB.deleteSession = async function (id) {
-  return await db.collection("sessions").deleteOne({ _id: new ObjectId(id) });
-};
-
-myDB.userJoinSession = async (sessionID, userID) => {
-  return await db
-    .collection("sessions")
-    .findOneAndUpdate(
-      { _id: new ObjectId(sessionID) },
-      { $push: { members: userID } },
-      { returnDocument: "after" }
-    );
-};
-
-myDB.userLeaveSession = async (sessionID, userID) => {
-  return await db
-    .collection("sessions")
-    .findOneAndUpdate(
-      { _id: new ObjectId(sessionID) },
-      { $pull: { members: userID } },
-      { returnDocument: "after" }
-    );
-};
-
-const myDB = MyMongoDB();
-
-export default myDB;
+export const myDB = MyMongoDB();

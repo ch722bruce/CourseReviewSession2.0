@@ -49,7 +49,7 @@ export function LoginForm() {
         if (response.ok) {
           // let path = "/dashboard";
           // history.push(path);
-          localStorage.setItem("currUser", user);
+          localStorage.setItem("currUser", JSON.stringify(user));
           navigate(`/dashboard`);
         } else {
           window.alert("User not found or wrong credentials!");

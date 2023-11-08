@@ -47,7 +47,7 @@ export function RegistrationForm() {
         if (!response.ok) {
           window.alert("Username already exists!");
         } else {
-          localStorage.setItem("currUser", user);
+          localStorage.setItem("currUser", JSON.stringify(user));
           navigate(`/dashboard`);
         }
       } catch (e) {
