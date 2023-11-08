@@ -5,6 +5,7 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 
 import usersRouter from "./routes/users.js";
+import sessionRouter from "./routes/sessions.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -26,5 +27,6 @@ app.get("*", (req, res) => {
 
 // app.use("/", indexRouter);
 app.use("/user", usersRouter);
+app.use("/api", sessionRouter);
 
 export default app;

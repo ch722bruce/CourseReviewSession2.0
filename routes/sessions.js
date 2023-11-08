@@ -2,14 +2,14 @@
 
 import express from "express";
 import { ObjectId } from "mongodb";
-import { getDB } from "/db/database.js";
+import { myDB } from "../db/database.js";
 
 const router = express.Router();
 
 // Create a new session
 router.post("/sessions", async (req, res) => {
   try {
-    const db = getDB();
+    const db = myDB();
     const session = await db.collection("sessions").insertOne(req.body);
     res.status(201).json(session);
   } catch (error) {
@@ -20,7 +20,7 @@ router.post("/sessions", async (req, res) => {
 // Get all sessions
 router.get("/sessions", async (req, res) => {
   try {
-    const db = getDB();
+    const db = myDB();
     const sessions = await db.collection("sessions").find({}).toArray();
     res.json(sessions);
   } catch (error) {
@@ -31,7 +31,7 @@ router.get("/sessions", async (req, res) => {
 // Get a single session by ID
 router.get("/sessions/:id", async (req, res) => {
   try {
-    const db = getDB();
+    const db = myDB();
     const session = await db
       .collection("sessions")
       .findOne({ _id: new ObjectId(req.params.id) });
@@ -47,7 +47,7 @@ router.get("/sessions/:id", async (req, res) => {
 // Update a session by ID
 router.put("/sessions/:id", async (req, res) => {
   try {
-    const db = getDB();
+    const db = myDB();
     const updatedSession = await db
       .collection("sessions")
       .findOneAndUpdate(
@@ -67,7 +67,7 @@ router.put("/sessions/:id", async (req, res) => {
 // Delete a session by ID
 router.delete("/sessions/:id", async (req, res) => {
   try {
-    const db = getDB();
+    const db = myDB();
     const deletedSession = await db
       .collection("sessions")
       .deleteOne({ _id: new ObjectId(req.params.id) });
@@ -84,7 +84,7 @@ router.delete("/sessions/:id", async (req, res) => {
 router.post("/sessions/:id/join", async (req, res) => {
   try {
     const userId = req.body.userId; // Assuming userId is sent in request body
-    const db = getDB();
+    const db = myDB();
     const updatedSession = await db
       .collection("sessions")
       .updateOne(

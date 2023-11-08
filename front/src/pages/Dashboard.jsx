@@ -1,15 +1,9 @@
-// import { Link } from "react-router-dom";
 import "../styles/dashboard.css";
 import { Title } from "./components/Title";
 import { useNavigate } from "react-router-dom";
 
 export function Dashboard() {
   const navigate = useNavigate();
-
-  function onClick() {
-    console.log("profile button clicked");
-    navigate(`/profile`);
-  }
 
   function onClickLogout() {
     console.log(localStorage.getItem("currUser"));
@@ -19,17 +13,22 @@ export function Dashboard() {
     navigate(`/`);
   }
 
+  function onCreateSessionClick() {
+    navigate('/create-session');
+  }
+
   return (
     <div className="dashboard">
       <Title title="Dashboard" />
-
-      <button type="button" onClick={onClick}>
+      <button type="button" onClick={() => navigate('/profile')}>
         Profile
       </button>
-
       <button type="button" onClick={onClickLogout}>
         Logout
       </button>
-    </div>
+      <button type="button" onClick={onCreateSessionClick}>
+        Create Session
+      </button>
+    </div>    
   );
 }

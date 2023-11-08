@@ -6,6 +6,7 @@ import { RegistrationPage } from "./pages/RegistrationPage";
 import { Dashboard } from "./pages/Dashboard";
 import { Profile } from "./pages/Profile";
 import { EditProfile } from "./pages/EditProfile";
+import { SessionCreateForm } from './pages/components/SessionCreateForm';
 
 export default function App() {
   // const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/edit" element={<EditProfile />}></Route>
+        <Route path="/create-session" element={<SessionCreateForm />}></Route>
       </Routes>
     </Router>
   );
