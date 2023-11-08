@@ -7,9 +7,11 @@ function MyMongoDB() {
   const USERS_COLLECTION = "users";
   const SESSIONS_COLLECTION = "sessions";
 
+
+
   console.log("database is running...");
   const connect = async () => {
-    const client = new MongoClient(URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    const client = new MongoClient(URI);
     console.log("connect is running...");
     try {
       await client.connect();
@@ -38,6 +40,42 @@ function MyMongoDB() {
   }).catch(err => {
     console.error("Error during database connection:", err);
   });
+
+  async function initializeCounter() {
+    const { client, db } = await connect();
+    const existing = await db
+      .collection("counters")
+      .findOne({ _id: "SessionId" });
+    if (!existing) {
+      await db
+        .collection("counters")
+        .insertOne({ _id: "SessionId", sequence_value: 0 });
+    }
+
+    client.close();
+  }
+
+  initializeCounter("SessionId");
+
+  async function getNextSequenceValue() {
+    const { client, db } = await connect();
+    const sequenceDocument = await db
+      .collection("counters")
+      .findOneAndUpdate(
+        { _id: "SessionId" },
+        { $inc: { sequence_value: 1 } },
+        { returnOriginal: false }
+      );
+    client.close();
+    if (
+      !sequenceDocument ||
+      (sequenceDocument && !("sequence_value" in sequenceDocument))
+    ) {
+      throw new Error("Failed to generate a sequence for SessionId");
+    }
+
+    return sequenceDocument.sequence_value;
+  }
 
   myDB.findUser = async user => {
     const { client, db } = await connect();
@@ -88,8 +126,12 @@ function MyMongoDB() {
   myDB.insertSessionEntry = async function (sessionEntry) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
+    const newSessionEntry = {
+      SessionID: await getNextSequenceValue(),
+      ...sessionEntry,
+    };
     try {
-      const result = await collection.insertOne(sessionEntry);
+      const result = await collection.insertOne(newSessionEntry);
       return result;
     } finally {
       client.close();
@@ -107,49 +149,81 @@ function MyMongoDB() {
       client.close();
     }
   };
+
+  myDB.getSessionByUsername = async function (username) {
+    const { client, db } = await connect();
+    const collection = db.collection(SESSIONS_COLLECTION);
+    try {
+      const sessions = await collection.find({ creator: username }).toArray();
+      return sessions;
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.getSessionsByMemberUsername = async function (username) {
+    const { client, db } = await connect();
+    const collection = db.collection(SESSIONS_COLLECTION);
+    try {
+      const sessions = await collection.find({
+        members: { $in: [username] },
+        creator: { $ne: username },
+      }).toArray();
+      return sessions;
+    } finally {
+      client.close();
+    }
+  };
+  
   
   myDB.updateSession = async function (id, sessionEntry) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
+    console.log("id: ", id);
+    console.log(await collection.findOne({ SessionID: parseInt(id, 10) }));
     try {
       return await collection.findOneAndUpdate(
-        { _id: new ObjectId(id) },
+        { SessionID: parseInt(id, 10) },
         { $set: sessionEntry },
-        { returnOriginal: false }
+        { returnOriginal: false},
       );
     } finally {
       client.close();
     }
   };
+
   myDB.deleteSession = async function (id) {
+    console.log("id: ", id);
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
     try {
-      return await collection.deleteOne({ _id: new ObjectId(id) });
+      return await collection.deleteOne({ SessionID: parseInt(id, 10) });
     } finally {
       client.close();
     }
   };
-  myDB.userJoinSession = async function (sessionID, userID) {
+  myDB.userJoinSession = async function (sessionID, username) {
+    console.log("username: ", username);
+    console.log("sessionID: ", parseInt(sessionID, 10));
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
     try {
       return await collection.findOneAndUpdate(
-        { _id: new ObjectId(sessionID) },
-        { $addToSet: { participants: userID } },
+        { SessionID: parseInt(sessionID, 10) },
+        { $addToSet: { members: username } },
         { returnOriginal: false }
       );
     } finally {
       client.close();
     }
   };
-  myDB.userLeaveSession = async function (sessionID, userID) {
+  myDB.userLeaveSession = async function (sessionID, username) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION); 
     try {
       return await collection.findOneAndUpdate(
-        { _id: new ObjectId(sessionID) },
-        { $pull: { participants: userID } },
+        { SessionID: parseInt(sessionID, 10) },
+        { $pull: { members: username } },
         { returnOriginal: false }
       );
     } finally {

@@ -52,6 +52,10 @@ export function SessionCreateForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if(session.startTime >= session.endTime) {
+      alert("Start time must be before end time!");
+      return;
+    }
     const storedUser = localStorage.getItem("currUser");
     const username = storedUser ? JSON.parse(storedUser).username : null;
     if (username) {

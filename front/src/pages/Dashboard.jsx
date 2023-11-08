@@ -32,8 +32,7 @@ export function Dashboard() {
       } catch (error) {
         console.error('Error updating sessions:', error);
       }
-    };
-  
+    };  
     updateSessions();
   }, []);
 
@@ -46,16 +45,68 @@ export function Dashboard() {
     navigate('/create-session');
   }
 
-  //TODO: Handle join session
+  const updateSessions = async () => {
+    try {
+      const response = await fetch('/api/sessions/all', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const contentType = response.headers.get('Content-Type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new TypeError("Oops, we haven't got JSON!");
+      }
+
+      const data = await response.json();
+      setSessions(data); // Update the sessions state with fetched data
+    } catch (error) {
+      console.error('Error updating sessions:', error);
+    }
+  };
+
   function handleJoin(sessionId) {
     console.log(`Joining session: ${sessionId}`);
+    fetch(`/api/sessions/${sessionId}/join`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
+    })
+      .then(() => {
+        // Call the function to update sessions state after a successful join
+        updateSessionsState();
+        alert("Joined session: " + sessionId);
+      })
+      .catch((error) => {
+        console.error('Error joining session:', error);
+      });
   }
 
-  //TODO: Handle quit session
   function handleQuit(sessionId) {
-    // Replace with actual quit logic
     console.log(`Quitting session: ${sessionId}`);
-    // Update the session's members list and refresh the sessions
+
+    fetch(`/api/sessions/${sessionId}/quit`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
+    })
+      .then(() => {
+        // Call the function to update sessions state after a successful quit
+        updateSessionsState();
+        alert("Quitted session: " + sessionId);
+      })
+      .catch((error) => {
+        console.error('Error quitting session:', error);
+      });
   }
 
   return (
@@ -63,6 +114,9 @@ export function Dashboard() {
       <Title title="Dashboard" />
       <button type="button" onClick={() => navigate('/profile')}>
         Profile
+      </button>
+      <button type="button" onClick={() => navigate('/my-sessions')}>
+        My Sessions
       </button>
       <button type="button" onClick={onClickLogout}>
         Logout
@@ -73,12 +127,13 @@ export function Dashboard() {
       <div className="sessions-list">
         {sessions.map(session => (
           <SessionCard
-            key={session._id}
+            key={session.SessionID}
             session={session}
-            onJoin={() => handleJoin(session._id)}
-            onQuit={() => handleQuit(session._id)}
-            // Assuming the session object has a members array
-            hasJoined={session.members.includes(localStorage.getItem("currUser"))}
+            onJoin={() => handleJoin(session.SessionID)}
+            onQuit={() => handleQuit(session.SessionID)}
+            isAuthor={session.creator === JSON.parse(localStorage.getItem("currUser")).username}
+            hasJoined={session.members.includes(JSON.parse(localStorage.getItem("currUser")).username)}
+            updateSessions={updateSessions}
           />
         ))}
       </div>
