@@ -77,7 +77,7 @@ export function RegistrationForm() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
         });
-
+        console.log(response);
         if (!response.ok) {
           window.alert("Username already exists!");
         } else {
