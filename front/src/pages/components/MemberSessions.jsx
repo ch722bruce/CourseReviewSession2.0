@@ -51,7 +51,7 @@ const MemberSessions = () => {
           onJoin={() => handleJoin(session.id)}
           onQuit={() => handleQuit(session.id)}
           isAuthor={false}
-          hasJoined={true}
+          hasJoined={true} originalText={"Quit"}
         />
       ))}
     </div>

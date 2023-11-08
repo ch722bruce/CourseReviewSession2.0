@@ -70,44 +70,44 @@ export function Dashboard() {
     }
   };
 
-  function handleJoin(sessionId) {
-    console.log(`Joining session: ${sessionId}`);
-    fetch(`/api/sessions/${sessionId}/join`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
-    })
-      .then(() => {
-        // Call the function to update sessions state after a successful join
-        updateSessionsState();
-        alert("Joined session: " + sessionId);
-      })
-      .catch((error) => {
-        console.error('Error joining session:', error);
-      });
-  }
+  // function handleJoin(sessionId) {
+  //   console.log(`Joining session: ${sessionId}`);
+  //   fetch(`/api/sessions/${sessionId}/join`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
+  //   })
+  //     .then(() => {
+  //       // Call the function to update sessions state after a successful join
+  //       // updateSessionsState();
+  //       alert("Joined session: " + sessionId);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error joining session:', error);
+  //     });
+  // }
 
-  function handleQuit(sessionId) {
-    console.log(`Quitting session: ${sessionId}`);
+  // function handleQuit(sessionId) {
+  //   console.log(`Quitting session: ${sessionId}`);
 
-    fetch(`/api/sessions/${sessionId}/quit`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
-    })
-      .then(() => {
-        // Call the function to update sessions state after a successful quit
-        updateSessionsState();
-        alert("Quitted session: " + sessionId);
-      })
-      .catch((error) => {
-        console.error('Error quitting session:', error);
-      });
-  }
+  //   fetch(`/api/sessions/${sessionId}/quit`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
+  //   })
+  //     .then(() => {
+  //       // Call the function to update sessions state after a successful quit
+  //       updateSessionsState();
+  //       alert("Quitted session: " + sessionId);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error quitting session:', error);
+  //     });
+  // }
 
   return (
     <div className="dashboard">
@@ -133,7 +133,7 @@ export function Dashboard() {
             onQuit={() => handleQuit(session.SessionID)}
             isAuthor={session.creator === JSON.parse(localStorage.getItem("currUser")).username}
             hasJoined={session.members.includes(JSON.parse(localStorage.getItem("currUser")).username)}
-            updateSessions={updateSessions}
+            updateSessions={updateSessions} originalText={"Join"}
           />
         ))}
       </div>

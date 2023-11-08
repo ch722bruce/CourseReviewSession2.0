@@ -1,17 +1,27 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
-function SessionCard({ session, onJoin, onQuit, isAuthor, hasJoined, updateSessions }) {
+function SessionCard({
+  session,
+  onJoin,
+  onQuit,
+  isAuthor,
+  hasJoined,
+  updateSessions,
+  originalText,
+}) {
   const navigate = useNavigate();
+  const [btnText, setButton] = useState(originalText);
 
   const handleDelete = async () => {
     // Delete the session
     console.log(`Deleting session: ${session.SessionID}`);
     try {
-      const response = await fetch(`/api/sessions/${session.SessionID}`, { 
-        method: 'DELETE',
+      const response = await fetch(`/api/sessions/${session.SessionID}`, {
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(session),
       });
@@ -25,7 +35,7 @@ function SessionCard({ session, onJoin, onQuit, isAuthor, hasJoined, updateSessi
 
       alert("Deleted session: " + session.SessionID);
     } catch (error) {
-      console.error('Error deleting session:', error);
+      console.error("Error deleting session:", error);
     }
   };
 
@@ -35,16 +45,40 @@ function SessionCard({ session, onJoin, onQuit, isAuthor, hasJoined, updateSessi
     navigate(`/edit-session/${session.SessionID}`);
   };
 
+  function handleJoin() {
+    console.log(`Joining session: ${session.SessionID}`);
+    fetch(`/api/sessions/${session.SessionID}/join`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: JSON.parse(localStorage.getItem("currUser")).username,
+      }),
+    })
+      .then(() => {
+        // Call the function to update sessions state after a successful join
+        // updateSessionsState();
+        alert("Joined session: " + session.SessionID);
+        setButton("Quit")
+      })
+      .catch(error => {
+        console.error("Error joining session:", error);
+      });
+  }
+
   const handleQuit = async () => {
     console.log(`Quitting session: ${session.SessionID}`);
 
     try {
       const response = await fetch(`/api/sessions/${session.SessionID}/quit`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
+        body: JSON.stringify({
+          username: JSON.parse(localStorage.getItem("currUser")).username,
+        }),
       });
 
       if (!response.ok) {
@@ -55,10 +89,11 @@ function SessionCard({ session, onJoin, onQuit, isAuthor, hasJoined, updateSessi
       updateSessions();
 
       alert("Quitted session: " + session.SessionID);
+      setButton("Join")
     } catch (error) {
-      console.error('Error quitting session:', error);
+      console.error("Error quitting session:", error);
     }
-  }
+  };
 
   return (
     <div className="session-card">
@@ -73,10 +108,12 @@ function SessionCard({ session, onJoin, onQuit, isAuthor, hasJoined, updateSessi
         </div>
       ) : (
         <div>
-          {hasJoined ? (
-            <button onClick={handleQuit}>Quit</button>
+          {/* <button onClick={handleQuit}>{btnText}</button> */}
+
+          {btnText=="Quit" ? (
+            <button onClick={handleQuit}>{btnText}</button>
           ) : (
-            <button onClick={onJoin}>Join</button>
+            <button onClick={handleJoin}>{btnText}</button>
           )}
         </div>
       )}
@@ -91,6 +128,7 @@ SessionCard.propTypes = {
   isAuthor: PropTypes.bool.isRequired,
   hasJoined: PropTypes.bool.isRequired,
   updateSessions: PropTypes.func.isRequired, // Callback function to update sessions in the parent component
+  originalText: PropTypes.string,
 };
 
 export default SessionCard;
