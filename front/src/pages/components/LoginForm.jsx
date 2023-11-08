@@ -67,7 +67,7 @@ export function LoginForm() {
       <div className="login-input">
         <label>
           Username:{" "}
-          <input 
+          <input
             type="text"
             name="username"
             onInput={evt => setUsername(evt.target.value)}
@@ -87,7 +87,9 @@ export function LoginForm() {
       </div>
 
       <div className="login-login">
-        <button className="submit-btn" type="submit">Log in</button>
+        <button className="submit-btn" type="submit">
+          Log in
+        </button>
       </div>
 
       <div className="login-register">
