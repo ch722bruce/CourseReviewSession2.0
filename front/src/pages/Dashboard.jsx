@@ -5,10 +5,6 @@ import { useNavigate } from "react-router-dom";
 export function Dashboard() {
   const navigate = useNavigate();
 
-  function onClick() {
-    navigate(`/profile`);
-  }
-
   function onClickLogout() {
     localStorage.clear();
     navigate(`/`);
