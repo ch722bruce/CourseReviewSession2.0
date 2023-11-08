@@ -1,4 +1,4 @@
-.profile-bg {
+.registration-bg {
   background-image: url("../assets/background.png");
   background-size: cover;
   background-position: center;
@@ -6,13 +6,13 @@
   width: 100%;
 }
 
-.profile {
+.registration {
   width: 45vw;
   height: 35vw;
   border-radius: 0.5vw;
   text-align: center;
   position: relatisve;
-  color: rgba(67,57,127,255);
+  color: rgba(67, 57, 127, 255);
 
   background-color: rgba(255, 255, 255, 0.5);
   position: absolute;
@@ -21,27 +21,43 @@
   transform: translate(-50%, -50%);
 }
 
-.profile h1 {
+.registration h1 {
   font-size: 3vw;
-  padding: 6vw 1vw 1vw 1vw;
+  padding: 3.5vw 1vw 0vw 1vw;
 }
 
-.info-row {
+.regist-input, .regist-register {
+  padding: 1vw 0vw 0vw 0vw;
+  size: 1vw;
+}
+
+.regist-register {
   padding: 1vw 1vw 1vw 1vw;
   size: 1vw;
-  font-size: 1.3vw;
 }
 
-.edit {
-  padding: 2vw 1vw 1vw 1vw;
-  size: 1vw;
-}
-
-.back {
+.regist-back {
   padding: 0vw 1vw 1vw 1vw;
 }
 
-#edit-btn {
+label {
+  font-size: 1.3vw;
+}
+
+.regist-tag, .regist-tag label {
+  padding: 1vw 1vw 1vw 1vw;
+}
+
+input {
+  /* width: 12vw; */
+  height: 1.2vw;
+  border-radius: 0.3vw;
+  border-width: 0.09vw;
+  border-color: rgba(67, 57, 127, 255);
+}
+
+#login-btn {
+  /* width: 8vw; */
   font-size: 1.1vw;
   color: rgba(67, 57, 127, 255);
   width: 6vw;
@@ -51,17 +67,17 @@
   border-color: rgba(67, 57, 127, 255);
 }
 
-#edit-btn:hover {
+#login-btn:hover {
   background-color: white;
 }
 
-#back-btn {
+#register-btn {
   font-size: 1.1vw;
   background: none;
   border: none;
   color: rgba(67, 57, 127, 255);
 }
 
-#back-btn:hover {
+#register-btn:hover {
   color: rgba(192, 98, 161, 255);
 }

@@ -34,4 +34,10 @@ router.post("/edit", async (req, res) => {
   res.send({ user: response });
 });
 
+// router.get("/dashboard", (req, res) => {
+//   // console
+//   // Handle the /dashboard route on the server
+//   res.send("Server-side route: Dashboard");
+// });
+
 export default router;

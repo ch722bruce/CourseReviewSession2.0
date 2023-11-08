@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "../../styles/registration.css";
+
 function isValidUsername(str) {
   const pattern = /^[a-zA-Z0-9_-]{3,10}$/;
   return pattern.test(str);
@@ -129,7 +131,7 @@ export function RegistrationForm() {
 
   return (
     <form id="registration-form" onSubmit={onSubmit}>
-      <div className="username">
+      <div className="regist-input">
         <label>
           Username:{" "}
           <input
@@ -140,7 +142,7 @@ export function RegistrationForm() {
         </label>
       </div>
 
-      <div className="password">
+      <div className="regist-input">
         <label>
           Password:{" "}
           <input
@@ -151,9 +153,9 @@ export function RegistrationForm() {
         </label>
       </div>
 
-      <div className="retype">
+      <div className="regist-input">
         <label>
-          Re-type password:{" "}
+          Re-type:{" "}
           <input
             type="password"
             name="retype"
@@ -162,7 +164,7 @@ export function RegistrationForm() {
         </label>
       </div>
 
-      <div className="major">
+      <div className="regist-input">
         <label>
           Major:{" "}
           <input
@@ -173,37 +175,37 @@ export function RegistrationForm() {
         </label>
       </div>
 
-      <div className="tag">
-        <div className="student">
-          <label>
-            Student:{" "}
-            <input
-              type="checkbox"
-              checked={student}
-              onClick={onSelectStudent}
-            />
-          </label>
-        </div>
-        <div className="professor">
-          <label>
-            Professor:{" "}
-            <input type="checkbox" checked={prof} onClick={onSelectProf} />
-          </label>
-        </div>
-        <div className="ta">
-          <label>
-            TA: <input type="checkbox" checked={ta} onClick={onSelectTA} />
-          </label>
-        </div>
+      <div className="regist-tag">
+        {/* <div className="regist-input"> */}
+        <label>
+          Student
+          <input type="checkbox" checked={student} onClick={onSelectStudent} />
+        </label>
+        {/* </div> */}
+
+        {/* <div className="regist-input"> */}
+        <label>
+          Professor
+          <input type="checkbox" checked={prof} onClick={onSelectProf} />
+        </label>
+        {/* </div> */}
+
+        {/* <div className="regist-input"> */}
+        <label>
+          TA<input type="checkbox" checked={ta} onClick={onSelectTA} />
+        </label>
+        {/* </div> */}
       </div>
 
-      <div className="register">
-        <button type="submit">Register</button>
+      <div className="regist-register">
+        <button className="submit-btn" type="submit">
+          Register
+        </button>
       </div>
 
-      <div className="back">
-        <button type="button" onClick={onClickBack}>
-          Back
+      <div className="regist-back">
+        <button className="click-btn" type="button" onClick={onClickBack}>
+          Go Back
         </button>
       </div>
     </form>

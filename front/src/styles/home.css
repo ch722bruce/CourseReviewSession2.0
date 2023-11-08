@@ -2,13 +2,89 @@
   font-family: "Raleway";
 }
 
-h1 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-.component {
+body {
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100vh;
-  text-align: center;
   position: relative;
+}
+
+.home-bg {
+  background-image: url("../assets/background.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.home {
+  width: 45vw;
+  height: 35vw;
+  border-radius: 0.5vw;
+  text-align: center;
+  position: relatisve;
+  color: rgba(67, 57, 127, 255);
+
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.home h1 {
+  font-size: 3vw;
+  padding: 6vw 1vw 1vw 1vw;
+}
+
+.login-input {
+  padding: 1vw 1vw 1vw 1vw;
+  size: 1vw;
+}
+
+.login-login {
+  padding: 2vw 1vw 1vw 1vw;
+  size: 1vw;
+}
+
+.login-register {
+  padding: 0vw 1vw 1vw 1vw;
+}
+
+label {
+  font-size: 1.3vw;
+}
+
+.login-form input {
+  width: 12vw;
+  height: 1.2vw;
+  border-radius: 0.3vw;
+  border-width: 0.09vw;
+  border-color: rgba(67, 57, 127, 255);
+}
+
+.submit-btn {
+  font-size: 1.1vw;
+  color: rgba(67, 57, 127, 255);
+  width: 6vw;
+  height: 1.7vw;
+  border-radius: 0.3vw;
+  border-width: 0.09vw;
+  border-color: rgba(67, 57, 127, 255);
+}
+
+.submit-btn:hover {
+  background-color: white;
+}
+
+.click-btn {
+  font-size: 1.1vw;
+  background: none;
+  border: none;
+  color: rgba(67, 57, 127, 255);
+}
+
+.click-btn:hover {
+  color: rgba(192, 98, 161, 255);
 }

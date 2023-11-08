@@ -22,26 +22,28 @@ export function Profile() {
   }
 
   return (
-    <div className="profile">
-      <Title title="My Profile" />
+    <div className="profile-bg">
+      <div className="profile">
+        <Title title="My Profile" />
 
-      <div className="info">
-        <div>Username: {username}</div>
-        <div>Major: {major}</div>
-        <div>Tag: {tag}</div>
-      </div>
+        <div className="info">
+          <div className="info-row">Username: {username}</div>
+          <div className="info-row">Major: {major}</div>
+          <div className="info-row">Tag: {tag}</div>
+        </div>
 
-      <div className="edit">
-        <button type="button" onClick={onClick}>
-          Edit
-        </button>
-      </div>
+        <div className="edit">
+          <button id="edit-btn" type="button" onClick={onClick}>
+            Edit
+          </button>
+        </div>
 
-      <div className="back">
-          <button type="button" onClick={onClickBack}>
+        <div className="back">
+          <button id="back-btn" type="button" onClick={onClickBack}>
             Back
           </button>
         </div>
+      </div>
     </div>
   );
 }
