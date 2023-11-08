@@ -1,3 +1,4 @@
+import debug from "debug";
 import { MongoClient } from "mongodb";
 
 function MyMongoDB() {
@@ -43,6 +44,23 @@ function MyMongoDB() {
     const collection = db.collection(USERS_COLLECTION);
     try {
       await collection.insertOne(user);
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.editUser = async user => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      await collection.updateOne(
+        { username: user.username },
+        { $set: { major: user.major, tag: user.tag } },
+      );
+
+      // db.student.updateOne({name: "Annu"}, {$set:{age:25}})
+
+      // await collection.insertOne(user);
     } finally {
       client.close();
     }

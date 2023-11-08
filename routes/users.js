@@ -29,12 +29,19 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.post("/edit", async (req, res) => {
+  const user = req.body;
+  const username = {
+    username: user.username,
+  };
+  const response = await myDB.editUser(user);
+  res.send({ user: response });
+});
+
 // router.get("/", async (req, res) => {
 //   console.log("HERE!!!");
 // });
 
 export default router;
-
-
 
 //////// try catch!!!!!!

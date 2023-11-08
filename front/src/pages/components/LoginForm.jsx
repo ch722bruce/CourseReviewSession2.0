@@ -23,16 +23,14 @@ export function LoginForm() {
     evt.preventDefault();
 
     if (username.length == 0 || password.length == 0) {
-      window.alert(
-        "Inputs can not be empty!"
-      );
+      window.alert("Inputs can not be empty!");
     } else if (!isValidUsername(username)) {
       window.alert(
-        "Invalid username!\nShould be at least 3 and at most 10 characters long.\nShould only include letters, numbers, and -_"
+        "Invalid username!\nShould be at least 3 and at most 10 characters long.\nShould only include letters, numbers, and -_",
       );
     } else if (!isValidPassword(password)) {
       window.alert(
-        "Invalid password!\nShould be at least 8 and at most 16 characters long.\nShould only include uppercase and lowercase letters, numbers, and @.!?"
+        "Invalid password!\nShould be at least 8 and at most 16 characters long.\nShould only include uppercase and lowercase letters, numbers, and @.!?",
       );
     } else {
       const user = {
@@ -49,7 +47,19 @@ export function LoginForm() {
         if (response.ok) {
           // let path = "/dashboard";
           // history.push(path);
-          localStorage.setItem("currUser", JSON.stringify(user));
+          const data = await response.json();
+          // console.log("TYPE:")
+          // console.log(typeof response.body)
+          // console.log(typeof user)
+          // console.log(data.user)
+          // console.log("INFO")
+          // console.log(data.user.username)
+          // console.log(data.user.password)
+          // console.log(data.user.major)
+          // console.log(data.user.tag)
+
+
+          localStorage.setItem("currUser", JSON.stringify(data.user));
           navigate(`/dashboard`);
         } else {
           window.alert("User not found or wrong credentials!");
@@ -66,35 +76,35 @@ export function LoginForm() {
   }
 
   return (
-    <form id="login-form" onSubmit={onSubmit}>
-      <div className="username">
+    <form id='login-form' onSubmit={onSubmit}>
+      <div className='username'>
         <label>
           Username:{" "}
           <input
-            type="text"
-            name="username"
-            onInput={(evt) => setUsername(evt.target.value)}
+            type='text'
+            name='username'
+            onInput={evt => setUsername(evt.target.value)}
           ></input>
         </label>
       </div>
 
-      <div className="password">
+      <div className='password'>
         <label>
           Password:{" "}
           <input
-            type="password"
-            name="password"
-            onInput={(evt) => setPassword(evt.target.value)}
+            type='password'
+            name='password'
+            onInput={evt => setPassword(evt.target.value)}
           ></input>
         </label>
       </div>
 
-      <div className="login">
-        <button type="submit">Log in</button>
+      <div className='login'>
+        <button type='submit'>Log in</button>
       </div>
 
-      <div className="register">
-        <button type="button" onClick={onClick}>
+      <div className='register'>
+        <button type='button' onClick={onClick}>
           Register
         </button>
       </div>
