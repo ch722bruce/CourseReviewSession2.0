@@ -79,10 +79,19 @@ function MyMongoDB() {
         { username: user.username },
         { $set: { major: user.major, tag: user.tag } },
       );
+    } finally {
+      client.close();
+    }
+  };
 
-      // db.student.updateOne({name: "Annu"}, {$set:{age:25}})
-
-      // await collection.insertOne(user);
+  myDB.deleteUser = async user => {
+    
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      console.log("NAME: ")
+      console.log(user.username)
+      await collection.deleteOne({ username: user.username });
     } finally {
       client.close();
     }
