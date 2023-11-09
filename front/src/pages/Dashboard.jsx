@@ -3,6 +3,7 @@ import "../styles/dashboard.css";
 import { Title } from "./components/Title";
 import { useNavigate } from "react-router-dom";
 import SessionCard from "./components/SessionCard";
+import "../styles/dashboard.css";
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -102,19 +103,31 @@ export function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Title title="Dashboard" />
-      <button type="button" onClick={() => navigate("/profile")}>
-        Profile
-      </button>
-      <button type="button" onClick={() => navigate("/my-sessions")}>
-        My Sessions
-      </button>
-      <button type="button" onClick={onClickLogout}>
-        Logout
-      </button>
-      <button type="button" onClick={onCreateSessionClick}>
-        Create Session
-      </button>
+      <Title title="Sessions" />
+      <span className="nav-btn">
+        <button type="button" onClick={() => navigate("/profile")}>
+          Profile
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={() => navigate("/my-sessions")}>
+          My Sessions
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={onClickLogout}>
+          Logout
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={onCreateSessionClick}>
+          Create Session
+        </button>
+      </span>
+
       <div className="sessions-list">{renderSessionCards()}</div>
     </div>
   );
