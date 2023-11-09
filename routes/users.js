@@ -44,6 +44,21 @@ router.post("/get", async (req, res) => {
   res.send({ user: response });
 });
 
+router.post("/addCreation", async (req, res) => {
+  // req.body
+  // const courseNumber = {
+  //   course: session.courseNumber
+  // }
+  // const response = await fetch("/user/addCreation", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify(courseNumber),
+  // });
+
+  const response = await myDB.addCreation(req.body);
+  // res.send({ user: response });
+});
+
 router.post("/addJoined", async (req, res) => {
   const response = await myDB.addJoined(req.body)
   // console.log("DATABASE response: " + response)

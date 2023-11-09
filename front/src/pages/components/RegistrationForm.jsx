@@ -62,6 +62,7 @@ export function RegistrationForm() {
         password: password,
         major: major,
         tag: tag,
+        created: [],
         joined: [],
       };
 
