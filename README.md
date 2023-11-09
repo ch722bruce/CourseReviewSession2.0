@@ -3,7 +3,8 @@
 > Author: Naiyi Zhang & Yunke Nie
 >
 > Course Link: https://johnguerra.co/classes/webDevelopment_fall_2023/
-> Design: https://northeastern-my.sharepoint.com/%3Ao:/r/personal/nie_yun_northeastern_edu/Documents/Yunke%20@%20Northeastern%20University?d=wce0b29dfe1d64252b4962ff3e6fe67c6&csf=1&web=1&e=fRlbGW
+> 
+> Design: https://northeastern-my.sharepoint.com/%3Ao:/r/personal/nie_yun_northeastern_edu/Documents/Yunke%20@%20Northeastern%20University?d=wce0b29dfe1d64252b4962ff3e6fe67c6&csf=1&web=1&e=fRlbGW <br>
 > Deployment:
 > Demo Video:
 
