@@ -9,6 +9,9 @@
     "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www.js",
     "preinstall": "cd front && npm install && npm run build"
   },
+  "engines": {
+    "node" : "16.x"
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
