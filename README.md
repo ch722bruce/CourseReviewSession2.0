@@ -4,7 +4,7 @@
 >
 > Course Link: https://johnguerra.co/classes/webDevelopment_fall_2023/
 > 
-> Design: [https://northeastern-my.sharepoint.com/%3Ao:/r/personal/nie_yun_northeastern_edu/Documents/Yunke%20@%20Northeastern%20University?d=wce0b29dfe1d64252b4962ff3e6fe67c6&csf=1&web=1&e=fRlbGW](https://github.com/Tiffanyxk3/CourseReviewSession/blob/main/docs/DesignDocument_Project3_CS5610.pdf)
+> Design: design document (https://github.com/Tiffanyxk3/CourseReviewSession/blob/main/docs/DesignDocument_Project3_CS5610.pdf)
 > 
 > Deployment: https://course-review-sessions.onrender.com
 > 
