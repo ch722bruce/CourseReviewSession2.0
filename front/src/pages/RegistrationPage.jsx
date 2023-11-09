@@ -1,4 +1,3 @@
-// import "./styles/home.css";
 import { Title } from "./components/Title";
 import { RegistrationForm } from "./components/RegistrationForm";
 

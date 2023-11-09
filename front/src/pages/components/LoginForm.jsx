@@ -1,8 +1,5 @@
-// import PropTypes from "prop-types";
 import { useState } from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-// import { Link, useNavigate } from "react-router-dom";
 
 function isValidUsername(str) {
   const pattern = /^[a-zA-Z0-9_-]{3,10}$/;
@@ -45,14 +42,8 @@ export function LoginForm() {
         });
 
         if (response.ok) {
-
-
-
-
           const data = await response.json();
-          console.log("LOGIN: "+data)
           localStorage.setItem("currUser", JSON.stringify(data.user));
-          console.log("LOGIN USER: " + JSON.stringify(data.user))
           navigate(`/dashboard`);
         } else {
           window.alert("User not found or wrong credentials!");
@@ -64,7 +55,6 @@ export function LoginForm() {
   }
 
   function onClick() {
-    console.log("Register button tapped.");
     navigate(`/registration`);
   }
 

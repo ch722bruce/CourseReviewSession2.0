@@ -221,11 +221,7 @@ function MyMongoDB() {
         // { $set: { major: user.major, tag: user.tag } },
       );
 
-      const result = myDB.getUser({ username: data.username })
-      console.log("MYDB deleteJoined returning: " + (await result).username)
-
-      return await result
-
+      return await myDB.getUser({ username: data.username });
     } finally {
       client.close();
     }
@@ -237,14 +233,9 @@ function MyMongoDB() {
     try {
       const username = {
         username: data.username,
-      }
-      const user = await myDB.getUser(username)
-      console.log("RETURNED RESULT")
-      console.log(user)
-      // console.log(typeof user)
-      const joined = user.joined
-      return joined
-
+      };
+      const user = await myDB.getUser(username);
+      return user.joined;
     } finally {
       client.close();
     }
@@ -258,8 +249,7 @@ function MyMongoDB() {
       ...sessionEntry,
     };
     try {
-      const result = await collection.insertOne(newSessionEntry);
-      return result;
+      return await collection.insertOne(newSessionEntry);
     } finally {
       client.close();
     }
@@ -269,9 +259,7 @@ function MyMongoDB() {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
     try {
-      const sessions = await collection.find({}).toArray();
-      console.log("sessions: ", sessions);
-      return sessions;
+      return await collection.find({}).toArray();
     } finally {
       client.close();
     }
@@ -317,8 +305,6 @@ function MyMongoDB() {
   myDB.updateSession = async function (id, sessionEntry) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
-    console.log("id: ", id);
-    console.log(await collection.findOne({ SessionID: parseInt(id, 10) }));
     try {
       return await collection.findOneAndUpdate(
         { SessionID: parseInt(id, 10) },
@@ -331,7 +317,6 @@ function MyMongoDB() {
   };
 
   myDB.deleteSession = async function (id) {
-    console.log("id: ", id);
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
     try {
@@ -341,8 +326,6 @@ function MyMongoDB() {
     }
   };
   myDB.userJoinSession = async function (sessionID, username) {
-    console.log("username: ", username);
-    console.log("sessionID: ", parseInt(sessionID, 10));
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);
     try {

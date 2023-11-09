@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 export function SessionEditForm() {
   const navigate = useNavigate();
@@ -7,10 +7,10 @@ export function SessionEditForm() {
 
   const [session, setSession] = useState(null);
   const [formData, setFormData] = useState({
-    courseNumber: '',
-    startTime: '',
-    endTime: '',
-    description: ''
+    courseNumber: "",
+    startTime: "",
+    endTime: "",
+    description: "",
   });
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export function SessionEditForm() {
         // Initialize the form data with the session data
         setFormData(sessionData);
       } catch (error) {
-        console.error('Error fetching session data:', error);
+        console.error("Error fetching session data:", error);
       }
     }
 
@@ -36,21 +36,19 @@ export function SessionEditForm() {
     const { name, value } = e.target;
     setFormData(prevFormData => ({
       ...prevFormData,
-      [name]: value
+      [name]: value,
     }));
   }
 
   async function updateSession(updatedSession) {
-
     const sessionWithAuthor = {
       ...updatedSession,
-
     };
     try {
       const response = await fetch(`/api/sessions/${sessionId}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(sessionWithAuthor),
       });
@@ -60,17 +58,17 @@ export function SessionEditForm() {
       }
 
       const result = await response.json();
-      console.log('Session updated:', result);
+      console.log("Session updated:", result);
       navigate(`/session/${sessionId}`);
     } catch (error) {
-      console.error('Failed to update session:', error);
+      console.error("Failed to update session:", error);
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (formData.startTime >= formData.endTime) {
-      alert('Start time must be before end time!');
+      alert("Start time must be before end time!");
       return;
     }
     updateSession(formData);

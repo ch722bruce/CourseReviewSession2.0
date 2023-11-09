@@ -60,8 +60,7 @@ router.post("/addCreation", async (req, res) => {
 });
 
 router.post("/addJoined", async (req, res) => {
-  const response = await myDB.addJoined(req.body)
-  // console.log("DATABASE response: " + response)
+  const response = await myDB.addJoined(req.body);
   res.send({ user: response });
 });
 

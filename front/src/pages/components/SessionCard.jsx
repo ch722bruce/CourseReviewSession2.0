@@ -47,7 +47,6 @@ function SessionCard({
   };
 
   function handleJoin() {
-    console.log("id: " + session.SessionID);
     console.log(`Joining session: ${session.SessionID}`);
     fetch(`/api/sessions/${session.SessionID}/join`, {
       method: "POST",
@@ -57,13 +56,9 @@ function SessionCard({
       body: JSON.stringify({
         username: JSON.parse(localStorage.getItem("currUser")).username,
       }),
-    }).then(() => {
-        console.log("FIRST THEN");
-        // Call the function to update sessions state after a successful join
-        // updateSessionsState();
+    })
+      .then(() => {
         alert("Joined session: " + session.SessionID);
-        // const username = localStorage.getItem("currUser").username;
-        // setButton("Quit")
 
         const data = {
           username: JSON.parse(localStorage.getItem("currUser")).username,
@@ -73,31 +68,10 @@ function SessionCard({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
-        }).then((response) => {
-
-          console.log("RESPONSE: " + response)
+        }).then(response => {
           response.json().then(data => {
-            console.log("USER after join: " + JSON.stringify(data.user))
             localStorage.setItem("currUser", JSON.stringify(data.user));
-          })
-
-
-
-
-          // const username = {
-          //   username: JSON.parse(localStorage.getItem("currUser")).username,
-          // };
-          // const newRes = fetch("/user/get", {
-          //   method: "POST",
-          //   headers: { "Content-Type": "application/json" },
-          //   body: JSON.stringify(username),
-          // }).then(response => {
-          //   response.json().then(data => {
-          //     console.log("DATATATATA!!!" + data.user);
-          //     localStorage.setItem("currUser", JSON.stringify(data.user));
-          //     console.log("USER after join: " + JSON.stringify(data.user));
-          //   });
-          // });
+          });
         });
       })
       .catch(error => {
@@ -119,10 +93,8 @@ function SessionCard({
         body: JSON.stringify({
           username: JSON.parse(localStorage.getItem("currUser")).username,
         }),
-      }).then(() => {
-          // if (!response.ok) {
-          //   throw new Error(`HTTP error! status: ${response.status}`);
-          // }
+      })
+        .then(() => {
           alert("Quitted session: " + session.SessionID);
 
           const data = {
@@ -133,43 +105,12 @@ function SessionCard({
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
-          }).then((response) => {
-            console.log("RESPONSE: " + response)
+          }).then(response => {
+            console.log("RESPONSE: " + response);
             response.json().then(data => {
-              console.log("USER after deletion: " + JSON.stringify(data.user))
+              console.log("USER after deletion: " + JSON.stringify(data.user));
               localStorage.setItem("currUser", JSON.stringify(data.user));
-            })
-
-
-            // const username = {
-            //   username: JSON.parse(localStorage.getItem("currUser")).username,
-            // };
-            // const newRes =  fetch("/user/get", {
-            //   method: "POST",
-            //   headers: { "Content-Type": "application/json" },
-            //   body: JSON.stringify(username),
-            // });
-            // const userData =  newRes.json();
-            // localStorage.setItem("currUser", JSON.stringify(userData.user));
-            // console.log(
-            //   "USER after deletion: " + JSON.stringify(userData.user),
-            // );
-
-            // if (response.ok) {
-            //   const username = {
-            //     username: JSON.parse(localStorage.getItem("currUser")).username,
-            //   };
-            //   const newRes = await fetch("/user/get", {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify(username),
-            //   });
-            //   const userData = await newRes.json();
-            //   localStorage.setItem("currUser", JSON.stringify(userData.user));
-            //   console.log("USER after deletion: " + JSON.stringify(userData.user))
-            // } else {
-            //   throw new Error(`HTTP error! Status: ${response.status}`);
-            // }
+            });
           });
         })
         .catch(error => {
@@ -198,8 +139,6 @@ function SessionCard({
         </div>
       ) : (
         <div>
-          {/* <button onClick={handleQuit}>{btnText}</button> */}
-
           {btnText == "Quit" ? (
             <button onClick={handleQuit}>{btnText}</button>
           ) : (

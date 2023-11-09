@@ -12,3 +12,11 @@ h1 {
   text-align: center;
   position: relative;
 }
+
+.nav-btn {
+  padding: 0vw 1vw 2vw 1vw;
+}
+
+.sessions-list {
+  padding: 2vw;
+}

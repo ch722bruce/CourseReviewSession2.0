@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "../../styles/registration.css";
 
 function isValidUsername(str) {
@@ -23,9 +22,6 @@ export function RegistrationForm() {
   let [student, setStudent] = useState(false);
   let [prof, setProf] = useState(false);
   let [ta, setTA] = useState(false);
-
-  // const options = ["Student", "Professor", "TA"];
-  // const default = options[0];
 
   async function onSubmit(evt) {
     evt.preventDefault();
@@ -72,7 +68,6 @@ export function RegistrationForm() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
         });
-        console.log(response);
         if (!response.ok) {
           window.alert("Username already exists!");
         } else {
@@ -86,7 +81,6 @@ export function RegistrationForm() {
   }
 
   function onSelectStudent() {
-    console.log("Student selected");
     if (student) {
       setStudent(false);
     } else {
@@ -97,7 +91,6 @@ export function RegistrationForm() {
   }
 
   function onSelectProf() {
-    console.log("Professor selected");
     if (prof) {
       setProf(false);
     } else {
@@ -108,7 +101,6 @@ export function RegistrationForm() {
   }
 
   function onSelectTA() {
-    console.log("TA selected");
     if (ta) {
       setTA(false);
     } else {
