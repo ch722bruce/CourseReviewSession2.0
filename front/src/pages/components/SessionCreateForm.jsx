@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function SessionCreateForm() {
   const navigate = useNavigate();
   const [session, setSession] = useState({
-    courseNumber: '',
-    startTime: '',
-    endTime: '',
-    description: ''
+    courseNumber: "",
+    startTime: "",
+    endTime: "",
+    description: "",
   });
 
   function handleChange(e) {
     const { name, value } = e.target;
     setSession(prevSession => ({
       ...prevSession,
-      [name]: value
+      [name]: value,
     }));
   }
 
@@ -25,34 +22,33 @@ export function SessionCreateForm() {
     const sessionWithAuthor = {
       ...newSession,
       creator: username,
-      members: [username]
+      members: [username],
     };
-  
+
     try {
-      const response = await fetch('/api/sessions', {
-        method: 'POST',
+      const response = await fetch("/api/sessions", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(sessionWithAuthor),
       });
-  
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-  
+
       const result = await response.json();
-      console.log('Session created:', result);
-      navigate('/dashboard'); 
+      console.log("Session created:", result);
+      navigate("/dashboard");
     } catch (error) {
-      console.error('Failed to create session:', error);
+      console.error("Failed to create session:", error);
     }
   }
-  
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if(session.startTime >= session.endTime) {
+    if (session.startTime >= session.endTime) {
       alert("Start time must be before end time!");
       return;
     }
@@ -60,23 +56,9 @@ export function SessionCreateForm() {
     const username = storedUser ? JSON.parse(storedUser).username : null;
     if (username) {
       createSession(session, username);
-
-      const courseNumber = {
-        username: username,
-        course: session.courseNumber,
-      }
-      const response = await fetch("/user/addCreation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(courseNumber),
-      });
-
-
-
-
     } else {
-      console.error('Username not found in localStorage. Please log in again.');
-      navigate('/login');
+      console.error("Username not found in localStorage. Please log in again.");
+      navigate("/login");
     }
   }
 

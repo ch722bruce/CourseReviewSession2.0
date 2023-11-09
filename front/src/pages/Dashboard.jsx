@@ -108,34 +108,47 @@ export function Dashboard() {
   //       console.error('Error quitting session:', error);
   //     });
   // }
-  console.log("SESSIONS TEST:");
-  for (let sess in sessions) {
-    console.log("session: " + sess);
-    console.log(sess.sessionID)
-  }
-
-
-
-
-
-
+  // console.log("SESSIONS TEST:");
+  // for (let sess in sessions) {
+  //   console.log("session: " + sess);
+  //   console.log(sess.sessionID);
+  // }
 
   function renderSessionCards() {
     const renderedSessions = [];
-  
+    const userStr = localStorage.getItem("currUser")
+    const currUser = JSON.parse(userStr)
+    const joined = currUser.joined
+    console.log("USER STR: " + userStr)
+
     for (const session of sessions) {
-      console.log("ID")
-      console.log(session.SessionID)
+      console.log("session id: " + session.SessionID)
+
+      let text = "Join";
+
+      console.log("RETURNED JOINED: " + joined)
+
+      if (joined.includes(session.SessionID)) {
+        console.log("INCLUDES")
+        text = "Quit";
+      } else {
+        console.log("NOT INCLUDE")
+      }
       renderedSessions.push(
         <SessionCard
           session={session}
           onJoin={() => handleJoin(session.SessionID)}
           onQuit={() => handleQuit(session.SessionID)}
-          isAuthor={session.creator === JSON.parse(localStorage.getItem("currUser")).username}
-          hasJoined={session.members.includes(JSON.parse(localStorage.getItem("currUser")).username)}
+          isAuthor={
+            session.creator ===
+            JSON.parse(localStorage.getItem("currUser")).username
+          }
+          hasJoined={session.members.includes(
+            JSON.parse(localStorage.getItem("currUser")).username,
+          )}
           updateSessions={updateSessions}
-          originalText={"Join"}
-        />
+          originalText={text}
+        />,
       );
     }
 
@@ -156,14 +169,9 @@ export function Dashboard() {
     //     originalText={"Join"}
     //   />
     // ))}
-  
+
     return renderedSessions;
   }
-
-
-
-
-
 
   return (
     <div className="dashboard">

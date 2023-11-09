@@ -39,35 +39,25 @@ router.post("/delete", async (req, res) => {
   res.send({ user: response });
 });
 
-router.post("/addCreation", async (req, res) => {
-// req.body
-  // const courseNumber = {
-  //   course: session.courseNumber
-  // }
-  // const response = await fetch("/user/addCreation", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(courseNumber),
-  // });
-
-  const response = await myDB.addCreation(req.body);
-  // res.send({ user: response });
+router.post("/get", async (req, res) => {
+  const response = await myDB.getUser(req.body);
+  res.send({ user: response });
 });
 
 router.post("/addJoined", async (req, res) => {
-  // req.body
-    // const courseNumber = {
-    //   course: session.courseNumber
-    // }
-    // const response = await fetch("/user/addCreation", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(courseNumber),
-    // });
-    console.log("Router addJoined!!")
-  
-    const response = await myDB.addJoined(req.body);
-    // res.send({ user: response });
-  });
+  const response = await myDB.addJoined(req.body)
+  // console.log("DATABASE response: " + response)
+  res.send({ user: response });
+});
+
+router.post("/deleteJoined", async (req, res) => {
+  const response = await myDB.deleteJoined(req.body);
+  res.send({ user: response });
+});
+
+router.post("/getJoined", async (req, res) => {
+  const response = await myDB.getJoined(req.body);
+  res.send({ joined: response });
+});
 
 export default router;

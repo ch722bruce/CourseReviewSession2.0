@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
-function SessionCard({ 
+function SessionCard({
   session,
   onJoin,
   onQuit,
@@ -34,7 +34,7 @@ function SessionCard({
       updateSessions();
 
       alert("Deleted session: " + session.SessionID);
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.error("Error deleting session:", error);
     }
@@ -47,7 +47,7 @@ function SessionCard({
   };
 
   function handleJoin() {
-    console.log("id: " + session.SessionID)
+    console.log("id: " + session.SessionID);
     console.log(`Joining session: ${session.SessionID}`);
     fetch(`/api/sessions/${session.SessionID}/join`, {
       method: "POST",
@@ -57,39 +57,61 @@ function SessionCard({
       body: JSON.stringify({
         username: JSON.parse(localStorage.getItem("currUser")).username,
       }),
-    })
-      .then(async () => {
+    }).then(() => {
+        console.log("FIRST THEN");
         // Call the function to update sessions state after a successful join
         // updateSessionsState();
         alert("Joined session: " + session.SessionID);
-
         // const username = localStorage.getItem("currUser").username;
-
         // setButton("Quit")
 
         const data = {
           username: JSON.parse(localStorage.getItem("currUser")).username,
           course: session.SessionID,
-        }
-        const response = await fetch("/user/addJoined", {
+        };
+        fetch("/user/addJoined", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
-        });
+        }).then((response) => {
 
-        
+          console.log("RESPONSE: " + response)
+          response.json().then(data => {
+            console.log("USER after join: " + JSON.stringify(data.user))
+            localStorage.setItem("currUser", JSON.stringify(data.user));
+          })
+
+
+
+
+          // const username = {
+          //   username: JSON.parse(localStorage.getItem("currUser")).username,
+          // };
+          // const newRes = fetch("/user/get", {
+          //   method: "POST",
+          //   headers: { "Content-Type": "application/json" },
+          //   body: JSON.stringify(username),
+          // }).then(response => {
+          //   response.json().then(data => {
+          //     console.log("DATATATATA!!!" + data.user);
+          //     localStorage.setItem("currUser", JSON.stringify(data.user));
+          //     console.log("USER after join: " + JSON.stringify(data.user));
+          //   });
+          // });
+        });
       })
       .catch(error => {
         console.error("Error joining session:", error);
       });
-      setButton("Quit")
+
+    setButton("Quit");
   }
 
-  const handleQuit = async () => {
+  const handleQuit = () => {
     console.log(`Quitting session: ${session.SessionID}`);
 
     try {
-      const response = await fetch(`/api/sessions/${session.SessionID}/quit`, {
+      const response = fetch(`/api/sessions/${session.SessionID}/quit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,17 +119,67 @@ function SessionCard({
         body: JSON.stringify({
           username: JSON.parse(localStorage.getItem("currUser")).username,
         }),
-      });
+      }).then(() => {
+          // if (!response.ok) {
+          //   throw new Error(`HTTP error! status: ${response.status}`);
+          // }
+          alert("Quitted session: " + session.SessionID);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+          const data = {
+            username: JSON.parse(localStorage.getItem("currUser")).username,
+            course: session.SessionID,
+          };
+          fetch("/user/deleteJoined", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }).then((response) => {
+            console.log("RESPONSE: " + response)
+            response.json().then(data => {
+              console.log("USER after deletion: " + JSON.stringify(data.user))
+              localStorage.setItem("currUser", JSON.stringify(data.user));
+            })
+
+
+            // const username = {
+            //   username: JSON.parse(localStorage.getItem("currUser")).username,
+            // };
+            // const newRes =  fetch("/user/get", {
+            //   method: "POST",
+            //   headers: { "Content-Type": "application/json" },
+            //   body: JSON.stringify(username),
+            // });
+            // const userData =  newRes.json();
+            // localStorage.setItem("currUser", JSON.stringify(userData.user));
+            // console.log(
+            //   "USER after deletion: " + JSON.stringify(userData.user),
+            // );
+
+            // if (response.ok) {
+            //   const username = {
+            //     username: JSON.parse(localStorage.getItem("currUser")).username,
+            //   };
+            //   const newRes = await fetch("/user/get", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json" },
+            //     body: JSON.stringify(username),
+            //   });
+            //   const userData = await newRes.json();
+            //   localStorage.setItem("currUser", JSON.stringify(userData.user));
+            //   console.log("USER after deletion: " + JSON.stringify(userData.user))
+            // } else {
+            //   throw new Error(`HTTP error! Status: ${response.status}`);
+            // }
+          });
+        })
+        .catch(error => {
+          console.error("Error quiting session:", error);
+        });
 
       // After quitting, call the callback to update sessions in the parent component
-      updateSessions();
+      // updateSessions();
 
-      alert("Quitted session: " + session.SessionID);
-      setButton("Join")
+      setButton("Join");
     } catch (error) {
       console.error("Error quitting session:", error);
     }
@@ -128,7 +200,7 @@ function SessionCard({
         <div>
           {/* <button onClick={handleQuit}>{btnText}</button> */}
 
-          {btnText=="Quit" ? (
+          {btnText == "Quit" ? (
             <button onClick={handleQuit}>{btnText}</button>
           ) : (
             <button onClick={handleJoin}>{btnText}</button>

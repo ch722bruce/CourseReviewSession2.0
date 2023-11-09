@@ -45,8 +45,14 @@ export function LoginForm() {
         });
 
         if (response.ok) {
+
+
+
+
           const data = await response.json();
+          console.log("LOGIN: "+data)
           localStorage.setItem("currUser", JSON.stringify(data.user));
+          console.log("LOGIN USER: " + JSON.stringify(data.user))
           navigate(`/dashboard`);
         } else {
           window.alert("User not found or wrong credentials!");
