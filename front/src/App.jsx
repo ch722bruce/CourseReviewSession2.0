@@ -11,7 +11,6 @@ import MySessionsPage from "./pages/MySessionsPage";
 import { SessionEditForm } from "./pages/components/SessionEditForm";
 import SearchSessionsPage from "./pages/SearchSessionsPage";
 
-
 export default function App() {
   // const [count, setCount] = useState(0);
 
@@ -25,6 +24,7 @@ export default function App() {
         <Route path="/edit" element={<EditProfile />}></Route>
         <Route path="/create-session" element={<SessionCreateForm />}></Route>
         <Route path="/my-sessions" element={<MySessionsPage />}></Route>
+        <Route path="/search-sessions" element={<SearchSessionsPage />} />
         <Route
           path="/edit-session/:sessionId"
           element={<SessionEditForm />}

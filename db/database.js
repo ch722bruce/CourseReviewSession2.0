@@ -301,7 +301,6 @@ function MyMongoDB() {
     }
   };
   
-  
   myDB.updateSession = async function (id, sessionEntry) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);

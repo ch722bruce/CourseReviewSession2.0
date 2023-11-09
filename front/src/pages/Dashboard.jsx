@@ -107,42 +107,39 @@ export function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Title title="Dashboard" />
-      <button type="button" onClick={() => navigate("/profile")}>
-        Profile
-      </button>
-      <button type="button" onClick={() => navigate("/my-sessions")}>
-        My Sessions
-      </button>
-      <button type="button" onClick={onClickLogout}>
-        Logout
-      </button>
-      <button type="button" onClick={onCreateSessionClick}>
-        Create Session
-      </button>
-      <button type="button" onClick={onSearchSessionClick}>
-        Search Session
-      </button>
-      <div className="sessions-list">
-        {renderSessionCards()}
-        {/* {sessions.map(session => (
-          <SessionCard
-            key={session.SessionID}
-            session={session}
-            onJoin={() => handleJoin(session.SessionID)}
-            onQuit={() => handleQuit(session.SessionID)}
-            isAuthor={
-              session.creator ===
-              JSON.parse(localStorage.getItem("currUser")).username
-            }
-            hasJoined={session.members.includes(
-              JSON.parse(localStorage.getItem("currUser")).username,
-            )}
-            updateSessions={updateSessions}
-            originalText={"Join"}
-          />
-        ))} */}
-      </div>
+      <Title title="Sessions" />
+      <span className="nav-btn">
+        <button type="button" onClick={() => navigate("/profile")}>
+          Profile
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={() => navigate("/my-sessions")}>
+          My Sessions
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={onClickLogout}>
+          Logout
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={onCreateSessionClick}>
+          Create Session
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={onSearchSessionClick}>
+          Search Sessions
+        </button>
+      </span>
+
+      <div className="sessions-list">{renderSessionCards()}</div>
+
     </div>
   );
 }
