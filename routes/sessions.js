@@ -29,7 +29,7 @@ router.patch("/sessions/all", async (req, res) => {
     res.json(sessions);
   } catch (error) {
     console.error("Error getting sessions:", error);
-    res.status(500).json({ error: "Internal server error"});
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -40,18 +40,20 @@ router.patch("/sessions/author/:username", async (req, res) => {
     res.json(sessions);
   } catch (error) {
     console.error("Error getting sessions:", error);
-    res.status(500).json({ error: "Internal server error"});
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 //Get all sessions a user is a member of
 router.patch("/sessions/member/:username", async (req, res) => {
   try {
-    const sessions = await myDB.getSessionsByMemberUsername(req.params.username);
+    const sessions = await myDB.getSessionsByMemberUsername(
+      req.params.username,
+    );
     res.json(sessions);
   } catch (error) {
     console.error("Error getting sessions:", error);
-    res.status(500).json({ error: "Internal server error"});
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -59,10 +61,7 @@ router.patch("/sessions/member/:username", async (req, res) => {
 router.put("/sessions/:id", async (req, res) => {
   try {
     console.log("PUT session id: ", req.params.id);
-    const updatedSession = await myDB.updateSession(
-      req.params.id,
-      req.body
-    );
+    const updatedSession = await myDB.updateSession(req.params.id, req.body);
     res.json(updatedSession.value);
   } catch (error) {
     console.error("Error updating session:", error);
@@ -72,9 +71,11 @@ router.put("/sessions/:id", async (req, res) => {
 
 // Delete a session by ID
 router.delete("/sessions/:id", async (req, res) => {
-  console.log("DELETE session id: ", req.params.id)
+  console.log("DELETE session id: ", req.params.id);
   try {
-    const deletedSession = await myDB.deleteSession(parseInt(req.params.id, 10));
+    const deletedSession = await myDB.deleteSession(
+      parseInt(req.params.id, 10),
+    );
     if (deletedSession.deletedCount === 0) {
       return res.status(404).json({ error: "Session not found" });
     }
@@ -88,10 +89,7 @@ router.delete("/sessions/:id", async (req, res) => {
 router.post("/sessions/:id/join", async (req, res) => {
   try {
     const username = req.body.username; // Assuming userId is sent in request body
-    const updatedSession = await myDB.userJoinSession(
-      req.params.id,
-      username
-    );
+    const updatedSession = await myDB.userJoinSession(req.params.id, username);
     res.json({ message: "Joined the session successfully" });
   } catch (error) {
     console.log("Error joining session:", error);
@@ -103,10 +101,7 @@ router.post("/sessions/:id/join", async (req, res) => {
 router.post("/sessions/:id/quit", async (req, res) => {
   try {
     const username = req.body.username; // Assuming userId is sent in request body
-    const updatedSession = await myDB.userLeaveSession(
-      req.params.id,
-      username
-    );
+    const updatedSession = await myDB.userLeaveSession(req.params.id, username);
     res.json({ message: "User has left the session successfully" });
   } catch (error) {
     console.error("Error quitting session:", error);

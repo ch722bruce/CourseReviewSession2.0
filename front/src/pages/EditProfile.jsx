@@ -52,23 +52,11 @@ export function EditProfile() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
-        }).then((response) => {
+        }).then(response => {
           response.json().then(data => {
-            console.log("USER after join: " + JSON.stringify(data.user))
             localStorage.setItem("currUser", JSON.stringify(data.user));
-          })
-
-        })
-
-
-
-        
-
-
-
-
-
-
+          });
+        });
         localStorage.setItem("currUser", JSON.stringify(user));
         navigate(`/profile`);
       } catch (e) {
@@ -78,7 +66,6 @@ export function EditProfile() {
   }
 
   function onSelectStudent() {
-    console.log("Student selected");
     if (student) {
       setStudent(false);
     } else {
@@ -89,7 +76,6 @@ export function EditProfile() {
   }
 
   function onSelectProf() {
-    console.log("Professor selected");
     if (prof) {
       setProf(false);
     } else {
@@ -100,7 +86,6 @@ export function EditProfile() {
   }
 
   function onSelectTA() {
-    console.log("TA selected");
     if (ta) {
       setTA(false);
     } else {

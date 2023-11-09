@@ -70,70 +70,15 @@ export function Dashboard() {
     }
   };
 
-  // function handleJoin(sessionId) {
-  //   console.log(`Joining session: ${sessionId}`);
-  //   fetch(`/api/sessions/${sessionId}/join`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
-  //   })
-  //     .then(() => {
-  //       // Call the function to update sessions state after a successful join
-  //       // updateSessionsState();
-  //       alert("Joined session: " + sessionId);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error joining session:', error);
-  //     });
-  // }
-
-  // function handleQuit(sessionId) {
-  //   console.log(`Quitting session: ${sessionId}`);
-
-  //   fetch(`/api/sessions/${sessionId}/quit`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({ username: JSON.parse(localStorage.getItem("currUser")).username }),
-  //   })
-  //     .then(() => {
-  //       // Call the function to update sessions state after a successful quit
-  //       updateSessionsState();
-  //       alert("Quitted session: " + sessionId);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error quitting session:', error);
-  //     });
-  // }
-  // console.log("SESSIONS TEST:");
-  // for (let sess in sessions) {
-  //   console.log("session: " + sess);
-  //   console.log(sess.sessionID);
-  // }
-
   function renderSessionCards() {
     const renderedSessions = [];
-    const userStr = localStorage.getItem("currUser")
-    const currUser = JSON.parse(userStr)
-    const joined = currUser.joined
-    console.log("USER STR: " + userStr)
+    const userStr = localStorage.getItem("currUser");
+    const currUser = JSON.parse(userStr);
+    const joined = currUser.joined;
 
     for (const session of sessions) {
-      console.log("session id: " + session.SessionID)
+      let text = joined.includes(session.SessionID) ? "Quit" : "Join";
 
-      let text = "Join";
-
-      console.log("RETURNED JOINED: " + joined)
-
-      if (joined.includes(session.SessionID)) {
-        console.log("INCLUDES")
-        text = "Quit";
-      } else {
-        console.log("NOT INCLUDE")
-      }
       renderedSessions.push(
         <SessionCard
           session={session}
@@ -151,24 +96,6 @@ export function Dashboard() {
         />,
       );
     }
-
-    // {sessions.map(session => (
-    //   <SessionCard
-    //     key={session.SessionID}
-    //     session={session}
-    //     onJoin={() => handleJoin(session.SessionID)}
-    //     onQuit={() => handleQuit(session.SessionID)}
-    //     isAuthor={
-    //       session.creator ===
-    //       JSON.parse(localStorage.getItem("currUser")).username
-    //     }
-    //     hasJoined={session.members.includes(
-    //       JSON.parse(localStorage.getItem("currUser")).username,
-    //     )}
-    //     updateSessions={updateSessions}
-    //     originalText={"Join"}
-    //   />
-    // ))}
 
     return renderedSessions;
   }
@@ -188,26 +115,7 @@ export function Dashboard() {
       <button type="button" onClick={onCreateSessionClick}>
         Create Session
       </button>
-      <div className="sessions-list">
-        {renderSessionCards()}
-        {/* {sessions.map(session => (
-          <SessionCard
-            key={session.SessionID}
-            session={session}
-            onJoin={() => handleJoin(session.SessionID)}
-            onQuit={() => handleQuit(session.SessionID)}
-            isAuthor={
-              session.creator ===
-              JSON.parse(localStorage.getItem("currUser")).username
-            }
-            hasJoined={session.members.includes(
-              JSON.parse(localStorage.getItem("currUser")).username,
-            )}
-            updateSessions={updateSessions}
-            originalText={"Join"}
-          />
-        ))} */}
-      </div>
+      <div className="sessions-list">{renderSessionCards()}</div>
     </div>
   );
 }
