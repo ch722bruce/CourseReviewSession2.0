@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
-function SessionCard({
+function SessionCard({ 
   session,
   onJoin,
   onQuit,
@@ -34,6 +34,7 @@ function SessionCard({
       updateSessions();
 
       alert("Deleted session: " + session.SessionID);
+      window.location.reload()
     } catch (error) {
       console.error("Error deleting session:", error);
     }
@@ -46,6 +47,7 @@ function SessionCard({
   };
 
   function handleJoin() {
+    console.log("id: " + session.SessionID)
     console.log(`Joining session: ${session.SessionID}`);
     fetch(`/api/sessions/${session.SessionID}/join`, {
       method: "POST",
@@ -56,15 +58,31 @@ function SessionCard({
         username: JSON.parse(localStorage.getItem("currUser")).username,
       }),
     })
-      .then(() => {
+      .then(async () => {
         // Call the function to update sessions state after a successful join
         // updateSessionsState();
         alert("Joined session: " + session.SessionID);
-        setButton("Quit")
+
+        // const username = localStorage.getItem("currUser").username;
+
+        // setButton("Quit")
+
+        const data = {
+          username: JSON.parse(localStorage.getItem("currUser")).username,
+          course: session.SessionID,
+        }
+        const response = await fetch("/user/addJoined", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        
       })
       .catch(error => {
         console.error("Error joining session:", error);
       });
+      setButton("Quit")
   }
 
   const handleQuit = async () => {

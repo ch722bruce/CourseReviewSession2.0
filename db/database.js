@@ -111,13 +111,80 @@ function MyMongoDB() {
   };
 
   myDB.deleteUser = async user => {
-    
     const { client, db } = await connect();
     const collection = db.collection(USERS_COLLECTION);
     try {
-      console.log("NAME: ");
-      console.log(user.username);
       await collection.deleteOne({ username: user.username });
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.getUser = async user => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      const result = await collection.findOne(user);
+      console.log("GET USER RESULT")
+      console.log(user)
+      console.log(result)
+      console.log(result.created)
+      console.log(typeof result.created)
+      return result
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.addCreation = async data => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      const username = {
+        username: data.username,
+      }
+      const user = await myDB.getUser(username)
+      console.log("RETURNED RESULT")
+      console.log(user)
+      console.log(typeof user)
+      const created = user.created
+      console.log(created)
+      created.push(data.course)
+      console.log(created)
+
+      await collection.updateOne(
+        { username: data.username },
+        { $set: { created: created} },
+        // { $set: { major: user.major, tag: user.tag } },
+      );
+
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.addJoined = async data => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      const username = {
+        username: data.username,
+      }
+      const user = await myDB.getUser(username)
+      console.log("RETURNED RESULT")
+      console.log(user)
+      // console.log(typeof user)
+      const joined = user.joined
+      console.log(joined)
+      joined.push(data.course)
+      console.log(joined)
+
+      await collection.updateOne(
+        { username: data.username },
+        { $set: { joined: joined} },
+        // { $set: { major: user.major, tag: user.tag } },
+      );
+
     } finally {
       client.close();
     }

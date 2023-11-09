@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "../styles/dashboard.css";
 import { Title } from "./components/Title";
 import { useNavigate } from "react-router-dom";
@@ -11,28 +11,28 @@ export function Dashboard() {
   useEffect(() => {
     const updateSessions = async () => {
       try {
-        const response = await fetch('/api/sessions/all', {
-          method: 'PATCH', // Change the HTTP method to PATCH
+        const response = await fetch("/api/sessions/all", {
+          method: "PATCH", // Change the HTTP method to PATCH
           headers: {
-            'Content-Type': 'application/json', // Set the content type to JSON if needed
+            "Content-Type": "application/json", // Set the content type to JSON if needed
           },
         });
-  
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-  
-        const contentType = response.headers.get('Content-Type');
-        if (!contentType || !contentType.includes('application/json')) {
+
+        const contentType = response.headers.get("Content-Type");
+        if (!contentType || !contentType.includes("application/json")) {
           throw new TypeError("Oops, we haven't got JSON!");
         }
-  
+
         const data = await response.json();
         setSessions(data);
       } catch (error) {
-        console.error('Error updating sessions:', error);
+        console.error("Error updating sessions:", error);
       }
-    };  
+    };
     updateSessions();
   }, []);
 
@@ -42,15 +42,15 @@ export function Dashboard() {
   }
 
   function onCreateSessionClick() {
-    navigate('/create-session');
+    navigate("/create-session");
   }
 
   const updateSessions = async () => {
     try {
-      const response = await fetch('/api/sessions/all', {
-        method: 'GET',
+      const response = await fetch("/api/sessions/all", {
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -58,15 +58,15 @@ export function Dashboard() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const contentType = response.headers.get('Content-Type');
-      if (!contentType || !contentType.includes('application/json')) {
+      const contentType = response.headers.get("Content-Type");
+      if (!contentType || !contentType.includes("application/json")) {
         throw new TypeError("Oops, we haven't got JSON!");
       }
 
       const data = await response.json();
       setSessions(data); // Update the sessions state with fetched data
     } catch (error) {
-      console.error('Error updating sessions:', error);
+      console.error("Error updating sessions:", error);
     }
   };
 
@@ -108,14 +108,70 @@ export function Dashboard() {
   //       console.error('Error quitting session:', error);
   //     });
   // }
+  console.log("SESSIONS TEST:");
+  for (let sess in sessions) {
+    console.log("session: " + sess);
+    console.log(sess.sessionID)
+  }
+
+
+
+
+
+
+
+  function renderSessionCards() {
+    const renderedSessions = [];
+  
+    for (const session of sessions) {
+      console.log("ID")
+      console.log(session.SessionID)
+      renderedSessions.push(
+        <SessionCard
+          session={session}
+          onJoin={() => handleJoin(session.SessionID)}
+          onQuit={() => handleQuit(session.SessionID)}
+          isAuthor={session.creator === JSON.parse(localStorage.getItem("currUser")).username}
+          hasJoined={session.members.includes(JSON.parse(localStorage.getItem("currUser")).username)}
+          updateSessions={updateSessions}
+          originalText={"Join"}
+        />
+      );
+    }
+
+    // {sessions.map(session => (
+    //   <SessionCard
+    //     key={session.SessionID}
+    //     session={session}
+    //     onJoin={() => handleJoin(session.SessionID)}
+    //     onQuit={() => handleQuit(session.SessionID)}
+    //     isAuthor={
+    //       session.creator ===
+    //       JSON.parse(localStorage.getItem("currUser")).username
+    //     }
+    //     hasJoined={session.members.includes(
+    //       JSON.parse(localStorage.getItem("currUser")).username,
+    //     )}
+    //     updateSessions={updateSessions}
+    //     originalText={"Join"}
+    //   />
+    // ))}
+  
+    return renderedSessions;
+  }
+
+
+
+
+
 
   return (
     <div className="dashboard">
       <Title title="Dashboard" />
-      <button type="button" onClick={() => navigate('/profile')}>
+      <button type="button" onClick={() => navigate("/profile")}>
         Profile
       </button>
-      <button type="button" onClick={() => navigate('/my-sessions')}>
+      <button type="button" onClick={() => navigate("/my-sessions")}>
         My Sessions
       </button>
       <button type="button" onClick={onClickLogout}>
@@ -125,18 +181,25 @@ export function Dashboard() {
         Create Session
       </button>
       <div className="sessions-list">
-        {sessions.map(session => (
+        {renderSessionCards()}
+        {/* {sessions.map(session => (
           <SessionCard
             key={session.SessionID}
             session={session}
             onJoin={() => handleJoin(session.SessionID)}
             onQuit={() => handleQuit(session.SessionID)}
-            isAuthor={session.creator === JSON.parse(localStorage.getItem("currUser")).username}
-            hasJoined={session.members.includes(JSON.parse(localStorage.getItem("currUser")).username)}
-            updateSessions={updateSessions} originalText={"Join"}
+            isAuthor={
+              session.creator ===
+              JSON.parse(localStorage.getItem("currUser")).username
+            }
+            hasJoined={session.members.includes(
+              JSON.parse(localStorage.getItem("currUser")).username,
+            )}
+            updateSessions={updateSessions}
+            originalText={"Join"}
           />
-        ))}
+        ))} */}
       </div>
-    </div>    
+    </div>
   );
 }

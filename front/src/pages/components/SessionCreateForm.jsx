@@ -61,14 +61,15 @@ export function SessionCreateForm() {
     if (username) {
       createSession(session, username);
 
-      // const body = {
-      //   username: 
-      // }
-      // const response = await fetch("/user/addCreation", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(id),
-      // });
+      const courseNumber = {
+        username: username,
+        course: session.courseNumber,
+      }
+      const response = await fetch("/user/addCreation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(courseNumber),
+      });
 
 
 

@@ -74,6 +74,7 @@ export function SessionEditForm() {
       return;
     }
     updateSession(formData);
+    navigate("/dashboard");
   }
 
   return (
