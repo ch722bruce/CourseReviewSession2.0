@@ -105,6 +105,8 @@ function MyMongoDB() {
         { username: user.username },
         { $set: { major: user.major, tag: user.tag } },
       );
+
+      return await myDB.getUser({ username: user.username });
     } finally {
       client.close();
     }

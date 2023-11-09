@@ -48,11 +48,26 @@ export function EditProfile() {
       };
 
       try {
-        await fetch("/user/edit", {
+        fetch("/user/edit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(user),
-        });
+        }).then((response) => {
+          response.json().then(data => {
+            console.log("USER after join: " + JSON.stringify(data.user))
+            localStorage.setItem("currUser", JSON.stringify(data.user));
+          })
+
+        })
+
+
+
+        
+
+
+
+
+
 
         localStorage.setItem("currUser", JSON.stringify(user));
         navigate(`/profile`);
@@ -96,7 +111,7 @@ export function EditProfile() {
   }
 
   async function onClick() {
-    const result = window.confirm("Are you true to delete the account?");
+    const result = window.confirm("Are you sure to delete the account?");
     if (result) {
       try {
         await fetch("/user/delete", {
@@ -106,7 +121,6 @@ export function EditProfile() {
         });
 
         localStorage.clear();
-        console.log(localStorage.getItem("currUser"));
         navigate(`/`);
       } catch (e) {
         console.log("Fetch error: " + e);
