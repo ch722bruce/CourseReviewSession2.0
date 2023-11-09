@@ -120,13 +120,13 @@ function MyMongoDB() {
     }
   };
 
-  myDB.getUser = async user => {
+  myDB.getUser = async username => {
     const { client, db } = await connect();
     const collection = db.collection(USERS_COLLECTION);
     try {
-      const result = await collection.findOne(user);
+      const result = await collection.findOne(username);
       console.log("GET USER RESULT")
-      console.log(user)
+      console.log(username)
       console.log(result)
       console.log(result.created)
       console.log(typeof result.created)
@@ -171,19 +171,77 @@ function MyMongoDB() {
         username: data.username,
       }
       const user = await myDB.getUser(username)
-      console.log("RETURNED RESULT")
-      console.log(user)
+      // console.log("RETURNED RESULT")
+      // console.log(user)
       // console.log(typeof user)
       const joined = user.joined
-      console.log(joined)
+      // console.log(joined)
       joined.push(data.course)
-      console.log(joined)
+      // console.log(joined)
 
       await collection.updateOne(
         { username: data.username },
         { $set: { joined: joined} },
         // { $set: { major: user.major, tag: user.tag } },
       );
+
+      const result = myDB.getUser({ username: data.username })
+      console.log("MYDB addJoined returning: " + (await result).username)
+
+      return await result
+
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.deleteJoined = async data => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      const username = {
+        username: data.username,
+      }
+      const user = await myDB.getUser(username)
+      // console.log("RETURNED RESULT")
+      // console.log(user)
+      // console.log(typeof user)
+      const joined = user.joined
+      // console.log("Before delete: " + joined)
+      const index = joined.indexOf(data.course)
+      joined.splice(index, 1)
+
+      // console.log("After delete: " + joined)
+
+      await collection.updateOne(
+        { username: data.username },
+        { $set: { joined: joined} },
+        // { $set: { major: user.major, tag: user.tag } },
+      );
+
+      const result = myDB.getUser({ username: data.username })
+      console.log("MYDB deleteJoined returning: " + (await result).username)
+
+      return await result
+
+    } finally {
+      client.close();
+    }
+  };
+
+  myDB.getJoined = async data => {
+    const { client, db } = await connect();
+    const collection = db.collection(USERS_COLLECTION);
+    try {
+      const username = {
+        username: data.username,
+      }
+      const user = await myDB.getUser(username)
+      console.log("RETURNED RESULT")
+      console.log(user)
+      // console.log(typeof user)
+      const joined = user.joined
+      return joined
 
     } finally {
       client.close();
