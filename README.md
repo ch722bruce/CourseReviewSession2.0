@@ -4,7 +4,7 @@
 >
 > Course Link: https://johnguerra.co/classes/webDevelopment_fall_2023/
 > 
-> Design: design document (https://github.com/Tiffanyxk3/CourseReviewSession/blob/main/docs/DesignDocument_Project3_CS5610.pdf)
+> Design Document: https://github.com/Tiffanyxk3/CourseReviewSession/blob/main/docs/DesignDocument_Project3_CS5610.pdf
 > 
 > Deployment: https://course-review-sessions.onrender.com
 > 
@@ -53,6 +53,8 @@ A dynamic online platform designed for collaborative learning and knowledge shar
 - Nodemon, ESlint, Prettier
 
 ## Screenshots
+
+![Screenshot of the page](./docs/Login.png)
 
 ## Usage
 
