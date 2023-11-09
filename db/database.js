@@ -245,6 +245,17 @@ function MyMongoDB() {
     }
   };
 
+  myDB.getSessionsByCourseNumber = async function (courseNumber) {
+    const { client, db } = await connect();
+    const collection = db.collection(SESSIONS_COLLECTION);
+    try {
+      const sessions = await collection.find({ courseNumber: courseNumber }).toArray();
+      return sessions;
+    } finally {
+      client.close();
+    }
+  };
+
   myDB.updateSession = async function (id, sessionEntry) {
     const { client, db } = await connect();
     const collection = db.collection(SESSIONS_COLLECTION);

@@ -46,6 +46,10 @@ export function Dashboard() {
     navigate("/create-session");
   }
 
+  function onSearchSessionClick() {
+    navigate("/search-sessions");
+  }
+
   const updateSessions = async () => {
     try {
       const response = await fetch("/api/sessions/all", {
@@ -125,6 +129,12 @@ export function Dashboard() {
       <span className="nav-btn">
         <button type="button" onClick={onCreateSessionClick}>
           Create Session
+        </button>
+      </span>
+
+      <span className="nav-btn">
+        <button type="button" onClick={onSearchSessionClick}>
+          Search Sessions
         </button>
       </span>
 
