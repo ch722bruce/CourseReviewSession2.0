@@ -28,8 +28,8 @@ A dynamic online platform designed for collaborative learning and knowledge shar
 ### Functionalities
 
 1. Account Management
-  - [x] Sign up: Allows new users to create an account by providing a username, password, name,  major, and tags (to indicate the user is a student or professor or TA).
-  - [x] Log in: Allows existing users to log in to their account using their username and password.
+  -  [x] Sign up: Allows new users to create an account by providing a username, password, name,  major, and tags (to indicate the user is a student or professor or TA).
+   - [x] Log in: Allows existing users to log in to their account using their username and password.
   - [x] Log out: Allows users to log out of their account.
   - [x] Edit profile: Allows users to update their info (major, tag).
   - [x] Delete account: Allows users to delete their accounts.
