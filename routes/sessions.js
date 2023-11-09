@@ -60,11 +60,13 @@ router.patch("/sessions/member/:username", async (req, res) => {
 //Get all sessions of a certain course number
 router.patch("/sessions/course/:courseNumber", async (req, res) => {
   try {
-    const sessions = await myDB.getSessionsByCourseNumber(req.params.courseNumber);
+    const sessions = await myDB.getSessionsByCourseNumber(
+      req.params.courseNumber,
+    );
     res.json(sessions);
   } catch (error) {
     console.error("Error getting sessions:", error);
-    res.status(500).json({ error: "Internal server error"});
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

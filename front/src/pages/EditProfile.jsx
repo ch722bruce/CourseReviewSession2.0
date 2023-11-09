@@ -1,8 +1,7 @@
-import "../styles/profile.css";
 import { Title } from "./components/Title";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "../styles/profile.css";
 import "../styles/edit.css";
 
 export function EditProfile() {

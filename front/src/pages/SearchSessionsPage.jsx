@@ -4,7 +4,7 @@ import SessionCard from "./components/SessionCard";
 
 export default function SearchSessionsPage() {
   const navigate = useNavigate();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = async () => {
@@ -36,7 +36,7 @@ export default function SearchSessionsPage() {
         type="text"
         placeholder="Enter course number"
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={e => setSearchTerm(e.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
 
