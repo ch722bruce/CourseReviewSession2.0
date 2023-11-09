@@ -10,6 +10,7 @@ import { SessionCreateForm } from "./pages/components/SessionCreateForm";
 import MySessionsPage from "./pages/MySessionsPage";
 import { SessionEditForm } from "./pages/components/SessionEditForm";
 import SearchSessionsPage from "./pages/SearchSessionsPage";
+
 export default function App() {
   // const [count, setCount] = useState(0);
 
@@ -28,6 +29,7 @@ export default function App() {
           path="/edit-session/:sessionId"
           element={<SessionEditForm />}
         ></Route>
+        <Route path="/search-sessions" element={<SearchSessionsPage />} />
       </Routes>
     </Router>
   );

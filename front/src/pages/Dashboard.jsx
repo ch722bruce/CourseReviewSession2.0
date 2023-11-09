@@ -139,6 +139,7 @@ export function Dashboard() {
       </span>
 
       <div className="sessions-list">{renderSessionCards()}</div>
+
     </div>
   );
 }
