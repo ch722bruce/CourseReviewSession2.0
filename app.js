@@ -5,6 +5,7 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 import session from "express-session";
 import passport from "passport";
+import crypto from "crypto"; 
 import LocalStrategy from "passport-local";
 import { myDB } from "./db/database.js";
 
@@ -16,21 +17,29 @@ const __dirname = dirname(__filename);
 
 let app = express();
 
-// Passport configuration
-passport.use(new LocalStrategy(
-  async (username, password, done) => {
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
     try {
       const user = await myDB.getUser({ username });
       if (!user) {
-        return done(null, false, { message: 'Incorrect username.' });
+        return done(null, false, { message: "Incorrect username." });
       }
-      // Add your password verification logic here
-      return done(null, user);
+
+      crypto.pbkdf2(password, user.salt, 310000, 32, 'sha256', async (err, hashedPassword) => {
+        if (err) {
+          return done(err);
+        }
+        if (!crypto.timingSafeEqual(Buffer.from(user.password, 'hex'), hashedPassword)) {
+          return done(null, false, { message: 'Incorrect username or password.' });
+        }
+        return done(null, user);
+      });
+
     } catch (err) {
       return done(err);
     }
-  }
-));
+  }),
+);
 
 passport.serializeUser((user, done) => {
   done(null, user.username); // Using username for serialization

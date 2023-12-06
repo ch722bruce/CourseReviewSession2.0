@@ -46,7 +46,6 @@ router.post('/login', async (req, res, next) => {
 //     res.send({ user: response });
 //   }
 // });
-
 router.post("/register", async (req, res) => {
   const user = req.body;
   const username = {
@@ -58,12 +57,12 @@ router.post("/register", async (req, res) => {
     return res.status(404).send({ message: "Username already exists" });
   }
   const salt = crypto.randomBytes(16);
-  crypto.pbkdf2(user.password, salt, 310000, 32, 'sha256', async (err, hashedPassword) => {
+  crypto.pbkdf2(user.password, salt.toString('hex'), 310000, 32, 'sha256', async (err, hashedPassword) => {
     if (err) {
       return res.status(500).send({ message: "Error during password hashing" });
     }
-    user.password = hashedPassword;
-    user.salt = salt;
+    user.password = hashedPassword.toString('hex');
+    user.salt = salt.toString('hex');
     const response = await myDB.addUser(user);
     return res.send({ user: response });
   });
