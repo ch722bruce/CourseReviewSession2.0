@@ -6,7 +6,7 @@ export function HomePage() {
   return (
     <div className="home-bg">
       <div className="home">
-        <Title title="Course Review Session" />
+        <Title title="Login" />
         <LoginForm />
       </div>
     </div>
