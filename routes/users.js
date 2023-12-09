@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import crypto from "crypto"; 
+import crypto from "crypto";
 import { myDB } from "../db/database.js";
 
 const router = express.Router();
@@ -15,15 +15,15 @@ const router = express.Router();
 //     res.status(404).send({ message: "User not found" });
 //   }
 // });
-router.post('/login', async (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
+router.post("/login", async (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
     if (!user) {
       return res.status(401).json({ message: "Login failed" });
     }
-    req.logIn(user, (err) => {
+    req.logIn(user, err => {
       if (err) {
         return res.status(500).json({ error: err.message });
       }
@@ -57,15 +57,24 @@ router.post("/register", async (req, res) => {
     return res.status(404).send({ message: "Username already exists" });
   }
   const salt = crypto.randomBytes(16);
-  crypto.pbkdf2(user.password, salt.toString('hex'), 310000, 32, 'sha256', async (err, hashedPassword) => {
-    if (err) {
-      return res.status(500).send({ message: "Error during password hashing" });
-    }
-    user.password = hashedPassword.toString('hex');
-    user.salt = salt.toString('hex');
-    const response = await myDB.addUser(user);
-    return res.send({ user: response });
-  });
+  crypto.pbkdf2(
+    user.password,
+    salt.toString("hex"),
+    310000,
+    32,
+    "sha256",
+    async (err, hashedPassword) => {
+      if (err) {
+        return res
+          .status(500)
+          .send({ message: "Error during password hashing" });
+      }
+      user.password = hashedPassword.toString("hex");
+      user.salt = salt.toString("hex");
+      const response = await myDB.addUser(user);
+      return res.send({ user: response });
+    },
+  );
 });
 
 router.post("/edit", async (req, res) => {

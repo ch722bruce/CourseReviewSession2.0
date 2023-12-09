@@ -5,7 +5,7 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 import session from "express-session";
 import passport from "passport";
-import crypto from "crypto"; 
+import crypto from "crypto";
 import LocalStrategy from "passport-local";
 import { myDB } from "./db/database.js";
 
@@ -25,16 +25,29 @@ passport.use(
         return done(null, false, { message: "Incorrect username." });
       }
 
-      crypto.pbkdf2(password, user.salt, 310000, 32, 'sha256', async (err, hashedPassword) => {
-        if (err) {
-          return done(err);
-        }
-        if (!crypto.timingSafeEqual(Buffer.from(user.password, 'hex'), hashedPassword)) {
-          return done(null, false, { message: 'Incorrect username or password.' });
-        }
-        return done(null, user);
-      });
-
+      crypto.pbkdf2(
+        password,
+        user.salt,
+        310000,
+        32,
+        "sha256",
+        async (err, hashedPassword) => {
+          if (err) {
+            return done(err);
+          }
+          if (
+            !crypto.timingSafeEqual(
+              Buffer.from(user.password, "hex"),
+              hashedPassword,
+            )
+          ) {
+            return done(null, false, {
+              message: "Incorrect username or password.",
+            });
+          }
+          return done(null, user);
+        },
+      );
     } catch (err) {
       return done(err);
     }

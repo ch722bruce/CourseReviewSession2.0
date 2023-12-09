@@ -107,42 +107,40 @@ export function Dashboard() {
 
   return (
     <div className="dashboard-bg">
-    <div className="dashboard">
-      <Title title="Sessions" />
-      <span className="nav-btn">
-        <button type="button" onClick={() => navigate("/profile")}>
-          Profile
-        </button>
-      </span>
+      <div className="dashboard">
+        <Title title="Sessions" />
+        <span className="nav-btn">
+          <button type="button" onClick={() => navigate("/profile")}>
+            Profile
+          </button>
+        </span>
 
-      <span className="nav-btn">
-        <button type="button" onClick={() => navigate("/my-sessions")}>
-          My Sessions
-        </button>
-      </span>
+        <span className="nav-btn">
+          <button type="button" onClick={() => navigate("/my-sessions")}>
+            My Sessions
+          </button>
+        </span>
 
-      
-      <span className="nav-btn">
-        <button type="button" onClick={onCreateSessionClick}>
-          Create Session
-        </button>
-      </span>
+        <span className="nav-btn">
+          <button type="button" onClick={onCreateSessionClick}>
+            Create Session
+          </button>
+        </span>
 
-      <span className="nav-btn">
-        <button type="button" onClick={onSearchSessionClick}>
-          Search Sessions
-        </button>
-      </span>
+        <span className="nav-btn">
+          <button type="button" onClick={onSearchSessionClick}>
+            Search Sessions
+          </button>
+        </span>
 
-      <span className="nav-btn">
-        <button type="button" onClick={onClickLogout}>
-          Logout
-        </button>
-      </span>
+        <span className="nav-btn">
+          <button type="button" onClick={onClickLogout}>
+            Logout
+          </button>
+        </span>
 
-
-      <div className="sessions-list">{renderSessionCards()}</div>
-    </div>
+        <div className="sessions-list">{renderSessionCards()}</div>
+      </div>
     </div>
   );
 }
