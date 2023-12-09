@@ -1,9 +1,9 @@
 * {
-  font-family: "Raleway";
+  font-family: "Roboto";
 }
 
 h1 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .dashboard {
@@ -19,4 +19,23 @@ h1 {
 
 .sessions-list {
   padding: 2vw;
+}
+
+.dashboard-bg {
+  background-color: #cee8f2;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.nav-btn {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1vw;
+  color: #f2a516;
+  width: 6vw;
+  height: 1.7vw;
+  border-radius: 0.3vw;
+  border-width: 0.09vw;
+  border-color: #f2a516;
 }

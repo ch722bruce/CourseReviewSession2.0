@@ -1,0 +1,37 @@
+.my-sessions-page {
+    background-color: #CEE8F2;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  .my-sessions-page-bg {
+    background-color: #CEE8F2;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .author-sessions, .member-sessions {
+    border: 2px solid #061673; /* Darker blue for distinction */
+    background-color: #FFFFFF; /* White background for content areas */
+    margin-bottom: 20px;
+    padding: 15px;
+    position: center;
+  }
+  
+  .author-sessions-header, .member-sessions-header {
+    color: #F2A516; /* Orange for headers */
+    font-size: 1.2em;
+  }
+  
+  .button {
+    background-color: #F2A516;
+    border: 2px solid #C97C10;
+    /* Other button styles */
+  }
+  
+  .button:hover {
+    background-color: #181E8C;
+    border-color: #2A349D;
+  }
+  

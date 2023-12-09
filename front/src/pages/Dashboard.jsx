@@ -106,6 +106,7 @@ export function Dashboard() {
   }
 
   return (
+    <div className="dashboard-bg">
     <div className="dashboard">
       <Title title="Sessions" />
       <span className="nav-btn">
@@ -120,12 +121,7 @@ export function Dashboard() {
         </button>
       </span>
 
-      <span className="nav-btn">
-        <button type="button" onClick={onClickLogout}>
-          Logout
-        </button>
-      </span>
-
+      
       <span className="nav-btn">
         <button type="button" onClick={onCreateSessionClick}>
           Create Session
@@ -138,7 +134,15 @@ export function Dashboard() {
         </button>
       </span>
 
+      <span className="nav-btn">
+        <button type="button" onClick={onClickLogout}>
+          Logout
+        </button>
+      </span>
+
+
       <div className="sessions-list">{renderSessionCards()}</div>
+    </div>
     </div>
   );
 }

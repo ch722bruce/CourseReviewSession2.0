@@ -1,5 +1,9 @@
+.profile{
+  font-family: 'Roboto', sans-serif;
+}
+
 .profile-bg {
-  background-image: url("../assets/background.png");
+  background-color: #CEE8F2;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -22,6 +26,7 @@
 }
 
 .profile h1 {
+  font-family: 'Roboto', sans-serif;
   font-size: 3vw;
   padding: 6vw 1vw 1vw 1vw;
 }
@@ -29,6 +34,7 @@
 .info-row {
   padding: 1vw 0vw 0vw 0vw;
   size: 1vw;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.3vw;
 }
 
@@ -42,26 +48,28 @@
 }
 
 #edit-btn {
+  font-family: 'Roboto', sans-serif;
   font-size: 1.1vw;
-  color: rgba(67, 57, 127, 255);
+  color: #F2A516;
   width: 6vw;
   height: 1.7vw;
   border-radius: 0.3vw;
   border-width: 0.09vw;
-  border-color: rgba(67, 57, 127, 255);
+  border-color: #F2A516;
 }
 
 #edit-btn:hover {
-  background-color: white;
+  background-color: #F27979;
 }
 
 #back-btn {
+  font-family: 'Roboto', sans-serif;
   font-size: 1.1vw;
   background: none;
   border: none;
-  color: rgba(67, 57, 127, 255);
+  color: #181E8C;
 }
 
 #back-btn:hover {
-  color: rgba(192, 98, 161, 255);
+  color: #061673 ;
 }
