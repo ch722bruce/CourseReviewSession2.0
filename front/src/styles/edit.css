@@ -1,3 +1,7 @@
+* {
+  font-family: "Lato";
+}
+
 .edit-bg {
   background-color: #cfebf8;
   background-size: cover;
@@ -14,27 +18,33 @@
   position: relatisve;
   color: rgba(67, 57, 127, 255);
 
-  background-color: rgba(255, 255, 255);
+  /* background-color: rgba(255, 255, 255); */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  margin-top: 5vw;
 }
+
 
 .edit h1 {
   font-size: 3vw;
   padding: 4.5vw 1vw 0vw 1vw;
 }
 
-.edit-username,
+.edit-container,
 .edit-major,
 .edit-tag {
   padding: 1vw 0vw 1vw 0vw;
   size: 1vw;
-  font-size: 1.3vw;
+  /* font-size: 1.7vw; */
 }
 
-.edit-tag label {
+.edit-label {
+  font-size: 1.7vw;
+}
+
+.edit-container label {
   padding: 1vw 1vw 1vw 1vw;
 }
 

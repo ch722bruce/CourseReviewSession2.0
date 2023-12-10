@@ -1,3 +1,7 @@
+* {
+  font-family: "Lato";
+}
+
 .registration-bg {
   background-image: url("../assets/home-background.png");
   background-size: cover;

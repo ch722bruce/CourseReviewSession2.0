@@ -1,5 +1,6 @@
 import "../styles/profile.css";
 import { Title } from "./components/Title";
+import { NavBar } from "./components/NavBar";
 import { useNavigate } from "react-router-dom";
 
 export function Profile() {
@@ -16,14 +17,15 @@ export function Profile() {
     navigate(`/edit`);
   }
 
-  function onClickBack() {
-    navigate(`/dashboard`);
-  }
+  // function onClickBack() {
+  //   navigate(`/dashboard`);
+  // }
 
   return (
     <div className="profile-bg">
+      <NavBar page="Profile"/>
       <div className="profile">
-        <Title title="My Profile" />
+        {/* <Title title="My Profile" /> */}
 
         <div className="info">
           <div className="info-row">Username: {username}</div>
@@ -37,11 +39,11 @@ export function Profile() {
           </button>
         </div>
 
-        <div className="back">
+        {/* <div className="back">
           <button id="back-btn" type="button" onClick={onClickBack}>
             Go Back
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

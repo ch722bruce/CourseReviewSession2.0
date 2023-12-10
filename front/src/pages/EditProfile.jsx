@@ -1,4 +1,5 @@
 import { Title } from "./components/Title";
+import { NavBar } from "./components/NavBar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/profile.css";
@@ -114,16 +115,17 @@ export function EditProfile() {
 
   return (
     <div className="edit-bg">
+      <NavBar page="Profile"/>
       <div className="edit">
-        <Title title="Edit Profile" />
+        {/* <Title title="Edit Profile" /> */}
 
         <form id="registration-form" onSubmit={onSubmit}>
-          <div className="edit-username">
+          <div className="edit-container edit-label">
             Username: {JSON.parse(localStorage.getItem("currUser")).username}
           </div>
 
-          <div className="edit-major">
-            <label>
+          <div className="edit-container">
+            <label className="edit-label">
               Major:{" "}
               <input
                 type="text"
@@ -134,8 +136,8 @@ export function EditProfile() {
             </label>
           </div>
 
-          <div className="edit-tag">
-            <label>
+          <div className="edit-container">
+            <label className="edit-label">
               Student
               <input
                 type="checkbox"
@@ -144,12 +146,12 @@ export function EditProfile() {
               />
             </label>
 
-            <label>
+            <label className="edit-label">
               Professor
               <input type="checkbox" checked={prof} onClick={onSelectProf} />
             </label>
 
-            <label>
+            <label className="edit-label">
               TA
               <input type="checkbox" checked={ta} onClick={onSelectTA} />
             </label>
