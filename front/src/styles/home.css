@@ -72,11 +72,11 @@ label {
   border-radius: 0.3vw;
   border-width: 0.09vw;
   border-color: rgba(67, 57, 127, 255);
-  background-color: #FAB917;
+  background-color: #ffcb49;
 }
 
 .submit-btn:hover {
-  background-color: white;
+  background-color: #FAB917;
 }
 
 .click-btn {

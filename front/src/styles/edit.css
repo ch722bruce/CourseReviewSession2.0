@@ -1,5 +1,5 @@
 .edit-bg {
-  background-image: url("../assets/background.png");
+  background-color: #cfebf8;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -7,14 +7,14 @@
 }
 
 .edit {
-  width: 45vw;
+  width: 40vw;
   height: 35vw;
   border-radius: 0.5vw;
   text-align: center;
   position: relatisve;
   color: rgba(67, 57, 127, 255);
 
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,10 +51,11 @@
   border-radius: 0.3vw;
   border-width: 0.09vw;
   border-color: rgba(67, 57, 127, 255);
+  background-color: #ffcb49;
 }
 
-#edit-btn:hover {
-  background-color: white;
+#save-btn:hover {
+  background-color: #FAB917;
 }
 
 #delete-btn {

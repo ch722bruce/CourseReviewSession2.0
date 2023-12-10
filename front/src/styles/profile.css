@@ -1,9 +1,5 @@
-.profile{
-  font-family: 'Roboto', sans-serif;
-}
-
 .profile-bg {
-  background-color: #CEE8F2;
+  background-color: #cfebf8;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -11,14 +7,14 @@
 }
 
 .profile {
-  width: 45vw;
+  width: 40vw;
   height: 35vw;
   border-radius: 0.5vw;
   text-align: center;
   position: relatisve;
   color: rgba(67, 57, 127, 255);
 
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -26,7 +22,6 @@
 }
 
 .profile h1 {
-  font-family: 'Roboto', sans-serif;
   font-size: 3vw;
   padding: 6vw 1vw 1vw 1vw;
 }
@@ -34,7 +29,6 @@
 .info-row {
   padding: 1vw 0vw 0vw 0vw;
   size: 1vw;
-  font-family: 'Roboto', sans-serif;
   font-size: 1.3vw;
 }
 
@@ -48,28 +42,27 @@
 }
 
 #edit-btn {
-  font-family: 'Roboto', sans-serif;
   font-size: 1.1vw;
-  color: #F2A516;
+  color: rgba(67, 57, 127, 255);
   width: 6vw;
   height: 1.7vw;
   border-radius: 0.3vw;
   border-width: 0.09vw;
-  border-color: #F2A516;
+  border-color: rgba(67, 57, 127, 255);
+  background-color: #ffcb49;
 }
 
 #edit-btn:hover {
-  background-color: #F27979;
+  background-color: #FAB917;
 }
 
 #back-btn {
-  font-family: 'Roboto', sans-serif;
   font-size: 1.1vw;
   background: none;
   border: none;
-  color: #181E8C;
+  color: rgba(67, 57, 127, 255);
 }
 
 #back-btn:hover {
-  color: #061673 ;
+  color: rgba(192, 98, 161, 255);
 }
