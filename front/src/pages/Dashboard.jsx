@@ -111,7 +111,7 @@ export function Dashboard() {
       <NavBar page="Dashboard"/>
       <div className="dashboard">
         <Title title="Sessions" />
-        <span className="nav-btn">
+        {/* <span className="nav-btn">
           <button type="button" onClick={() => navigate("/profile")}>
             Profile
           </button>
@@ -121,7 +121,7 @@ export function Dashboard() {
           <button type="button" onClick={() => navigate("/my-sessions")}>
             My Sessions
           </button>
-        </span>
+        </span> */}
 
         <span className="nav-btn">
           <button type="button" onClick={onCreateSessionClick}>
@@ -135,11 +135,11 @@ export function Dashboard() {
           </button>
         </span>
 
-        <span className="nav-btn">
+        {/* <span className="nav-btn">
           <button type="button" onClick={onClickLogout}>
             Logout
           </button>
-        </span>
+        </span> */}
 
         <div className="sessions-list">{renderSessionCards()}</div>
       </div>
