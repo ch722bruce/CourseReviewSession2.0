@@ -120,12 +120,12 @@ export function EditProfile() {
         {/* <Title title="Edit Profile" /> */}
 
         <form id="registration-form" onSubmit={onSubmit}>
-          <div className="edit-container edit-label">
+          <div className="edit-container edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
             Username: {JSON.parse(localStorage.getItem("currUser")).username}
           </div>
 
           <div className="edit-container">
-            <label className="edit-label">
+            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
               Major:{" "}
               <input
                 type="text"
@@ -137,7 +137,7 @@ export function EditProfile() {
           </div>
 
           <div className="edit-container">
-            <label className="edit-label">
+            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
               Student
               <input
                 type="checkbox"
@@ -146,25 +146,25 @@ export function EditProfile() {
               />
             </label>
 
-            <label className="edit-label">
+            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
               Professor
               <input type="checkbox" checked={prof} onClick={onSelectProf} />
             </label>
 
-            <label className="edit-label">
+            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
               TA
               <input type="checkbox" checked={ta} onClick={onSelectTA} />
             </label>
           </div>
 
           <div className="save">
-            <button id="save-btn" type="submit">
+            <button id="save-btn" type="submit" style={{ fontFamily: 'Roboto, sans-serif' }}>
               Save
             </button>
           </div>
 
           <div className="delete">
-            <button id="delete-btn" type="button" onClick={onClick}>
+            <button id="delete-btn" type="button" onClick={onClick} style={{ fontFamily: 'Roboto, sans-serif' }}>
               Delete Account
             </button>
           </div>

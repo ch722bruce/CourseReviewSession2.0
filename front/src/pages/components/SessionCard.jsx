@@ -13,6 +13,10 @@ function SessionCard({
 }) {
   const navigate = useNavigate();
   const [btnText, setButton] = useState(originalText);
+  
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseEnter = () => setIsHovering(true);
+  const handleMouseLeave = () => setIsHovering(false);
 
   const handleDelete = async () => {
     // Delete the session
@@ -127,9 +131,17 @@ function SessionCard({
   };
 
   return (
-    <div className="session-card">
+    <div className="session-card"
+    onMouseEnter={handleMouseEnter} 
+    onMouseLeave={handleMouseLeave}>
       <h3>{session.courseNumber}</h3>
-      <p>{session.description}</p>
+      {isHovering && (
+        <div className="session-hover-info" style={{ display: 'flex', flexDirection: 'column'}}>
+          <p style={{ display: 'block', marginBottom: '10px' }}>Members: {session.members}</p>
+          <p style={{ display: 'block', marginBottom: '10px'}}>Creator: {session.creator}</p>
+          <p style={{ display: 'block', marginBottom: '10px'}}>Description: {session.description}</p>
+        </div>
+      )}
       <p>{`Start Time: ${session.startTime}`}</p>
       <p>{`End Time: ${session.endTime}`}</p>
       {isAuthor ? (

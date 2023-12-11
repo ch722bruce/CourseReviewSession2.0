@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { NavBar } from "./NavBar";
+
 
 export function SessionCreateForm() {
   const navigate = useNavigate();
@@ -73,43 +75,59 @@ export function SessionCreateForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="session-form">
-      <label htmlFor="courseNumber">Course Number</label>
+  <div style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#CEE8F2', color: '#061673',  height: '100vh', width: '100%' }}>
+       <NavBar page="create-session" />
+  <form onSubmit={handleSubmit} className="session-form">
+    <div style={{ marginBottom: '10px' }}>
+      <label htmlFor="courseNumber" style={{ fontFamily: 'Roboto, sans-serif' }}>Course Number</label>
       <input
         type="text"
         id="courseNumber"
         name="courseNumber"
         value={session.courseNumber}
         onChange={handleChange}
+        style={{ display: 'block', width: '50%' }}
       />
+    </div>
 
-      <label htmlFor="startTime">Start Time</label>
+    <div style={{ marginBottom: '10px' }}>
+      <label htmlFor="startTime" style={{ fontFamily: 'Roboto, sans-serif' }}>Start Time</label>
       <input
         type="datetime-local"
         id="startTime"
         name="startTime"
         value={session.startTime}
         onChange={handleChange}
+        style={{ display: 'block', width: '50%' }}
       />
+    </div>
 
-      <label htmlFor="endTime">End Time</label>
+    <div style={{ marginBottom: '10px' }}>
+      <label htmlFor="endTime" style={{ fontFamily: 'Roboto, sans-serif' }}>End Time</label>
       <input
         type="datetime-local"
         id="endTime"
         name="endTime"
         value={session.endTime}
         onChange={handleChange}
+        style={{ display: 'block', width: '50%' }}
       />
+    </div>
 
-      <label htmlFor="description">Description</label>
+    <div style={{ marginBottom: '10px' }}>
+      <label htmlFor="description" style={{ fontFamily: 'Roboto, sans-serif' }}>Description</label>
       <textarea
         id="description"
         name="description"
         value={session.description}
         onChange={handleChange}
+        style={{ display: 'block', width: '50%' }}
       />
+    </div>
 
-      <button type="submit">Create Session</button>
-    </form>
+    <button type="submit" style={{ backgroundColor: '#F2A516', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer', fontFamily: 'Roboto, sans-serif' }}>Create Session</button>
+  </form>
+</div>
+
   );
 }

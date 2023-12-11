@@ -28,13 +28,13 @@ export function Profile() {
         {/* <Title title="My Profile" /> */}
 
         <div className="info">
-          <div className="info-row">Username: {username}</div>
-          <div className="info-row">Major: {major}</div>
-          <div className="info-row">Tag: {tag}</div>
+          <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Username: {username}</div>
+          <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Major: {major}</div>
+          <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Tag: {tag}</div>
         </div>
 
         <div className="edit-btn-div">
-          <button id="edit-btn" type="button" onClick={onClick}>
+          <button id="edit-btn" type="button" onClick={onClick} style={{ fontFamily: 'Roboto, sans-serif' }}>
             Edit
           </button>
         </div>

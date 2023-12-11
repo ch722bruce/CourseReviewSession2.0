@@ -52,4 +52,9 @@
     justify-content: flex-end;
     margin-top: 1rem;
   }
+
+  .session-hover-info p {
+    display: block;
+    clear: both;
+  }
   

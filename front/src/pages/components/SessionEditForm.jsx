@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { NavBar } from "./NavBar";
+
 
 export function SessionEditForm() {
   const navigate = useNavigate();
@@ -76,44 +78,59 @@ export function SessionEditForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="session-form">
-      <label htmlFor="courseNumber">Course Number</label>
-      <input
-        type="text"
-        id="courseNumber"
-        name="courseNumber"
-        value={formData.courseNumber}
-        onChange={handleChange}
-      />
+    <div style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#CEE8F2', color: '#061673',  height: '100vh', width: '100%' }}>
+       <NavBar page="edit-session" />
+    <form onSubmit={handleSubmit} className="session-form" style={{ color: '#061673' }}>
+  <div style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
+    <label htmlFor="courseNumber" style={{ fontFamily: 'Roboto, sans-serif' }}>Course Number</label>
+    <input
+      type="text"
+      id="courseNumber"
+      name="courseNumber"
+      value={formData.courseNumber}
+      onChange={handleChange}
+      style={{ display: 'block', width: '100%' }}
+    />
+  </div>
 
-      {/* Render the rest of the form inputs similar to SessionCreateForm */}
-      <label htmlFor="startTime">Start Time</label>
-      <input
-        type="datetime-local"
-        id="startTime"
-        name="startTime"
-        value={formData.startTime}
-        onChange={handleChange}
-      />
+  {/* Repeat for each input */}
+  <div style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
+    <label htmlFor="startTime" style={{ fontFamily: 'Roboto, sans-serif' }}>Start Time</label>
+    <input
+      type="datetime-local"
+      id="startTime"
+      name="startTime"
+      value={formData.startTime}
+      onChange={handleChange}
+      style={{ display: 'block', width: '100%' }}
+    />
+  </div>
 
-      <label htmlFor="endTime">End Time</label>
-      <input
-        type="datetime-local"
-        id="endTime"
-        name="endTime"
-        value={formData.endTime}
-        onChange={handleChange}
-      />
+  <div style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
+    <label htmlFor="endTime"  style={{ fontFamily: 'Roboto, sans-serif' }}>End Time</label>
+    <input
+      type="datetime-local"
+      id="endTime"
+      name="endTime"
+      value={formData.endTime}
+      onChange={handleChange}
+      style={{ display: 'block', width: '100%' }}
+    />
+  </div>
 
-      <label htmlFor="description">Description</label>
-      <textarea
-        id="description"
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-      />
+  <div style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
+    <label htmlFor="description" style={{ fontFamily: 'Roboto, sans-serif' }}>Description</label>
+    <textarea
+      id="description"
+      name="description"
+      value={formData.description}
+      onChange={handleChange}
+      style={{ display: 'block', width: '100%', height: '100px' }} // Adjust height as needed
+    />
+  </div>
 
-      <button type="submit">Update Session</button>
-    </form>
+  <button type="submit" style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#F2A516', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer' }}>Update Session</button>
+</form>
+</div>
   );
 }

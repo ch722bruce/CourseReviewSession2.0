@@ -16,7 +16,7 @@ export function NavBar({ page }) {
   return (
     <nav className="navbar">
       <img src="assets/logo.png" alt="Logo" className="nav-logo" />
-      <span className="nav-name"><strong>Course Review</strong></span>
+      <span className="nav-name"><strong style={{ fontFamily: 'Roboto, sans-serif' }}>Course Review</strong></span>
       <Link to="/dashboard" className={`nav-link ${dashboardClass}` }  style={{ fontFamily: 'Roboto, sans-serif' }} >Dashboard</Link>
       <Link to="/profile" className={`nav-link ${profileClass}`}  style={{ fontFamily: 'Roboto, sans-serif' }} >Profile</Link>
       <Link to="/my-sessions" className={`nav-link ${mySessionsClass}`}  style={{ fontFamily: 'Roboto, sans-serif' }} >MySessions</Link>
