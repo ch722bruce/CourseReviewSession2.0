@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar";
 import { useNavigate } from "react-router-dom";
 import SessionCard from "./components/SessionCard";
 import "../styles/dashboard.css";
+import "../styles/sessionCard.css";
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -124,13 +125,13 @@ export function Dashboard() {
         </span> */}
 
         <span className="nav-btn">
-          <button type="button" onClick={onCreateSessionClick}>
+          <button type="button" className="nav-btn" onClick={onCreateSessionClick}>
             Create Session
           </button>
         </span>
 
         <span className="nav-btn">
-          <button type="button" onClick={onSearchSessionClick}>
+          <button type="button" className="nav-btn" onClick={onSearchSessionClick}>
             Search Sessions
           </button>
         </span>

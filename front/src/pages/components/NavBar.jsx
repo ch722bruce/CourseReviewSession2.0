@@ -17,11 +17,11 @@ export function NavBar({ page }) {
     <nav className="navbar">
       <img src="assets/logo.png" alt="Logo" className="nav-logo" />
       <span className="nav-name"><strong>Course Review</strong></span>
-      <Link to="/dashboard" className={`nav-link ${dashboardClass}`}>Dashboard</Link>
-      <Link to="/profile" className={`nav-link ${profileClass}`}>Profile</Link>
-      <Link to="/my-sessions" className={`nav-link ${mySessionsClass}`}>MySessions</Link>
+      <Link to="/dashboard" className={`nav-link ${dashboardClass}` }  style={{ fontFamily: 'Roboto, sans-serif' }} >Dashboard</Link>
+      <Link to="/profile" className={`nav-link ${profileClass}`}  style={{ fontFamily: 'Roboto, sans-serif' }} >Profile</Link>
+      <Link to="/my-sessions" className={`nav-link ${mySessionsClass}`}  style={{ fontFamily: 'Roboto, sans-serif' }} >MySessions</Link>
       {/* <Link to="/" className="nav-link">Logout</Link> */}
-      <button type="button" className='nav-logout' onClick={onClickLogout}>
+      <button type="button" className='nav-logout' onClick={onClickLogout}  style={{ fontFamily: 'Roboto, sans-serif' }}>
         Logout
       </button>
     </nav>

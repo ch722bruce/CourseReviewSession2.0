@@ -4,6 +4,7 @@
 
 h1 {
   font-family: "Roboto", sans-serif;
+  color: #061673;
 }
 
 .dashboard {
@@ -33,9 +34,10 @@ h1 {
   font-family: "Roboto", sans-serif;
   font-size: 1.1vw;
   color: #f2a516;
-  width: 6vw;
-  height: 1.7vw;
+  width: 8vw;
+  height: 2.5vw;
   border-radius: 0.3vw;
   border-width: 0.09vw;
   border-color: #f2a516;
 }
+
