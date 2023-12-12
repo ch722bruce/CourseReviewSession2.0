@@ -42,7 +42,6 @@ export default function SearchSessionsPage() {
           placeholder="Enter course number"
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
-          style={{ width: "65%" }}
         />
         <span className="search-btn-container">
           <button className="search-btn" onClick={handleSearch}>

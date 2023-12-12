@@ -1,3 +1,4 @@
+import "../../styles/sessionCard.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -138,19 +139,10 @@ function SessionCard({
     >
       <h3>{session.courseNumber}</h3>
       {isHovering && (
-        <div
-          className="session-hover-info"
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <p style={{ display: "block", marginBottom: "10px" }}>
-            Members: {session.members}
-          </p>
-          <p style={{ display: "block", marginBottom: "10px" }}>
-            Creator: {session.creator}
-          </p>
-          <p style={{ display: "block", marginBottom: "10px" }}>
-            Description: {session.description}
-          </p>
+        <div className="session-hover-info">
+          <p>Members: {session.members}</p>
+          <p>Creator: {session.creator}</p>
+          <p>Description: {session.description}</p>
         </div>
       )}
       <p>{`Start Time: ${session.startTime}`}</p>

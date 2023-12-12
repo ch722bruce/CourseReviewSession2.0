@@ -28,19 +28,16 @@ export function Profile() {
         <section className="info">
           <div
             className="info-row"
-            style={{ fontFamily: "Roboto, sans-serif" }}
           >
             Username: {username}
           </div>
           <div
             className="info-row"
-            style={{ fontFamily: "Roboto, sans-serif" }}
           >
             Major: {major}
           </div>
           <div
             className="info-row"
-            style={{ fontFamily: "Roboto, sans-serif" }}
           >
             Tag: {tag}
           </div>
@@ -51,7 +48,6 @@ export function Profile() {
             id="edit-btn"
             type="button"
             onClick={onClick}
-            style={{ fontFamily: "Roboto, sans-serif" }}
           >
             Edit
           </button>

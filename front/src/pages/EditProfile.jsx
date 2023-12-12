@@ -120,11 +120,9 @@ export function EditProfile() {
         <form id="registration-form" onSubmit={onSubmit}>
           <section
             className="edit-container"
-            style={{ fontFamily: "Roboto, sans-serif" }}
           >
             <label
               className="edit-label"
-              style={{ fontFamily: "Roboto, sans-serif" }}
             >
               Username: {JSON.parse(localStorage.getItem("currUser")).username}
             </label>
@@ -133,7 +131,6 @@ export function EditProfile() {
           <section className="edit-container">
             <label
               className="edit-label"
-              style={{ fontFamily: "Roboto, sans-serif" }}
             >
               Major:{" "}
               <input
@@ -148,7 +145,6 @@ export function EditProfile() {
           <section className="edit-container">
             <label
               className="edit-label"
-              style={{ fontFamily: "Roboto, sans-serif" }}
             >
               Student
               <input
@@ -160,7 +156,6 @@ export function EditProfile() {
 
             <label
               className="edit-label"
-              style={{ fontFamily: "Roboto, sans-serif" }}
             >
               Professor
               <input type="checkbox" checked={prof} onClick={onSelectProf} />
@@ -168,7 +163,6 @@ export function EditProfile() {
 
             <label
               className="edit-label"
-              style={{ fontFamily: "Roboto, sans-serif" }}
             >
               TA
               <input type="checkbox" checked={ta} onClick={onSelectTA} />
@@ -179,7 +173,6 @@ export function EditProfile() {
             <button
               id="save-btn"
               type="submit"
-              style={{ fontFamily: "Roboto, sans-serif" }}
             >
               Save
             </button>
@@ -190,7 +183,6 @@ export function EditProfile() {
               id="delete-btn"
               type="button"
               onClick={onClick}
-              style={{ fontFamily: "Roboto, sans-serif" }}
             >
               Delete Account
             </button>

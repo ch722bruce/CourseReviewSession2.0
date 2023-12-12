@@ -1,3 +1,4 @@
+import "../../styles/main.css";
 import React, { useEffect, useState } from "react";
 import SessionCard from "./SessionCard";
 
@@ -42,7 +43,7 @@ const MemberSessions = () => {
 
   return (
     <div>
-      <h2 style={{ fontFamily: "Roboto, sans-serif", color: "#061673" }}>
+      <h2>
         Sessions where {username} is a Member
       </h2>
       {sessions.map(session => (

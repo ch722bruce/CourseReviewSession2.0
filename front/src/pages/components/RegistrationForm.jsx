@@ -1,6 +1,6 @@
+import "../../styles/registration.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/registration.css";
 
 function isValidUsername(str) {
   const pattern = /^[a-zA-Z0-9_-]{3,10}$/;
