@@ -42,7 +42,7 @@ const MemberSessions = () => {
 
   return (
     <div>
-      <h2>Sessions where {username} is a Member</h2>
+      <h2 style={{fontFamily: 'Roboto, sans-serif', color : '#061673'}}>Sessions where {username} is a Member</h2>
       {sessions.map(session => (
         <SessionCard
           key={session.id} // Assuming each session has a unique id

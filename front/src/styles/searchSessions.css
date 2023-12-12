@@ -1,0 +1,27 @@
+* {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  h1 {
+    font-family: "Roboto", sans-serif;
+    color: #061673;
+  }
+
+  .search-page-bg {
+    background-color: #cee8f2;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .search-btn {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1vw;
+    color: #f2a516;
+    width: 8vw;
+    height: 2.5vw;
+    border-radius: 0.3vw;
+    border-width: 0.09vw;
+    border-color: #f2a516;
+  }

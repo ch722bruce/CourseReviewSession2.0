@@ -6,6 +6,7 @@ import { NavBar } from "./NavBar";
 export function SessionEditForm() {
   const navigate = useNavigate();
   const { sessionId } = useParams();
+  const page_name = "edit-session/" + sessionId;
 
   const [session, setSession] = useState(null);
   const [formData, setFormData] = useState({
@@ -79,7 +80,7 @@ export function SessionEditForm() {
 
   return (
     <div style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#CEE8F2', color: '#061673',  height: '100vh', width: '100%' }}>
-       <NavBar page="edit-session" />
+       <NavBar page= {page_name} />
     <form onSubmit={handleSubmit} className="session-form" style={{ color: '#061673' }}>
   <div style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
     <label htmlFor="courseNumber" style={{ fontFamily: 'Roboto, sans-serif' }}>Course Number</label>
@@ -128,8 +129,9 @@ export function SessionEditForm() {
       style={{ display: 'block', width: '100%', height: '100px' }} // Adjust height as needed
     />
   </div>
-
-  <button type="submit" style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#F2A516', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer' }}>Update Session</button>
+  <div style={{ textAlign: 'center', marginTop: '10px' }}>
+    <button type="submit" style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#F2A516', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer', alignItems : 'center' }}>Update Session</button>
+  </div>  
 </form>
 </div>
   );

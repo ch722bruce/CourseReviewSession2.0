@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionCard from "./components/SessionCard";
+import { NavBar } from "./components/NavBar";
+import "../styles/searchSessions.css";
+
 
 export default function SearchSessionsPage() {
   const navigate = useNavigate();
@@ -31,14 +34,16 @@ export default function SearchSessionsPage() {
   };
 
   return (
-    <div>
+    <div className="search-page-bg">
+      <NavBar page="search-sessions"/>
+    <div style={{ marginBottom: '10px', width: '50%', margin: '0 auto'   }}>
       <input
         type="text"
         placeholder="Enter course number"
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
       />
-      <button onClick={handleSearch}>Search</button>
+      <button className="search-btn" onClick={handleSearch}>Search</button>
 
       <div className="search-results">
         {searchResults.map(session => (
@@ -57,6 +62,7 @@ export default function SearchSessionsPage() {
           />
         ))}
       </div>
+    </div>
     </div>
   );
 }
