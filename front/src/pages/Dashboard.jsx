@@ -116,7 +116,7 @@ export function Dashboard() {
         </section>
 
         <section>
-          <span className="nav-btn">
+          <span className="nav-btn-container">
             <button
               type="button"
               className="nav-btn"
@@ -126,7 +126,7 @@ export function Dashboard() {
             </button>
           </span>
 
-          <span className="nav-btn">
+          <span className="nav-btn-container">
             <button
               type="button"
               className="nav-btn"

@@ -14,10 +14,6 @@ h1 {
   position: relative;
 }
 
-.nav-btn {
-  padding: 0vw 1vw 2vw 1vw;
-}
-
 .sessions-list {
   padding: 2vw;
 }
@@ -30,13 +26,22 @@ h1 {
   width: 100%;
 }
 
+.nav-btn-container {
+  padding: 0vw 1vw 2vw 1vw;
+}
+
 .nav-btn {
   font-family: "Roboto", sans-serif;
   font-size: 1.1vw;
   color: #f2a516;
-  width: 8vw;
+  width: 10vw;
   height: 2.5vw;
   border-radius: 0.3vw;
   border-width: 0.09vw;
   border-color: #f2a516;
+  background-color: white;
+}
+
+.nav-btn:hover {
+  background-color: #ebebeb;
 }

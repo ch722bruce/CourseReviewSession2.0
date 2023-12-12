@@ -15,13 +15,30 @@ h1 {
   width: 100%;
 }
 
+.search-btn-container {
+  padding: 1vw;
+}
+
+.search-section {
+  padding-top: 1vw;
+  width: 50%;
+  align-items: center;
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+
 .search-btn {
   font-family: "Roboto", sans-serif;
   font-size: 1.1vw;
   color: #f2a516;
-  width: 8vw;
-  height: 2.5vw;
+  width: 6vw;
+  height: 2vw;
   border-radius: 0.3vw;
   border-width: 0.09vw;
   border-color: #f2a516;
+  background-color: white;
+}
+
+.search-btn:hover {
+  background-color: #ebebeb;
 }

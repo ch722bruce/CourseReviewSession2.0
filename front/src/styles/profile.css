@@ -101,17 +101,17 @@
 
 #edit-btn {
   font-size: 1.1vw;
-  color: rgba(67, 57, 127, 255);
+  color: #f2a516;
   width: 6vw;
   height: 1.7vw;
   border-radius: 0.3vw;
   border-width: 0.09vw;
-  border-color: rgba(67, 57, 127, 255);
-  background-color: #ffcb49;
+  border-color: #f2a516;
+  background-color: white;
 }
 
 #edit-btn:hover {
-  background-color: #fab917;
+  background-color: #ebebeb;
 }
 
 /* #back-btn {

@@ -36,7 +36,7 @@ export default function SearchSessionsPage() {
     <div className="search-page-bg">
       <NavBar page="search-sessions" />
 
-      <section style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}>
+      <section className="search-section">
         <input
           type="text"
           placeholder="Enter course number"
@@ -44,9 +44,11 @@ export default function SearchSessionsPage() {
           onChange={e => setSearchTerm(e.target.value)}
           style={{ width: "65%" }}
         />
-        <button className="search-btn" onClick={handleSearch}>
-          Search
-        </button>
+        <span className="search-btn-container">
+          <button className="search-btn" onClick={handleSearch}>
+            Search
+          </button>
+        </span>
       </section>
 
       <section className="search-results">
