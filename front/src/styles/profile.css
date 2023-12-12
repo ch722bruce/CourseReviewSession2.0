@@ -3,7 +3,7 @@
 }
 
 .profile-bg {
-  background-color: #CEE8F2;
+  background-color: #cee8f2;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -63,11 +63,14 @@
   /* cursor: 'pointer'; */
 }
 
-.nav-link:hover, .nav-logout:hover {
+.nav-link:hover,
+.nav-logout:hover {
   color: rgba(255, 255, 255);
 }
 
-.Dashboard, .Profile, .MySessions {
+.Dashboard,
+.Profile,
+.MySessions {
   color: rgba(255, 255, 255);
 }
 
@@ -108,7 +111,7 @@
 }
 
 #edit-btn:hover {
-  background-color: #FAB917;
+  background-color: #fab917;
 }
 
 /* #back-btn {
