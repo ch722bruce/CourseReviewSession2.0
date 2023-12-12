@@ -35,34 +35,36 @@ export default function SearchSessionsPage() {
 
   return (
     <div className="search-page-bg">
-      <NavBar page="search-sessions"/>
-    <div style={{ marginBottom: '10px', width: '50%', margin: '0 auto'   }}>
-      <input
-        type="text"
-        placeholder="Enter course number"
-        value={searchTerm}
-        onChange={e => setSearchTerm(e.target.value)}
-      />
-      <button className="search-btn" onClick={handleSearch}>Search</button>
+  <NavBar page="search-sessions"/>
 
-      <div className="search-results">
-        {searchResults.map(session => (
-          <SessionCard
-            key={session.SessionID}
-            session={session}
-            onJoin={() => handleJoin(session.SessionID)}
-            onQuit={() => handleQuit(session.SessionID)}
-            isAuthor={
-              session.creator ===
-              JSON.parse(localStorage.getItem("currUser")).username
-            }
-            hasJoined={session.members.includes(
-              JSON.parse(localStorage.getItem("currUser")).username,
-            )}
-          />
-        ))}
-      </div>
-    </div>
-    </div>
+  <section style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
+    <input
+      type="text"
+      placeholder="Enter course number"
+      value={searchTerm}
+      onChange={e => setSearchTerm(e.target.value)}
+      style={{  width: '65%' }}
+    />
+    <button className="search-btn" onClick={handleSearch}>Search</button>
+  </section>
+
+  <section className="search-results">
+    {searchResults.map(session => (
+      <SessionCard
+        key={session.SessionID}
+        session={session}
+        onJoin={() => handleJoin(session.SessionID)}
+        onQuit={() => handleQuit(session.SessionID)}
+        isAuthor={
+          session.creator ===
+          JSON.parse(localStorage.getItem("currUser")).username
+        }
+        hasJoined={session.members.includes(
+          JSON.parse(localStorage.getItem("currUser")).username,
+        )}
+      />
+    ))}
+  </section>
+</div>
   );
 }

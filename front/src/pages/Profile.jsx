@@ -23,28 +23,22 @@ export function Profile() {
 
   return (
     <div className="profile-bg">
-      <NavBar page="Profile"/>
-      <div className="profile">
-        {/* <Title title="My Profile" /> */}
+  <NavBar page="Profile"/>
+  <div className="profile">
 
-        <div className="info">
-          <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Username: {username}</div>
-          <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Major: {major}</div>
-          <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Tag: {tag}</div>
-        </div>
+    <section className="info">
+      <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Username: {username}</div>
+      <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Major: {major}</div>
+      <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Tag: {tag}</div>
+    </section>
 
-        <div className="edit-btn-div">
-          <button id="edit-btn" type="button" onClick={onClick} style={{ fontFamily: 'Roboto, sans-serif' }}>
-            Edit
-          </button>
-        </div>
+    <section className="edit-btn-div">
+      <button id="edit-btn" type="button" onClick={onClick} style={{ fontFamily: 'Roboto, sans-serif' }}>
+        Edit
+      </button>
+    </section>
+  </div>
+</div>
 
-        {/* <div className="back">
-          <button id="back-btn" type="button" onClick={onClickBack}>
-            Go Back
-          </button>
-        </div> */}
-      </div>
-    </div>
   );
 }

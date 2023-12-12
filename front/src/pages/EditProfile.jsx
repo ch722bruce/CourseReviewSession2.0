@@ -115,61 +115,63 @@ export function EditProfile() {
 
   return (
     <div className="edit-bg">
-      <NavBar page="Profile"/>
-      <div className="edit">
-        {/* <Title title="Edit Profile" /> */}
+  <NavBar page="Profile"/>
+  <div className="edit">
 
-        <form id="registration-form" onSubmit={onSubmit}>
-          <div className="edit-container edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
-            Username: {JSON.parse(localStorage.getItem("currUser")).username}
-          </div>
+    <form id="registration-form" onSubmit={onSubmit}>
+      <section className="edit-container" style={{ fontFamily: 'Roboto, sans-serif' }}>
+      <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
+        Username: {JSON.parse(localStorage.getItem("currUser")).username}
+      </label>
+      </section>
 
-          <div className="edit-container">
-            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
-              Major:{" "}
-              <input
-                type="text"
-                name="major"
-                value={major}
-                onInput={evt => setMajor(evt.target.value)}
-              ></input>
-            </label>
-          </div>
+      <section className="edit-container">
+        <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Major:{" "}
+          <input
+            type="text"
+            name="major"
+            value={major}
+            onInput={evt => setMajor(evt.target.value)}
+          ></input>
+        </label>
+      </section>
 
-          <div className="edit-container">
-            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
-              Student
-              <input
-                type="checkbox"
-                checked={student}
-                onClick={onSelectStudent}
-              />
-            </label>
+      <section className="edit-container">
+        <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Student
+          <input
+            type="checkbox"
+            checked={student}
+            onClick={onSelectStudent}
+          />
+        </label>
 
-            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
-              Professor
-              <input type="checkbox" checked={prof} onClick={onSelectProf} />
-            </label>
+        <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Professor
+          <input type="checkbox" checked={prof} onClick={onSelectProf} />
+        </label>
 
-            <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
-              TA
-              <input type="checkbox" checked={ta} onClick={onSelectTA} />
-            </label>
-          </div>
+        <label className="edit-label" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          TA
+          <input type="checkbox" checked={ta} onClick={onSelectTA} />
+        </label>
+      </section>
 
-          <div className="save">
-            <button id="save-btn" type="submit" style={{ fontFamily: 'Roboto, sans-serif' }}>
-              Save
-            </button>
-          </div>
+      <section className="save">
+        <button id="save-btn" type="submit" style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Save
+        </button>
+      </section>
 
-          <div className="delete">
-            <button id="delete-btn" type="button" onClick={onClick} style={{ fontFamily: 'Roboto, sans-serif' }}>
-              Delete Account
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <section className="delete">
+        <button id="delete-btn" type="button" onClick={onClick} style={{ fontFamily: 'Roboto, sans-serif' }}>
+          Delete Account
+        </button>
+      </section>
+    </form>
+  </div>
+</div>
+
   );
 }

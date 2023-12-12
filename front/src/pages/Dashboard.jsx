@@ -111,19 +111,11 @@ export function Dashboard() {
     <div className="dashboard-bg">
       <NavBar page="Dashboard"/>
       <div className="dashboard">
-        <Title title="Sessions" />
-        {/* <span className="nav-btn">
-          <button type="button" onClick={() => navigate("/profile")}>
-            Profile
-          </button>
-        </span>
-
-        <span className="nav-btn">
-          <button type="button" onClick={() => navigate("/my-sessions")}>
-            My Sessions
-          </button>
-        </span> */}
-
+        <section>
+          <Title title="Sessions" />
+        </section>
+        
+        <section>
         <span className="nav-btn">
           <button type="button" className="nav-btn" onClick={onCreateSessionClick}>
             Create Session
@@ -135,14 +127,10 @@ export function Dashboard() {
             Search Sessions
           </button>
         </span>
-
-        {/* <span className="nav-btn">
-          <button type="button" onClick={onClickLogout}>
-            Logout
-          </button>
-        </span> */}
-
+        </section>
+        <section>
         <div className="sessions-list">{renderSessionCards()}</div>
+        </section>
       </div>
     </div>
   );
