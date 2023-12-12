@@ -23,22 +23,40 @@ export function Profile() {
 
   return (
     <div className="profile-bg">
-  <NavBar page="Profile"/>
-  <div className="profile">
+      <NavBar page="Profile" />
+      <div className="profile">
+        <section className="info">
+          <div
+            className="info-row"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Username: {username}
+          </div>
+          <div
+            className="info-row"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Major: {major}
+          </div>
+          <div
+            className="info-row"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Tag: {tag}
+          </div>
+        </section>
 
-    <section className="info">
-      <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Username: {username}</div>
-      <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Major: {major}</div>
-      <div className="info-row" style={{ fontFamily: 'Roboto, sans-serif' }}>Tag: {tag}</div>
-    </section>
-
-    <section className="edit-btn-div">
-      <button id="edit-btn" type="button" onClick={onClick} style={{ fontFamily: 'Roboto, sans-serif' }}>
-        Edit
-      </button>
-    </section>
-  </div>
-</div>
-
+        <section className="edit-btn-div">
+          <button
+            id="edit-btn"
+            type="button"
+            onClick={onClick}
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Edit
+          </button>
+        </section>
+      </div>
+    </div>
   );
 }

@@ -109,27 +109,35 @@ export function Dashboard() {
 
   return (
     <div className="dashboard-bg">
-      <NavBar page="Dashboard"/>
+      <NavBar page="Dashboard" />
       <div className="dashboard">
         <section>
           <Title title="Sessions" />
         </section>
-        
-        <section>
-        <span className="nav-btn">
-          <button type="button" className="nav-btn" onClick={onCreateSessionClick}>
-            Create Session
-          </button>
-        </span>
 
-        <span className="nav-btn">
-          <button type="button" className="nav-btn" onClick={onSearchSessionClick}>
-            Search Sessions
-          </button>
-        </span>
+        <section>
+          <span className="nav-btn">
+            <button
+              type="button"
+              className="nav-btn"
+              onClick={onCreateSessionClick}
+            >
+              Create Session
+            </button>
+          </span>
+
+          <span className="nav-btn">
+            <button
+              type="button"
+              className="nav-btn"
+              onClick={onSearchSessionClick}
+            >
+              Search Sessions
+            </button>
+          </span>
         </section>
         <section>
-        <div className="sessions-list">{renderSessionCards()}</div>
+          <div className="sessions-list">{renderSessionCards()}</div>
         </section>
       </div>
     </div>

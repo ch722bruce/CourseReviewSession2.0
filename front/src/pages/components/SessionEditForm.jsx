@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { NavBar } from "./NavBar";
 
-
 export function SessionEditForm() {
   const navigate = useNavigate();
   const { sessionId } = useParams();
@@ -79,63 +78,110 @@ export function SessionEditForm() {
   }
 
   return (
-    <div style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#CEE8F2', color: '#061673', height: '100vh', width: '100%' }}>
-  <NavBar page={page_name} />
-  <form onSubmit={handleSubmit} className="session-form" style={{ color: '#061673' }}>
+    <div
+      style={{
+        fontFamily: "Roboto, sans-serif",
+        backgroundColor: "#CEE8F2",
+        color: "#061673",
+        height: "100vh",
+        width: "100%",
+      }}
+    >
+      <NavBar page={page_name} />
+      <form
+        onSubmit={handleSubmit}
+        className="session-form"
+        style={{ color: "#061673" }}
+      >
+        <section
+          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
+        >
+          <label
+            htmlFor="courseNumber"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Course Number
+          </label>
+          <input
+            type="text"
+            id="courseNumber"
+            name="courseNumber"
+            value={formData.courseNumber}
+            onChange={handleChange}
+            style={{ display: "block", width: "100%" }}
+          />
+        </section>
 
-    <section style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
-      <label htmlFor="courseNumber" style={{ fontFamily: 'Roboto, sans-serif' }}>Course Number</label>
-      <input
-        type="text"
-        id="courseNumber"
-        name="courseNumber"
-        value={formData.courseNumber}
-        onChange={handleChange}
-        style={{ display: 'block', width: '100%' }}
-      />
-    </section>
+        <section
+          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
+        >
+          <label
+            htmlFor="startTime"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Start Time
+          </label>
+          <input
+            type="datetime-local"
+            id="startTime"
+            name="startTime"
+            value={formData.startTime}
+            onChange={handleChange}
+            style={{ display: "block", width: "100%" }}
+          />
+        </section>
 
-    <section style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
-      <label htmlFor="startTime" style={{ fontFamily: 'Roboto, sans-serif' }}>Start Time</label>
-      <input
-        type="datetime-local"
-        id="startTime"
-        name="startTime"
-        value={formData.startTime}
-        onChange={handleChange}
-        style={{ display: 'block', width: '100%' }}
-      />
-    </section>
+        <section
+          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
+        >
+          <label htmlFor="endTime" style={{ fontFamily: "Roboto, sans-serif" }}>
+            End Time
+          </label>
+          <input
+            type="datetime-local"
+            id="endTime"
+            name="endTime"
+            value={formData.endTime}
+            onChange={handleChange}
+            style={{ display: "block", width: "100%" }}
+          />
+        </section>
 
-    <section style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
-      <label htmlFor="endTime" style={{ fontFamily: 'Roboto, sans-serif' }}>End Time</label>
-      <input
-        type="datetime-local"
-        id="endTime"
-        name="endTime"
-        value={formData.endTime}
-        onChange={handleChange}
-        style={{ display: 'block', width: '100%' }}
-      />
-    </section>
+        <section
+          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
+        >
+          <label
+            htmlFor="description"
+            style={{ fontFamily: "Roboto, sans-serif" }}
+          >
+            Description
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            style={{ display: "block", width: "100%", height: "100px" }} // Adjust height as needed
+          />
+        </section>
 
-    <section style={{ marginBottom: '10px', width: '50%', margin: '0 auto' }}>
-      <label htmlFor="description" style={{ fontFamily: 'Roboto, sans-serif' }}>Description</label>
-      <textarea
-        id="description"
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        style={{ display: 'block', width: '100%', height: '100px' }} // Adjust height as needed
-      />
-    </section>
-
-    <section style={{ textAlign: 'center', marginTop: '10px' }}>
-      <button type="submit" style={{ fontFamily: 'Roboto, sans-serif', backgroundColor: '#F2A516', color: 'white', padding: '10px 20px', border: 'none', cursor: 'pointer', alignItems: 'center' }}>Update Session</button>
-    </section>  
-
-  </form>
-</div>
-
+        <section style={{ textAlign: "center", marginTop: "10px" }}>
+          <button
+            type="submit"
+            style={{
+              fontFamily: "Roboto, sans-serif",
+              backgroundColor: "#F2A516",
+              color: "white",
+              padding: "10px 20px",
+              border: "none",
+              cursor: "pointer",
+              alignItems: "center",
+            }}
+          >
+            Update Session
+          </button>
+        </section>
+      </form>
+    </div>
   );
 }

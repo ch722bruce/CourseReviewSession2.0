@@ -6,8 +6,8 @@ import "../styles/MySessionsPage.css";
 
 const MySessionsPage = () => {
   return (
-    <div className="my-sessions-page-bg" >
-      <NavBar page="MySessions"/>
+    <div className="my-sessions-page-bg">
+      <NavBar page="MySessions" />
       <div className="my-sessions-page">
         <div>
           <AuthorSessions />
