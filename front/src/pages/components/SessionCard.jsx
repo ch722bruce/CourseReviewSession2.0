@@ -19,6 +19,12 @@ function SessionCard({
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
 
+  var members = session.members[0];
+  for (let i = 1; i < session.members.length; i++) {
+    members = members.concat(", ");
+    members = members.concat(session.members[i]);
+  }
+
   const handleDelete = async () => {
     // Delete the session
     console.log(`Deleting session: ${session.SessionID}`);
@@ -140,7 +146,7 @@ function SessionCard({
       <h3>{session.courseNumber}</h3>
       {isHovering && (
         <div className="session-hover-info">
-          <p>Members: {session.members}</p>
+          <p>Members: {members}</p>
           <p>Creator: {session.creator}</p>
           <p>Description: {session.description}</p>
         </div>
