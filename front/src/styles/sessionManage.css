@@ -1,5 +1,5 @@
 .session-form {
-  padding-top: 3vw;
+  padding-top: 50px;
 }
 
 .manage-container {
@@ -35,12 +35,12 @@
 }
 
 .manage-btn {
-  font-size: 1.1vw;
+  font-size: 15px;
   color: #f2a516;
-  width: 10vw;
-  height: 2.5vw;
-  border-radius: 0.3vw;
-  border-width: 0.09vw;
+  width: 140px;
+  height: 35px;
+  border-radius: 5px;
+  border-width: 1px;
   border-color: #f2a516;
   background-color: white;
 }

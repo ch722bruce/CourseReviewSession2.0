@@ -20,7 +20,7 @@ h1 {
 }
 
 .search-section {
-  padding-top: 1vw;
+  padding-top: 30px;
   width: 50%;
   align-items: center;
   margin-bottom: 10px;
@@ -33,12 +33,12 @@ h1 {
 
 .search-btn {
   font-family: "Lato", sans-serif;
-  font-size: 1.1vw;
+  font-size: 15px;
   color: #f2a516;
-  width: 6vw;
-  height: 2vw;
-  border-radius: 0.3vw;
-  border-width: 0.09vw;
+  width: 80px;
+  height: 28px;
+  border-radius: 5px;
+  border-width: 1px;
   border-color: #f2a516;
   background-color: white;
 }

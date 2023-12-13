@@ -11,9 +11,8 @@
 }
 
 .edit {
-  width: 40vw;
-  height: 35vw;
-  border-radius: 0.5vw;
+  width: 400px;
+  height: 450px;
   text-align: center;
   position: relatisve;
   color: rgba(67, 57, 127, 255);
@@ -21,41 +20,35 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 5vw;
+  margin-top: 70px;
 }
 
-.edit h1 {
-  font-size: 3vw;
-  padding: 4.5vw 1vw 0vw 1vw;
-}
-
-.edit-container,
-.edit-major,
-.edit-tag {
-  padding: 1vw 0vw 1vw 0vw;
-  size: 1vw;
+.edit-container {
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .edit-label {
-  font-size: 1.7vw;
+  font-size: 23px;
 }
 
-.edit-container label {
-  padding: 1vw 1vw 1vw 1vw;
+.tag-container {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .save {
-  padding: 2vw 1vw 1vw 1vw;
-  size: 1vw;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #save-btn {
-  font-size: 1.1vw;
+  font-size: 15px;
   color: #f2a516;
-  width: 6vw;
-  height: 1.7vw;
-  border-radius: 0.3vw;
-  border-width: 0.09vw;
+  width: 70px;
+  height: 28px;
+  border-radius: 5px;
+  border-width: 1px;
   border-color: #f2a516;
   background-color: white;
   cursor: pointer;
@@ -66,7 +59,7 @@
 }
 
 #delete-btn {
-  font-size: 1vw;
+  font-size: 13px;
   background: none;
   border: none;
   color: #8b0000;

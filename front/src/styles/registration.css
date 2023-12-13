@@ -31,7 +31,8 @@
   padding-bottom: 5px;
 }
 
-.regist-input, .regist-tag {
+.regist-input,
+.regist-tag {
   padding-top: 8px;
   padding-bottom: 8px;
 }
@@ -46,7 +47,7 @@
   size: 10px;
 }
 
-
-.regist-input label, .regist-tag label {
+.regist-input label,
+.regist-tag label {
   font-size: 18px;
 }

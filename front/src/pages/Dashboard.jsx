@@ -110,11 +110,9 @@ export function Dashboard() {
     <div className="dashboard-bg">
       <NavBar page="Dashboard" />
       <div className="dashboard">
-        <section>
-          <Title title="Sessions" />
-        </section>
+        <section className="dashboard-title"></section>
 
-        <section>
+        <section className="session-btn-section">
           <span className="nav-btn-container">
             <button
               type="button"

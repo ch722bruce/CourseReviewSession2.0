@@ -11,9 +11,8 @@
 }
 
 .profile {
-  width: 40vw;
-  height: 35vw;
-  border-radius: 0.5vw;
+  width: 400px;
+  height: 450px;
   text-align: center;
   position: relatisve;
   color: rgba(67, 57, 127, 255);
@@ -21,4 +20,35 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.info {
+  margin-top: 80px;
+}
+
+.info-row {
+  font-family: "Lato", sans-serif;
+  padding-top: 20px;
+  font-size: 23px;
+}
+
+.edit-btn-div {
+  padding-top: 40px;
+  size: 15px;
+}
+
+#edit-btn {
+  font-size: 15px;
+  color: #f2a516;
+  width: 70px;
+  height: 28px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #f2a516;
+  background-color: white;
+  cursor: pointer;
+}
+
+#edit-btn:hover {
+  background-color: #ebebeb;
 }

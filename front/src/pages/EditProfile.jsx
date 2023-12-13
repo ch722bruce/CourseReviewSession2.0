@@ -136,7 +136,7 @@ export function EditProfile() {
           </section>
 
           <section className="edit-container">
-            <label className="edit-label">
+            <label className="edit-label tag-container">
               Student
               <input
                 type="checkbox"
@@ -145,12 +145,12 @@ export function EditProfile() {
               />
             </label>
 
-            <label className="edit-label">
+            <label className="edit-label tag-container">
               Professor
               <input type="checkbox" checked={prof} onClick={onSelectProf} />
             </label>
 
-            <label className="edit-label">
+            <label className="edit-label tag-container">
               TA
               <input type="checkbox" checked={ta} onClick={onSelectTA} />
             </label>
