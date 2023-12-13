@@ -24,7 +24,7 @@ A dynamic online platform designed for collaborative learning and knowledge shar
 
 ### Color Palette
 ![Color Palette](./docs/color-palette.png)
-We've refreshed our website with a cleaner and more user-friendly design. Inspired by the background image on our home page, we opted for a light blue hue as the overall background color, providing a serene and inviting atmosphere. The navigation bars and text elements now boast a sophisticated dark blue, enhancing readability and visual appeal. To infuse vibrancy and create focal points, we've introduced a lively orange color for our buttons, adding a touch of excitement to the overall user experience. This thoughtful color palette overhaul aims to maintain clarity, simplicity, and a fresh look for our visitors.
+We have refreshed our website with a cleaner and more user-friendly design. Inspired by the background image on our home page, we opted for a light blue hue as the overall background color, providing a serene and inviting atmosphere. The navigation bars and text elements now boast a sophisticated dark blue, enhancing readability and visual appeal. To infuse vibrancy and create focal points, we've introduced a lively orange color for our buttons, adding a touch of excitement to the overall user experience. This thoughtful color palette overhaul aims to maintain clarity, simplicity, and a fresh look for our visitors.
 
 ### Fonts
 We have employed the Lato font throughout our webpage, enhancing text readability while infusing a sense of vitality into the overall design.
