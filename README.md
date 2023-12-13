@@ -6,9 +6,9 @@
 > 
 > Design Document: https://github.com/Tiffanyxk3/CourseReviewSession/blob/main/docs/DesignDocument_Project3_CS5610.pdf
 > 
-> Deployment: 
+> Deployment: https://course-review-sessions.onrender.com
 > 
-> Demo Video: 
+> Demo Video: https://www.youtube.com/watch?v=Dcx3gePpDsM
 
 ## Project Objective
 
