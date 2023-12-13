@@ -17,33 +17,18 @@ export function NavBar({ page }) {
     <nav className="navbar">
       <img src="assets/logo.png" alt="Logo" className="nav-logo" />
       <span className="nav-name">
-        <strong>
-          Course Review
-        </strong>
+        <strong>Course Review</strong>
       </span>
-      <Link
-        to="/dashboard"
-        className={`nav-link ${dashboardClass}`}
-      >
+      <Link to="/dashboard" className={`nav-link ${dashboardClass}`}>
         Dashboard
       </Link>
-      <Link
-        to="/profile"
-        className={`nav-link ${profileClass}`}
-      >
+      <Link to="/profile" className={`nav-link ${profileClass}`}>
         Profile
       </Link>
-      <Link
-        to="/my-sessions"
-        className={`nav-link ${mySessionsClass}`}
-      >
+      <Link to="/my-sessions" className={`nav-link ${mySessionsClass}`}>
         MySessions
       </Link>
-      <button
-        type="button"
-        className="nav-logout"
-        onClick={onClickLogout}
-      >
+      <button type="button" className="nav-logout" onClick={onClickLogout}>
         Logout
       </button>
     </nav>

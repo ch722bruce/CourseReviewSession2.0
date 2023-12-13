@@ -14,8 +14,8 @@
 
 .author-sessions,
 .member-sessions {
-  border: 2px solid #061673; /* Darker blue for distinction */
-  background-color: #ffffff; /* White background for content areas */
+  border: 2px solid #061673;
+  background-color: #ffffff;
   margin-bottom: 20px;
   padding: 15px;
   position: center;
@@ -23,14 +23,13 @@
 
 .author-sessions-header,
 .member-sessions-header {
-  color: #f2a516; /* Orange for headers */
+  color: #f2a516;
   font-size: 1.2em;
 }
 
 .button {
   background-color: #f2a516;
   border: 2px solid #c97c10;
-  /* Other button styles */
 }
 
 .button:hover {

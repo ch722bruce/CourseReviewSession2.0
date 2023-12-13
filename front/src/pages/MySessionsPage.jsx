@@ -1,8 +1,8 @@
+import "../styles/MySessionsPage.css";
 import React from "react";
 import { NavBar } from "./components/NavBar";
 import AuthorSessions from "./components/AuthorSessions";
 import MemberSessions from "./components/MemberSessions";
-import "../styles/MySessionsPage.css";
 
 const MySessionsPage = () => {
   return (

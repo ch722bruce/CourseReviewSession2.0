@@ -1,7 +1,4 @@
-// routes/sessions.js
-
 import express from "express";
-import { ObjectId } from "mongodb";
 import { myDB } from "../db/database.js";
 
 const router = express.Router();
@@ -101,7 +98,7 @@ router.delete("/sessions/:id", async (req, res) => {
 // User joins a session
 router.post("/sessions/:id/join", async (req, res) => {
   try {
-    const username = req.body.username; // Assuming userId is sent in request body
+    const username = req.body.username;
     const updatedSession = await myDB.userJoinSession(req.params.id, username);
     res.json({ message: "Joined the session successfully" });
   } catch (error) {
@@ -113,7 +110,7 @@ router.post("/sessions/:id/join", async (req, res) => {
 // User quits a session
 router.post("/sessions/:id/quit", async (req, res) => {
   try {
-    const username = req.body.username; // Assuming userId is sent in request body
+    const username = req.body.username;
     const updatedSession = await myDB.userLeaveSession(req.params.id, username);
     res.json({ message: "User has left the session successfully" });
   } catch (error) {

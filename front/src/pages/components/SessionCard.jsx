@@ -26,7 +26,6 @@ function SessionCard({
   }
 
   const handleDelete = async () => {
-    // Delete the session
     console.log(`Deleting session: ${session.SessionID}`);
     try {
       const response = await fetch(`/api/sessions/${session.SessionID}`, {
@@ -41,7 +40,6 @@ function SessionCard({
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      // After deleting, call the callback to update sessions in the parent component
       updateSessions();
 
       alert("Deleted session: " + session.SessionID);
@@ -52,7 +50,6 @@ function SessionCard({
   };
 
   const handleEdit = () => {
-    // Use the navigate function to go to the edit page with the session ID as a route parameter
     console.log(`Editing session: ${session.SessionID}`);
     navigate(`/edit-session/${session.SessionID}`);
   };
@@ -128,9 +125,6 @@ function SessionCard({
           console.error("Error quiting session:", error);
         });
 
-      // After quitting, call the callback to update sessions in the parent component
-      // updateSessions();
-
       setButton("Join");
     } catch (error) {
       console.error("Error quitting session:", error);
@@ -177,7 +171,7 @@ SessionCard.propTypes = {
   onQuit: PropTypes.func.isRequired,
   isAuthor: PropTypes.bool.isRequired,
   hasJoined: PropTypes.bool.isRequired,
-  updateSessions: PropTypes.func.isRequired, // Callback function to update sessions in the parent component
+  updateSessions: PropTypes.func.isRequired,
   originalText: PropTypes.string,
 };
 

@@ -17,8 +17,6 @@
   text-align: center;
   position: relatisve;
   color: rgba(67, 57, 127, 255);
-
-  /* background-color: rgba(255, 255, 255); */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -36,7 +34,6 @@
 .edit-tag {
   padding: 1vw 0vw 1vw 0vw;
   size: 1vw;
-  /* font-size: 1.7vw; */
 }
 
 .edit-label {

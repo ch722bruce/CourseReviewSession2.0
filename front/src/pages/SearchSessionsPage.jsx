@@ -1,8 +1,8 @@
+import "../styles/searchSessions.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionCard from "./components/SessionCard";
 import { NavBar } from "./components/NavBar";
-import "../styles/searchSessions.css";
 
 export default function SearchSessionsPage() {
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ export default function SearchSessionsPage() {
 
       const results = await response.json();
       setSearchResults(results);
-      console.log(results);
     } catch (error) {
       console.error("Error searching sessions:", error);
     }
@@ -35,7 +34,6 @@ export default function SearchSessionsPage() {
   return (
     <div className="search-page-bg">
       <NavBar page="search-sessions" />
-
       <section className="search-section">
         <input
           type="text"

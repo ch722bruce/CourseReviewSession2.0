@@ -1,9 +1,8 @@
-import { Title } from "./components/Title";
+import "../styles/profile.css";
+import "../styles/edit.css";
 import { NavBar } from "./components/NavBar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/profile.css";
-import "../styles/edit.css";
 
 export function EditProfile() {
   const navigate = useNavigate();
@@ -118,20 +117,14 @@ export function EditProfile() {
       <NavBar page="Profile" />
       <div className="edit">
         <form id="registration-form" onSubmit={onSubmit}>
-          <section
-            className="edit-container"
-          >
-            <label
-              className="edit-label"
-            >
+          <section className="edit-container">
+            <label className="edit-label">
               Username: {JSON.parse(localStorage.getItem("currUser")).username}
             </label>
           </section>
 
           <section className="edit-container">
-            <label
-              className="edit-label"
-            >
+            <label className="edit-label">
               Major:{" "}
               <input
                 type="text"
@@ -143,9 +136,7 @@ export function EditProfile() {
           </section>
 
           <section className="edit-container">
-            <label
-              className="edit-label"
-            >
+            <label className="edit-label">
               Student
               <input
                 type="checkbox"
@@ -154,36 +145,25 @@ export function EditProfile() {
               />
             </label>
 
-            <label
-              className="edit-label"
-            >
+            <label className="edit-label">
               Professor
               <input type="checkbox" checked={prof} onClick={onSelectProf} />
             </label>
 
-            <label
-              className="edit-label"
-            >
+            <label className="edit-label">
               TA
               <input type="checkbox" checked={ta} onClick={onSelectTA} />
             </label>
           </section>
 
           <section className="save">
-            <button
-              id="save-btn"
-              type="submit"
-            >
+            <button id="save-btn" type="submit">
               Save
             </button>
           </section>
 
           <section className="delete">
-            <button
-              id="delete-btn"
-              type="button"
-              onClick={onClick}
-            >
+            <button id="delete-btn" type="button" onClick={onClick}>
               Delete Account
             </button>
           </section>

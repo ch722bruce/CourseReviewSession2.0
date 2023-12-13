@@ -25,7 +25,6 @@ export function SessionEditForm() {
         }
         const sessionData = await response.json();
         setSession(sessionData);
-        // Initialize the form data with the session data
         setFormData(sessionData);
       } catch (error) {
         console.error("Error fetching session data:", error);
@@ -130,9 +129,7 @@ export function SessionEditForm() {
         </section>
 
         <section className="manage-btn-section">
-          <button className="manage-btn"
-            type="submit"
-          >
+          <button className="manage-btn" type="submit">
             Update Session
           </button>
         </section>
