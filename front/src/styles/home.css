@@ -13,7 +13,7 @@ body {
 
 @media screen and (max-width: 768px) {
   body {
-    font-size: 14px; 
+    font-size: 14px;
   }
 }
 
@@ -26,11 +26,11 @@ body {
 }
 
 .home {
-  width: 30vw;
-  height: 35vw;
-  border-radius: 1vw;
+  width: 410px;
+  height: 480px;
+  border-radius: 15px;
   text-align: center;
-  position: relatisve;
+  position: relative;
   color: rgba(67, 57, 127, 255);
 
   background-color: rgba(255, 255, 255);
@@ -41,64 +41,43 @@ body {
 }
 
 .home h1 {
-  font-size: 3vw;
-  /* padding: 6vw 1vw 1vw 1vw; */
-  padding-top: 5vw;
+  font-size: 40px;
+  padding-top: 70px;
 }
 
 .login-input {
-  padding: 1vw 1vw 1vw 1vw;
-  size: 1vw;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .login-login {
-  /* padding: 2vw 1vw 1vw 1vw; */
-  padding-top: 1vw;
-  size: 1vw;
+  padding-top: 25px;
+  size: 10px;
 }
 
 .login-register {
-  /* padding: 0vw 1vw 1vw 1vw; */
 }
 
-label {
-  font-size: 1.3vw;
+.login-input label {
+  font-size: 18px;
 }
 
-.login-form input {
-  width: 12vw;
-  height: 1.2vw;
-  border-radius: 0.3vw;
-  border-width: 0.09vw;
+input {
+  border-radius: 4px;
+  border-width: 1px;
   border-color: rgba(67, 57, 127, 255);
 }
-
-/* .submit-btn {
-  font-size: 1.1vw;
-  color: rgba(67, 57, 127, 255);
-  width: 6vw;
-  height: 1.7vw;
-  border-radius: 0.3vw;
-  border-width: 0.09vw;
-  border-color: rgba(67, 57, 127, 255);
-  background-color: #ffcb49;
-  min-width: 44px;
-  min-height: 44px;
-  margin: 10px; 
-} */
 
 .submit-btn {
-  font-size: 1.1vw;
+  font-size: 16px;
   color: white;
-  width: 6vw;
-  height: 1.7vw;
-  border-radius: 0.3vw;
-  /* border-width: 0.09vw; */
-  /* border-color: rgba(67, 57, 127, 255); */
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
   border: none;
   background-color: #ffcb49;
-  min-width: 44px;
-  min-height: 44px;
+  /* min-width: 44px;
+  min-height: 44px; */
   margin: 10px;
   cursor: pointer;
 }
@@ -108,13 +87,12 @@ label {
 }
 
 .click-btn {
-  font-size: 1.1vw;
+  font-size: 15px;
   background: none;
   border: none;
   color: rgba(67, 57, 127, 255);
   min-width: 44px;
   min-height: 44px;
-  /* margin: 10px;  */
 }
 
 .click-btn:hover {

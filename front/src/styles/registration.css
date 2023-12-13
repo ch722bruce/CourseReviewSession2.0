@@ -11,11 +11,11 @@
 }
 
 .registration {
-  width: 30vw;
-  height: 35vw;
-  border-radius: 0.5vw;
+  width: 410px;
+  height: 480px;
+  border-radius: 15px;
   text-align: center;
-  position: relatisve;
+  position: relative;
   color: rgba(67, 57, 127, 255);
 
   background-color: rgba(255, 255, 255);
@@ -26,64 +26,27 @@
 }
 
 .registration h1 {
-  font-size: 3vw;
-  /* padding: 3.5vw 1vw 0vw 1vw; */
-  padding-top: 2vw;
+  font-size: 40px;
+  padding-top: 30px;
+  padding-bottom: 5px;
 }
 
-.regist-input,
-.regist-register {
-  padding: 1vw 0vw 0vw 0vw;
-  size: 1vw;
+.regist-input, .regist-tag {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
-.regist-register {
-  /* padding: 1vw 1vw 1vw 1vw; */
-  padding-top: 1vw;
-  size: 1vw;
-}
-
-.regist-back {
-  /* padding: 0vw 1vw 1vw 1vw; */
-}
-
-label {
-  font-size: 1.3vw;
-}
-
-.regist-tag,
 .regist-tag label {
-  padding: 1vw 1vw 1vw 1vw;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-input {
-  height: 1.2vw;
-  border-radius: 0.3vw;
-  border-width: 0.09vw;
-  border-color: rgba(67, 57, 127, 255);
+.regist-register {
+  padding-top: 15px;
+  size: 10px;
 }
 
-#login-btn {
-  font-size: 1.1vw;
-  color: rgba(67, 57, 127, 255);
-  width: 6vw;
-  height: 1.7vw;
-  border-radius: 0.3vw;
-  border-width: 0.09vw;
-  border-color: rgba(67, 57, 127, 255);
-}
 
-#login-btn:hover {
-  background-color: white;
-}
-
-#register-btn {
-  font-size: 1.1vw;
-  background: none;
-  border: none;
-  color: rgba(67, 57, 127, 255);
-}
-
-#register-btn:hover {
-  color: rgba(192, 98, 161, 255);
+.regist-input label, .regist-tag label {
+  font-size: 18px;
 }
