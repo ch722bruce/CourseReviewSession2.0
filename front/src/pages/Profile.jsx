@@ -1,5 +1,4 @@
 import "../styles/profile.css";
-import { Title } from "./components/Title";
 import { NavBar } from "./components/NavBar";
 import { useNavigate } from "react-router-dom";
 
@@ -17,42 +16,18 @@ export function Profile() {
     navigate(`/edit`);
   }
 
-  // function onClickBack() {
-  //   navigate(`/dashboard`);
-  // }
-
   return (
     <div className="profile-bg">
       <NavBar page="Profile" />
       <div className="profile">
         <section className="info">
-          <div
-            className="info-row"
-            style={{ fontFamily: "Roboto, sans-serif" }}
-          >
-            Username: {username}
-          </div>
-          <div
-            className="info-row"
-            style={{ fontFamily: "Roboto, sans-serif" }}
-          >
-            Major: {major}
-          </div>
-          <div
-            className="info-row"
-            style={{ fontFamily: "Roboto, sans-serif" }}
-          >
-            Tag: {tag}
-          </div>
+          <div className="info-row">Username: {username}</div>
+          <div className="info-row">Major: {major}</div>
+          <div className="info-row">Tag: {tag}</div>
         </section>
 
         <section className="edit-btn-div">
-          <button
-            id="edit-btn"
-            type="button"
-            onClick={onClick}
-            style={{ fontFamily: "Roboto, sans-serif" }}
-          >
+          <button id="edit-btn" type="button" onClick={onClick}>
             Edit
           </button>
         </section>

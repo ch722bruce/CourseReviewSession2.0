@@ -1,3 +1,4 @@
+import "../../styles/main.css";
 import React, { useEffect, useState } from "react";
 import SessionCard from "./SessionCard";
 
@@ -32,22 +33,16 @@ const AuthorSessions = () => {
     fetchAuthorSessions();
   }, [username]);
 
-  const handleEdit = sessionId => {
-    // Implement the edit logic here
-  };
+  const handleEdit = sessionId => {};
 
-  const handleDelete = sessionId => {
-    // Implement the delete logic here
-  };
+  const handleDelete = sessionId => {};
 
   return (
     <div>
-      <h2 style={{ fontFamily: "Roboto, sans-serif", color: "#061673" }}>
-        Sessions Authored by {username}
-      </h2>
+      <h2>Sessions Authored by {username}</h2>
       {sessions.map(session => (
         <SessionCard
-          key={session.id} // Assuming each session has a unique id
+          key={session.id}
           session={session}
           onDelete={() => handleDelete(session.id)}
           onEdit={() => handleEdit(session.id)}

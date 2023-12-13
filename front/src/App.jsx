@@ -1,6 +1,4 @@
-// import viteLogo from "/vite.svg";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
 import { HomePage } from "./pages/HomePage";
 import { RegistrationPage } from "./pages/RegistrationPage";
 import { Dashboard } from "./pages/Dashboard";
@@ -12,8 +10,6 @@ import { SessionEditForm } from "./pages/components/SessionEditForm";
 import SearchSessionsPage from "./pages/SearchSessionsPage";
 
 export default function App() {
-  // const [count, setCount] = useState(0);
-
   return (
     <Router>
       <Routes>

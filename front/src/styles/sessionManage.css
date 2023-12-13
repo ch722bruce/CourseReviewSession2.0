@@ -1,48 +1,50 @@
-* {
-  font-family: "Lato", sans-serif;
+.session-form {
+  padding-top: 3vw;
 }
 
-h1 {
+.manage-container {
   font-family: "Lato", sans-serif;
   color: #061673;
-}
-
-.search-page-bg {
   background-color: #cee8f2;
-  background-size: cover;
-  background-position: center;
   height: 100vh;
   width: 100%;
 }
 
-.search-btn-container {
-  padding: 1vw;
-}
-
-.search-section {
+.manage-section {
   padding-top: 1vw;
-  width: 50%;
-  align-items: center;
   margin-bottom: 10px;
+  width: 50%;
   margin: 0 auto;
 }
 
-.search-section input {
-  width: 65%;
+.manage-input {
+  display: block;
+  width: 100%;
 }
 
-.search-btn {
-  font-family: "Lato", sans-serif;
+.manage-text {
+  display: block;
+  width: 100%;
+  height: 100px;
+}
+
+.manage-btn-section {
+  text-align: center;
+  margin-top: 10px;
+  padding-top: 1vw;
+}
+
+.manage-btn {
   font-size: 1.1vw;
   color: #f2a516;
-  width: 6vw;
-  height: 2vw;
+  width: 10vw;
+  height: 2.5vw;
   border-radius: 0.3vw;
   border-width: 0.09vw;
   border-color: #f2a516;
   background-color: white;
 }
 
-.search-btn:hover {
+.manage-btn:hover {
   background-color: #ebebeb;
 }

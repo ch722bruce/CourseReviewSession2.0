@@ -1,3 +1,4 @@
+import "../../styles/sessionCard.css";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -18,8 +19,13 @@ function SessionCard({
   const handleMouseEnter = () => setIsHovering(true);
   const handleMouseLeave = () => setIsHovering(false);
 
+  var members = session.members[0];
+  for (let i = 1; i < session.members.length; i++) {
+    members = members.concat(", ");
+    members = members.concat(session.members[i]);
+  }
+
   const handleDelete = async () => {
-    // Delete the session
     console.log(`Deleting session: ${session.SessionID}`);
     try {
       const response = await fetch(`/api/sessions/${session.SessionID}`, {
@@ -34,7 +40,6 @@ function SessionCard({
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      // After deleting, call the callback to update sessions in the parent component
       updateSessions();
 
       alert("Deleted session: " + session.SessionID);
@@ -45,7 +50,6 @@ function SessionCard({
   };
 
   const handleEdit = () => {
-    // Use the navigate function to go to the edit page with the session ID as a route parameter
     console.log(`Editing session: ${session.SessionID}`);
     navigate(`/edit-session/${session.SessionID}`);
   };
@@ -121,9 +125,6 @@ function SessionCard({
           console.error("Error quiting session:", error);
         });
 
-      // After quitting, call the callback to update sessions in the parent component
-      // updateSessions();
-
       setButton("Join");
     } catch (error) {
       console.error("Error quitting session:", error);
@@ -138,19 +139,10 @@ function SessionCard({
     >
       <h3>{session.courseNumber}</h3>
       {isHovering && (
-        <div
-          className="session-hover-info"
-          style={{ display: "flex", flexDirection: "column" }}
-        >
-          <p style={{ display: "block", marginBottom: "10px" }}>
-            Members: {session.members}
-          </p>
-          <p style={{ display: "block", marginBottom: "10px" }}>
-            Creator: {session.creator}
-          </p>
-          <p style={{ display: "block", marginBottom: "10px" }}>
-            Description: {session.description}
-          </p>
+        <div className="session-hover-info">
+          <p>Members: {members}</p>
+          <p>Creator: {session.creator}</p>
+          <p>Description: {session.description}</p>
         </div>
       )}
       <p>{`Start Time: ${session.startTime}`}</p>
@@ -179,7 +171,7 @@ SessionCard.propTypes = {
   onQuit: PropTypes.func.isRequired,
   isAuthor: PropTypes.bool.isRequired,
   hasJoined: PropTypes.bool.isRequired,
-  updateSessions: PropTypes.func.isRequired, // Callback function to update sessions in the parent component
+  updateSessions: PropTypes.func.isRequired,
   originalText: PropTypes.string,
 };
 

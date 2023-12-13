@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
 import "../styles/dashboard.css";
+import "../styles/sessionCard.css";
+import React, { useState, useEffect } from "react";
 import { Title } from "./components/Title";
 import { NavBar } from "./components/NavBar";
 import { useNavigate } from "react-router-dom";
 import SessionCard from "./components/SessionCard";
-import "../styles/dashboard.css";
-import "../styles/sessionCard.css";
 
 export function Dashboard() {
   const navigate = useNavigate();
@@ -15,9 +14,9 @@ export function Dashboard() {
     const updateSessions = async () => {
       try {
         const response = await fetch("/api/sessions/all", {
-          method: "PATCH", // Change the HTTP method to PATCH
+          method: "PATCH",
           headers: {
-            "Content-Type": "application/json", // Set the content type to JSON if needed
+            "Content-Type": "application/json",
           },
         });
 
@@ -71,7 +70,7 @@ export function Dashboard() {
       }
 
       const data = await response.json();
-      setSessions(data); // Update the sessions state with fetched data
+      setSessions(data);
     } catch (error) {
       console.error("Error updating sessions:", error);
     }
@@ -116,7 +115,7 @@ export function Dashboard() {
         </section>
 
         <section>
-          <span className="nav-btn">
+          <span className="nav-btn-container">
             <button
               type="button"
               className="nav-btn"
@@ -126,7 +125,7 @@ export function Dashboard() {
             </button>
           </span>
 
-          <span className="nav-btn">
+          <span className="nav-btn-container">
             <button
               type="button"
               className="nav-btn"

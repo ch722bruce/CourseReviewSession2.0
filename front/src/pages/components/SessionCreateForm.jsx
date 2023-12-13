@@ -1,3 +1,4 @@
+import "../../styles/sessionManage.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "./NavBar";
@@ -74,101 +75,58 @@ export function SessionCreateForm() {
   }
 
   return (
-    <div
-      style={{
-        fontFamily: "Roboto, sans-serif",
-        backgroundColor: "#CEE8F2",
-        color: "#061673",
-        height: "100vh",
-        width: "100%",
-      }}
-    >
-      <NavBar page="create-session" />
+    <div className="manage-container">
+      <NavBar page="MySessions" />
       <form onSubmit={handleSubmit} className="session-form">
-        <section
-          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
-        >
-          <label
-            htmlFor="courseNumber"
-            style={{ fontFamily: "Roboto, sans-serif" }}
-          >
-            Course Number
-          </label>
+        <section className="manage-section">
+          <label htmlFor="courseNumber">Course Number</label>
           <input
             type="text"
             id="courseNumber"
             name="courseNumber"
             value={session.courseNumber}
             onChange={handleChange}
-            style={{ display: "block", width: "100%" }}
+            className="manage-input"
           />
         </section>
 
-        <section
-          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
-        >
-          <label
-            htmlFor="startTime"
-            style={{ fontFamily: "Roboto, sans-serif" }}
-          >
-            Start Time
-          </label>
+        <section className="manage-section">
+          <label htmlFor="startTime">Start Time</label>
           <input
             type="datetime-local"
             id="startTime"
             name="startTime"
             value={session.startTime}
             onChange={handleChange}
-            style={{ display: "block", width: "100%" }}
+            className="manage-input"
           />
         </section>
 
-        <section
-          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
-        >
-          <label htmlFor="endTime" style={{ fontFamily: "Roboto, sans-serif" }}>
-            End Time
-          </label>
+        <section className="manage-section">
+          <label htmlFor="endTime">End Time</label>
           <input
             type="datetime-local"
             id="endTime"
             name="endTime"
             value={session.endTime}
             onChange={handleChange}
-            style={{ display: "block", width: "100%" }}
+            className="manage-input"
           />
         </section>
 
-        <section
-          style={{ marginBottom: "10px", width: "50%", margin: "0 auto" }}
-        >
-          <label
-            htmlFor="description"
-            style={{ fontFamily: "Roboto, sans-serif" }}
-          >
-            Description
-          </label>
+        <section className="manage-section">
+          <label htmlFor="description">Description</label>
           <textarea
             id="description"
             name="description"
             value={session.description}
             onChange={handleChange}
-            style={{ display: "block", width: "100%" }}
+            className="manage-text"
           />
         </section>
 
-        <section style={{ textAlign: "center", marginTop: "10px" }}>
-          <button
-            type="submit"
-            style={{
-              backgroundColor: "#F2A516",
-              color: "white",
-              padding: "10px 20px",
-              border: "none",
-              cursor: "pointer",
-              fontFamily: "Roboto, sans-serif",
-            }}
-          >
+        <section className="manage-btn-section">
+          <button className="manage-btn" type="submit">
             Create Session
           </button>
         </section>
