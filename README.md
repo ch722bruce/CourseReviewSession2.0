@@ -6,14 +6,13 @@
 > 
 > Design Document: https://github.com/Tiffanyxk3/CourseReviewSession/blob/main/docs/DesignDocument_Project3_CS5610.pdf
 > 
-> Deployment: https://course-review-sessions.onrender.com
+> Deployment: 
 > 
-> Demo Video: https://www.youtube.com/watch?v=eIJoSpbhsqY
+> Demo Video: 
 
 ## Project Objective
 
 ### Description
-
 A dynamic online platform designed for collaborative learning and knowledge sharing through review sessions. This web application empowers session initiators to post, edit, and delete session content while facilitating user participation. All users have the ability to join and leave sessions using a unique session id.
 
 ## Functionalities
@@ -24,16 +23,27 @@ A dynamic online platform designed for collaborative learning and knowledge shar
 ## Design
 
 ### Color Palette
+![Color Palette](./docs/color-palette.png)
+We've refreshed our website with a cleaner and more user-friendly design. Inspired by the background image on our home page, we opted for a light blue hue as the overall background color, providing a serene and inviting atmosphere. The navigation bars and text elements now boast a sophisticated dark blue, enhancing readability and visual appeal. To infuse vibrancy and create focal points, we've introduced a lively orange color for our buttons, adding a touch of excitement to the overall user experience. This thoughtful color palette overhaul aims to maintain clarity, simplicity, and a fresh look for our visitors.
 
 ### Fonts
+We have employed the Lato font throughout our webpage, enhancing text readability while infusing a sense of vitality into the overall design.
 
 ## Screenshots
-
-<img src="./docs/before/login.png" width="45%" alt="Login Page (before)"/> -> <img src="./docs/after/login.png" width="45%" alt="Login Page (after)"/>
-<img src="./docs/before/registration.png" width="45%" alt="Registration Page (before)"/> -> <img src="./docs/after/registration.png" width="45%" alt="Registration Page (after)"/>
-<img src="./docs/before/profile.png" width="45%" alt="Profile Page (before)"/> -> <img src="./docs/after/profile.png" width="45%" alt="Profile Page (after)"/>
-<img src="./docs/before/edit-profile.png" width="45%" alt="Edit Profile Page (before)"/> -> <img src="./docs/after/edit-profile.png" width="45%" alt="Edit Profile Page (after)"/>
-
+Login Page:<br>
+<img src="./docs/before/login.png" width="45%" alt="Login Page (before)"/> -> <img src="./docs/after/login.png" width="45%" alt="Login Page (after)"/><br>
+Registration Page:<br>
+<img src="./docs/before/registration.png" width="45%" alt="Registration Page (before)"/> -> <img src="./docs/after/registration.png" width="45%" alt="Registration Page (after)"/><br>
+Profile Page:<br>
+<img src="./docs/before/profile.png" width="45%" alt="Profile Page (before)"/> -> <img src="./docs/after/profile.png" width="45%" alt="Profile Page (after)"/><br>
+Edit Profile Page:<br>
+<img src="./docs/before/edit-profile.png" width="45%" alt="Edit Profile Page (before)"/> -> <img src="./docs/after/edit-profile.png" width="45%" alt="Edit Profile Page (after)"/><br>
+Dashboard Page:<br>
+<img src="./docs/before/dashboard.png" width="45%" alt="Profile Page (before)"/> -> <img src="./docs/after/dashboard.png" width="45%" alt="Profile Page (after)"/><br>
+My Sessions Page:<br>
+<img src="./docs/before/my-sessions.png" width="45%" alt="Profile Page (before)"/> -> <img src="./docs/after/my-sessions.png" width="45%" alt="Profile Page (after)"/><br>
+Session Management Page:<br>
+<img src="./docs/before/create-session.png" width="45%" alt="Profile Page (before)"/> -> <img src="./docs/after/create-session.png" width="45%" alt="Profile Page (after)"/><br>
 
 ## Usage
 
@@ -42,7 +52,7 @@ A dynamic online platform designed for collaborative learning and knowledge shar
 - JavaScript
 - React, HTML, CSS, AJAX
 - Node, Express
-- MongoDB
+- MongoDB, Passport.js
 - Nodemon, ESlint, Prettier
 
 After cloning the repository, run the following commands in the root directory of the project:
