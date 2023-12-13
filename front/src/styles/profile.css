@@ -56,6 +56,7 @@
   color: rgba(255, 255, 255, 0.5);
   border: rgba(67, 57, 127, 255);
   background: rgba(67, 57, 127, 255);
+  cursor: pointer;
 }
 
 .nav-link:hover,
@@ -98,6 +99,7 @@
   border-width: 0.09vw;
   border-color: #f2a516;
   background-color: white;
+  cursor: pointer;
 }
 
 #edit-btn:hover {

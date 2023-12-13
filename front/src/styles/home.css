@@ -42,7 +42,8 @@ body {
 
 .home h1 {
   font-size: 3vw;
-  padding: 6vw 1vw 1vw 1vw;
+  /* padding: 6vw 1vw 1vw 1vw; */
+  padding-top: 5vw;
 }
 
 .login-input {
@@ -51,12 +52,13 @@ body {
 }
 
 .login-login {
-  padding: 2vw 1vw 1vw 1vw;
+  /* padding: 2vw 1vw 1vw 1vw; */
+  padding-top: 1vw;
   size: 1vw;
 }
 
 .login-register {
-  padding: 0vw 1vw 1vw 1vw;
+  /* padding: 0vw 1vw 1vw 1vw; */
 }
 
 label {
@@ -71,7 +73,7 @@ label {
   border-color: rgba(67, 57, 127, 255);
 }
 
-.submit-btn {
+/* .submit-btn {
   font-size: 1.1vw;
   color: rgba(67, 57, 127, 255);
   width: 6vw;
@@ -83,6 +85,22 @@ label {
   min-width: 44px;
   min-height: 44px;
   margin: 10px; 
+} */
+
+.submit-btn {
+  font-size: 1.1vw;
+  color: white;
+  width: 6vw;
+  height: 1.7vw;
+  border-radius: 0.3vw;
+  /* border-width: 0.09vw; */
+  /* border-color: rgba(67, 57, 127, 255); */
+  border: none;
+  background-color: #ffcb49;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .submit-btn:hover {
@@ -96,7 +114,7 @@ label {
   color: rgba(67, 57, 127, 255);
   min-width: 44px;
   min-height: 44px;
-  margin: 10px; 
+  /* margin: 10px;  */
 }
 
 .click-btn:hover {

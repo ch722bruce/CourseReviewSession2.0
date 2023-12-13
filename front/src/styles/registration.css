@@ -27,7 +27,8 @@
 
 .registration h1 {
   font-size: 3vw;
-  padding: 3.5vw 1vw 0vw 1vw;
+  /* padding: 3.5vw 1vw 0vw 1vw; */
+  padding-top: 2vw;
 }
 
 .regist-input,
@@ -37,12 +38,13 @@
 }
 
 .regist-register {
-  padding: 1vw 1vw 1vw 1vw;
+  /* padding: 1vw 1vw 1vw 1vw; */
+  padding-top: 1vw;
   size: 1vw;
 }
 
 .regist-back {
-  padding: 0vw 1vw 1vw 1vw;
+  /* padding: 0vw 1vw 1vw 1vw; */
 }
 
 label {
