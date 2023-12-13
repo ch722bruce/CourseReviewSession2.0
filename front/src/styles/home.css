@@ -18,7 +18,7 @@ body {
 }
 
 .home-bg {
-  background-image: url("../assets/home-background.png");
+  background-image: url("../assets/home-background.webp");
   background-size: cover;
   background-position: center;
   height: 100vh;
