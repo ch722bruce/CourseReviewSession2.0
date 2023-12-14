@@ -62,6 +62,7 @@ export default function SearchSessionsPage() {
             hasJoined={session.members.includes(
               JSON.parse(localStorage.getItem("currUser")).username,
             )}
+            //there is bug that the "join" button is not showing up when you get the result by searching the class id.
           />
         ))}
       </section>
